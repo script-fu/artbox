@@ -1,12 +1,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Artbox – Feature Testing</title>
-    <link>http://localhost:1313/test/folder/</link>
+    <link>https://example.org/test/folder/</link>
     <description>Recent content in Feature Testing on Artbox</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-GB</language>
     
-	  <atom:link href="http://localhost:1313/test/folder/index.xml" rel="self" type="application/rss+xml" />
+	  <atom:link href="https://example.org/test/folder/index.xml" rel="self" type="application/rss+xml" />
     
     
       
@@ -16,10 +16,10 @@
     
     <item>
       <title></title>
-      <link>http://localhost:1313/test/folder/filter-restores-last-tool/</link>
+      <link>https://example.org/test/folder/filter-restores-last-tool/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/test/folder/filter-restores-last-tool/</guid>
+      <guid>https://example.org/test/folder/filter-restores-last-tool/</guid>
       <description>
         
         
@@ -60,10 +60,10 @@
     
     <item>
       <title></title>
-      <link>http://localhost:1313/test/folder/paint-tool/</link>
+      <link>https://example.org/test/folder/paint-tool/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/test/folder/paint-tool/</guid>
+      <guid>https://example.org/test/folder/paint-tool/</guid>
       <description>
         
         
@@ -112,10 +112,10 @@
     
     <item>
       <title></title>
-      <link>http://localhost:1313/test/folder/paintbrush-high-quality-force/</link>
+      <link>https://example.org/test/folder/paintbrush-high-quality-force/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/test/folder/paintbrush-high-quality-force/</guid>
+      <guid>https://example.org/test/folder/paintbrush-high-quality-force/</guid>
       <description>
         
         
@@ -157,10 +157,10 @@
     
     <item>
       <title></title>
-      <link>http://localhost:1313/test/folder/paintbrush-options/</link>
+      <link>https://example.org/test/folder/paintbrush-options/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/test/folder/paintbrush-options/</guid>
+      <guid>https://example.org/test/folder/paintbrush-options/</guid>
       <description>
         
         
@@ -231,10 +231,10 @@
     
     <item>
       <title></title>
-      <link>http://localhost:1313/test/folder/presets-restore/</link>
+      <link>https://example.org/test/folder/presets-restore/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/test/folder/presets-restore/</guid>
+      <guid>https://example.org/test/folder/presets-restore/</guid>
       <description>
         
         
@@ -273,10 +273,10 @@
     
     <item>
       <title></title>
-      <link>http://localhost:1313/test/folder/resource-control/</link>
+      <link>https://example.org/test/folder/resource-control/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/test/folder/resource-control/</guid>
+      <guid>https://example.org/test/folder/resource-control/</guid>
       <description>
         
         
@@ -376,10 +376,10 @@
     
     <item>
       <title></title>
-      <link>http://localhost:1313/test/folder/script-fu/</link>
+      <link>https://example.org/test/folder/script-fu/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/test/folder/script-fu/</guid>
+      <guid>https://example.org/test/folder/script-fu/</guid>
       <description>
         
         
@@ -426,10 +426,10 @@
     
     <item>
       <title></title>
-      <link>http://localhost:1313/test/folder/toolbox/</link>
+      <link>https://example.org/test/folder/toolbox/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/test/folder/toolbox/</guid>
+      <guid>https://example.org/test/folder/toolbox/</guid>
       <description>
         
         
