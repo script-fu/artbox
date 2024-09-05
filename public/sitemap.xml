@@ -2,89 +2,89 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/</loc>
+    <loc>https://example.org/</loc>
     <lastmod>2024-09-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/</loc>
+    <loc>https://example.org/blog/</loc>
     <lastmod>2024-09-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
+    <loc>https://example.org/tags/</loc>
     <lastmod>2024-09-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/test/</loc>
+    <loc>https://example.org/tags/test/</loc>
     <lastmod>2024-09-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/post-2024-09-04/</loc>
+    <loc>https://example.org/blog/post-2024-09-04/</loc>
     <lastmod>2024-09-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/boxdocs/folder/data/</loc>
+    <loc>https://example.org/boxdocs/folder/data/</loc>
   </url><url>
-    <loc>http://localhost:1313/boxdocs/folder/Installation/</loc>
+    <loc>https://example.org/boxdocs/folder/Installation/</loc>
   </url><url>
-    <loc>http://localhost:1313/boxdocs/folder/technical-guide/</loc>
+    <loc>https://example.org/boxdocs/folder/technical-guide/</loc>
   </url><url>
-    <loc>http://localhost:1313/boxdocs/folder/troubleshooting/</loc>
+    <loc>https://example.org/boxdocs/folder/troubleshooting/</loc>
   </url><url>
-    <loc>http://localhost:1313/example/folder/example-page/</loc>
+    <loc>https://example.org/example/folder/example-page/</loc>
   </url><url>
-    <loc>http://localhost:1313/guides/folder/a-linux-system-overview/</loc>
+    <loc>https://example.org/guides/folder/a-linux-system-overview/</loc>
   </url><url>
-    <loc>http://localhost:1313/guides/folder/building-a-debug-version/</loc>
+    <loc>https://example.org/guides/folder/building-a-debug-version/</loc>
   </url><url>
-    <loc>http://localhost:1313/guides/folder/installing-debian/</loc>
+    <loc>https://example.org/guides/folder/installing-debian/</loc>
   </url><url>
-    <loc>http://localhost:1313/guides/folder/system-backup-clonezilla/</loc>
+    <loc>https://example.org/guides/folder/system-backup-clonezilla/</loc>
   </url><url>
-    <loc>http://localhost:1313/guides/folder/using-git-on-linux/</loc>
+    <loc>https://example.org/guides/folder/using-git-on-linux/</loc>
   </url><url>
-    <loc>http://localhost:1313/test/folder/filter-restores-last-tool/</loc>
+    <loc>https://example.org/test/folder/filter-restores-last-tool/</loc>
   </url><url>
-    <loc>http://localhost:1313/test/folder/paint-tool/</loc>
+    <loc>https://example.org/test/folder/paint-tool/</loc>
   </url><url>
-    <loc>http://localhost:1313/test/folder/paintbrush-high-quality-force/</loc>
+    <loc>https://example.org/test/folder/paintbrush-high-quality-force/</loc>
   </url><url>
-    <loc>http://localhost:1313/test/folder/paintbrush-options/</loc>
+    <loc>https://example.org/test/folder/paintbrush-options/</loc>
   </url><url>
-    <loc>http://localhost:1313/test/folder/presets-restore/</loc>
+    <loc>https://example.org/test/folder/presets-restore/</loc>
   </url><url>
-    <loc>http://localhost:1313/test/folder/resource-control/</loc>
+    <loc>https://example.org/test/folder/resource-control/</loc>
   </url><url>
-    <loc>http://localhost:1313/test/folder/script-fu/</loc>
+    <loc>https://example.org/test/folder/script-fu/</loc>
   </url><url>
-    <loc>http://localhost:1313/test/folder/toolbox/</loc>
+    <loc>https://example.org/test/folder/toolbox/</loc>
   </url><url>
-    <loc>http://localhost:1313/themes/folder/dark/</loc>
+    <loc>https://example.org/themes/folder/dark/</loc>
   </url><url>
-    <loc>http://localhost:1313/themes/folder/default/</loc>
+    <loc>https://example.org/themes/folder/default/</loc>
   </url><url>
-    <loc>http://localhost:1313/themes/folder/high-contrast/</loc>
+    <loc>https://example.org/themes/folder/high-contrast/</loc>
   </url><url>
-    <loc>http://localhost:1313/themes/folder/system/</loc>
+    <loc>https://example.org/themes/folder/system/</loc>
   </url><url>
-    <loc>http://localhost:1313/themes/folder/warm/</loc>
+    <loc>https://example.org/themes/folder/warm/</loc>
   </url><url>
-    <loc>http://localhost:1313/about/</loc>
+    <loc>https://example.org/about/</loc>
   </url><url>
-    <loc>http://localhost:1313/boxdocs/folder/</loc>
+    <loc>https://example.org/boxdocs/folder/</loc>
   </url><url>
-    <loc>http://localhost:1313/boxdocs/</loc>
+    <loc>https://example.org/boxdocs/</loc>
   </url><url>
-    <loc>http://localhost:1313/categories/</loc>
+    <loc>https://example.org/categories/</loc>
   </url><url>
-    <loc>http://localhost:1313/example/folder/</loc>
+    <loc>https://example.org/example/folder/</loc>
   </url><url>
-    <loc>http://localhost:1313/example/</loc>
+    <loc>https://example.org/example/</loc>
   </url><url>
-    <loc>http://localhost:1313/test/folder/</loc>
+    <loc>https://example.org/test/folder/</loc>
   </url><url>
-    <loc>http://localhost:1313/guides/</loc>
+    <loc>https://example.org/guides/</loc>
   </url><url>
-    <loc>http://localhost:1313/guides/folder/</loc>
+    <loc>https://example.org/guides/folder/</loc>
   </url><url>
-    <loc>http://localhost:1313/test/</loc>
+    <loc>https://example.org/test/</loc>
   </url><url>
-    <loc>http://localhost:1313/themes/</loc>
+    <loc>https://example.org/themes/</loc>
   </url><url>
-    <loc>http://localhost:1313/themes/folder/</loc>
+    <loc>https://example.org/themes/folder/</loc>
   </url>
 </urlset>

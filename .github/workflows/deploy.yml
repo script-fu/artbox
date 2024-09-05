@@ -1,0 +1,36 @@
+name: Deploy Hugo Site
+
+on:
+  push:
+    branches:
+      - main  # or your default branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read  # Allows reading repository contents
+      pages: write    # Allows writing to GitHub Pages
+      id-token: write # Allows generating an ID token for authentication
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          submodules: 'true'  # Initialize and update submodules
+
+      - name: Set up Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: '0.134.0'  # Adjust to your Hugo version
+
+      - name: Build
+        run: hugo --gc --minify  # Build site
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: 'gh-pages'  # Deploy to gh-pages branch
+          publish_dir: ./public
