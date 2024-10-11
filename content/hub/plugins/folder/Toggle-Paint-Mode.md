@@ -1,16 +1,17 @@
 ---
+title: Toggle Paint Mode
 type: docs
 ---
 
-# Introduction
+## Introduction
 
-This plugin allows the user to toggle the active paint mode to the erase mode. [Installation](/artbox/hub/plugins/folder/)
+This plugin allows the user to toggle the active paint mode to the erase mode.
 
-## Plugin Menu Location 
+### Plugin Menu Location
 
 _Tools -> Paint Tools -> Toggle Paint Erase_
 
-## Keyboard Shortcut
+### Keyboard Shortcut
 
 This forces Artbox to save the shortcut for the next session. First, search for the plugin name, and assign a shortcut.
 
