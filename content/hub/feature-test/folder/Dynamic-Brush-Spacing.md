@@ -14,13 +14,12 @@ Improve the quality of the brush spacing with respect to velocity.
 
 | **Revision**  | **Current Design**  | **Issues**  | **Changes** |
 |--------------------------------------------|---------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------|-----------------------------------------------------------|
-| **1. Remove Velocity Inversion** | Velocity is math inverted | The max and min values are inverted in the spacing curve graph  | The velocity math is not inverted and the graph for velocity mapping is accurate |
-| **2. Remove Spacing Limits**   | Spacing is set to 200% for fast | Spacing does not respect the Paint Tool slider settings | Spacing respects the slider values |
+| **1. Remove Spacing Limits**   | Spacing is set to 200% for fast | Spacing does not respect the Paint Tool slider settings | Spacing respects the slider values |
 
 
 ## Notes
 
-This feature branch is a proposed solution to https://gitlab.gnome.org/GNOME/gimp/-/issues/1863
+This feature branch was a proposed solution to https://gitlab.gnome.org/GNOME/gimp/-/issues/1863
 
 **Without Feature:** Top is a slow stroke, middle line fast, lower is slow to fast.
 ![without-feature](/images/diagrams/brush-velocity-without-feature.webp)
