@@ -16,6 +16,8 @@ Artbox has an [AppImage](https://script-fu.github.io/artbox/hub/docs/folder/AppI
 * [Environment Variables](#environment-variables)
 * [Build Artbox, BABL and GEGL](#build-artbox-babl-and-gegl)
 * [Desktop Launcher (System Specific)](#desktop-launcher-system-specific)
+* [Automatically Updating](#automatically-updating-to-the-latest-development-version)
+* [Manual Updating](#steps-to-manually-update)
 * [Conclusion](#conclusion)
 
 ## Git
@@ -24,7 +26,7 @@ Before we dive into building Artbox, you'll need to install and learn the basics
 
 ## Dependencies
 
-Here is the [official guide](https://developer.gimp.org/core/setup/build/linux/). The suggestion to look at [this](https://gitlab.gnome.org/GNOME/gimp/-/blob/master/.gitlab-ci.yml) file, that builds GIMP in the GitLab CI environment, is worth following. That file lists all the dependencies the GIMP Dev build process needs. By using that information we can make a bash script to install those packages on our system. Save the following code block to a file called "install-GIMP-dep.sh" and execute it by following the instructions below.
+Here is the [official guide](https://developer.gimp.org/core/setup/build/linux/). The suggestion to look at [this](https://gitlab.gnome.org/GNOME/gimp/-/blob/master/.gitlab-ci.yml) file, that builds GIMP in the GitLab CI environment, is worth following. That file lists all the dependencies the GIMP Dev build process needs. By using that information we can make a bash script to install those packages on our system. Save the following code block to a file called `install-GIMP-dep.sh` and execute it by following the instructions below.
 
 To execute the script:
 
@@ -146,7 +148,7 @@ read -n 1 -r -s -p "Press any key to exit"
 
 ## Install Location
 
-After the Git challenge and package installation, we can proceed with the task. We'll keep the files we need in repository folders on the hard-drive, it's good to call the root folder "code", then put in a sub-folder, like "gnome", then another sub-folder "build" and one called "bash"
+After the Git challenge and package installation, we can proceed with the task. We'll keep the files we need in repository folders on the hard-drive, it's good to call the root folder `code`, then put in a sub-folder, like `gnome`, then another sub-folder `build` and one called `bash`
 
 * Home
   * code
@@ -167,7 +169,7 @@ We are now ready to download from the internet, the source code files we need fo
 
 ## Clone the Source Code Repositories
 
-In a terminal we can download the sources to our build directory using the Git 'clone' command:
+In a terminal we can download the sources to our build directory using the `git clone` command:
 
 ```shell
 cd $HOME/code/gnome/build
@@ -191,7 +193,7 @@ The simple folder structure is now populated with thousands of files, and there'
 
 ## Environment Variables
 
-The software that is about to be built, needs to know a few things about its environment. We do this by exporting some environmental variables. Copy the following into a file, call it **build_env.sh** and save it in the "bash" folder.
+The software that is about to be built, needs to know a few things about its environment. We do this by exporting some environmental variables. Copy the following into a file, call it **build_env.sh** and save it in the `bash` folder.
 
 ```bash
 #!/usr/bin/env bash
@@ -223,7 +225,7 @@ export GI_TYPELIB_PATH="${GIMP_PREFIX}/${LIB_DIR}/${LIB_SUBDIR}girepository-1.0$
 
 ## Build Artbox, BABL and GEGL
 
-To build or run the software, we can use another shell script, that uses this file to build, compile or run the software. Copy the following and save it as artbox.sh in the bash folder. Then in your File Manager, right click the artbox.sh file, properties, permissions, "Allow executing file as program".
+To build or run the software, we can use another shell script, that uses this file to build, compile or run the software. Copy the following and save it as `artbox.sh` in the bash folder. Then in your File Manager, right click the artbox.sh file, properties, permissions, `Allow executing file as program`.
 
 Notice that BABL and GEGL are also being built, these two additional packages don't have to be built every time. When
 COMPILE_ONLY is set to "true", after a full build perhaps, they are skipped.
@@ -339,7 +341,7 @@ To run the build script you can open a terminal in the bash folder and enter: `b
 
 ## Desktop Launcher (System Specific)
 
-Alternatively you can launch Artbox using a desktop launcher, save the following as a file to your desktop, and then right click it, properties, permissions, "Allow executing file as program". 
+Alternatively you can launch Artbox using a desktop launcher, save the following as a file to your desktop, and then right click it, properties, permissions, `Allow executing file as program`.
 
 ```shell
 [Desktop Entry]
@@ -350,7 +352,7 @@ Type=Application
 Name[en_GB]=Artbox
 ```
 
-You'll have to change "your-home" to get it to work, this is a Linux thing, on my system the line would be:
+You'll have to change `your-home` to get it to work, this is a Linux thing, on my system the line would be:
 
 ```sh
 gnome-terminal -- /home/mark/code/bash/artbox.sh
@@ -358,17 +360,127 @@ gnome-terminal -- /home/mark/code/bash/artbox.sh
 
 It also assumes you are using a specific desktop environment (Cinnamon). My tip would be to look at how to create a desktop launcher for your particular system, or copy and edit an existing one you may have.
 
-## Updating to the Latest Development Version
+## Automatically Updating to the Latest Development Version
 
 To update Artbox or GIMP to the latest development version, you can perform a 'hard' reset of the local repository to match the remote repository. **Warning:** This process will overwrite any local changes you have made to the code.
 
-### Steps to Update
+Here is a script that will get the latest versions of GIMP, Artbox, BABL and GEGL. Copy the following and save it as `reset-all-repos.sh` in the bash folder. Then in your File Manager, right click the `reset-all-repos.sh` file, properties, permissions, `Allow executing file as program`.
+
+```bash
+#!/usr/bin/env bash
+# This script resets all the specified repositories (babl, gegl, artbox, and gimp)
+# to their original states using 'git reset --hard', 'git clean -df', and ensures
+# they are reset to the latest changes from their respective branches ('master' or 'artbox').
+# If it's the gimp or artbox repo, a submodule update will be performed.
+# It DEPENDS on "build_env.sh" being available in the same script directory.
+
+# Flags to control whether to reset each repository
+RESET_BABL="true"
+RESET_GEGL="true"
+RESET_GIMP="true"
+RESET_ARTBOX="true"
+
+# Find the directory where this script is located
+SCRIPT_DIR="$(dirname "$(realpath "$0")")"
+
+# Save the initial directory to return to it later
+INITIAL_DIR="$(pwd)"
+
+# Load the environment variables
+source "$SCRIPT_DIR/build_env.sh"
+
+# Start in the build directory
+cd "${GIMP_PREFIX}/build/"
+
+# Positive warning message
+echo "This script will reset selected repositories (babl, gegl, artbox, gimp) to their latest versions."
+echo "Programmers! All uncommitted changes and untracked files will be lost."
+echo -e "\nAre you sure you want to continue? (y)"
+
+# User prompt
+read -r CONFIRM
+
+# Only proceed if the user confirms
+if [ "$CONFIRM" != "y" ]; then
+  echo "Operation canceled by the user."
+  cd "$INITIAL_DIR"
+  exit 1
+fi
+
+# Define the paths to the repositories and their respective branches
+REPOS=()
+
+if [ "$RESET_BABL" == "true" ]; then
+  REPOS+=("${GIMP_PREFIX}/build/babl master")
+fi
+if [ "$RESET_GEGL" == "true" ]; then
+  REPOS+=("${GIMP_PREFIX}/build/gegl master")
+fi
+if [ "$RESET_GIMP" == "true" ]; then
+  REPOS+=("${GIMP_PREFIX}/build/gimp master")
+fi
+if [ "$RESET_ARTBOX" == "true" ]; then
+  REPOS+=("${GIMP_PREFIX}/build/artbox artbox")
+fi
+
+# Loop through each repository, reset, clean, checkout branch, and fetch the latest changes
+for REPO_INFO in "${REPOS[@]}"; do
+  REPO=$(echo "$REPO_INFO" | awk '{print $1}')
+  BRANCH=$(echo "$REPO_INFO" | awk '{print $2}')
+
+  # Check if the repository exists
+  if [ ! -d "$REPO" ]; then
+    echo -e "Repository $REPO does not exist, skipping"
+    continue
+  fi
+
+  # Navigate to the repository
+  if cd "$REPO"; then
+    # Checkout the correct branch
+    git checkout -q "$BRANCH"
+    # Fetch the latest changes from origin
+    git fetch origin -q
+    # Perform git reset and clean
+    git reset --hard -q origin/"$BRANCH"
+    git clean -df -q
+    echo -e "Repository $REPO has been reset to the latest state on branch $BRANCH\n"
+
+    # If the repository is gimp or artbox, perform a submodule update
+    if [[ "$REPO" == *"gimp"* || "$REPO" == *"artbox"* ]]; then
+      git submodule update --init --recursive -q
+    fi
+  else
+    echo -e "Failed to navigate to $REPO"
+  fi
+done
+
+# Return to the initial directory
+cd "$INITIAL_DIR"
+echo -e "Remember to rebuild all the repos to get the latest versions of the app!\n"
+```
+
+### Post Update
+
+After running this script the next thing to do would be run the `artbox.sh` script with the control flags set as:
+
+```plaintext
+COMPILE_ONLY="false"
+BUILD_BABL="true"
+BUILD_GEGL="true" 
+BUILD_FORK="artbox"
+```
+
+Then the version of Artbox will be the latest one to play with, and it'll be using the latest BABL and GEGL.
+
+## Steps to Manually Update
 
 1. **Navigate to the Local Repository:** First, go to the directory of the repository you want to update.
 2. **Checkout the Desired Branch:** Switch to the branch you want to update. Make sure this is the branch you intend to reset.
 3. **Fetch the Latest Data:** Retrieve the latest changes from the remote repository (origin).
 4. **Reset to the Remote Branch:** Perform a hard reset to align your local branch with the remote branch. This will discard any local changes.
 5. **Rebuild:** Repeat the [building](#build-artbox-babl-and-gegl) process by running the 'artbox.sh' script.
+
+**Example commands to reset the artbox branch of the Artbox repo:**
 
 ```bash
 cd ${HOME}/code/gnome/build/artbox/
