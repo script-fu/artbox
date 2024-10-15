@@ -22,3 +22,16 @@ Removes a longstanding GUI issue.
 |--------------------------------------------|---------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------|-----------------------------------------------------------|
 | **1. Restore the previous tool after using a filter** | The filter is the active tool | Confusing to the user to deselect the active tool when a filter is used, and to keep the filter as the active tool | Restore the previous tool when a filter dialog is closed |
 
+## MR Description
+
+This MR fixes a GUI issue by restoring the previous tool after using a filter, preventing user confusion.
+
+### Changes
+
+- **Restore Previous Tool After Filter Use**:
+  - Added code to retrieve the previous tool from the context.
+  - After a filter dialog closes (whether committed or canceled), the previous tool is restored using `gimp_context_set_tool`.
+
+### Benefit
+
+- Ensures the user's previous tool is restored after using a filter, providing a more intuitive and seamless experience in the tool palette.

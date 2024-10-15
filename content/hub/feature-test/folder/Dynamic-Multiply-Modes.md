@@ -21,16 +21,20 @@ Make a beautiful brush stroke.
 **Feature:** The left side is with Pressure and Fade multiply enabled, right side is without
 ![feature](/images/diagrams/brush-dynamic-multiply-modes.webp)
 
+## MR Description
+
 This MR adds dynamic multiply modes (`Pressure Multiply` and `Fade Multiply`) to the `gimp_dynamics_output_get_linear_value` function, enabling finer control over brush strokes.
 
-#### Changes:
-- **Pressure Dynamics**: 
+### Changes
+
+- **Pressure Dynamics**:
   - Added `options->brush_pressure_multiply` check.
   - If enabled and there are existing factors, the pressure is multiplied. Otherwise, it's added as usual.
   
-- **Fade Dynamics**: 
+- **Fade Dynamics**:
   - Added `options->fade_options->fade_multiply` check.
   - If enabled and there are existing factors, the fade is multiplied. Otherwise, it's added.
 
-#### Benefit:
+### Benefit
+
 - Allows users to multiply or add pressure and fade dynamics for more precise brush control.

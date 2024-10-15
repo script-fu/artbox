@@ -26,11 +26,11 @@ Uses a log function, no discernable slowdown on a _fast_ pc.
 **With Feature:** Left side is a slow to fast stroke, right side has inverted velocity mapping
 ![with-feature](/images/diagrams/brush-velocity-compression-with-feature.webp)
 
----
-
-### Summary
+## MR Description
 
 This feature improves the velocity handling in `gimpmotionbuffer.c` by implementing a logarithmic velocity compression function and refining the smoothing algorithm. The key changes and their benefits are:
+
+### Changes
 
 - **Logarithmic Velocity Compression:**
   - Introduces a new compression function that maps raw velocities to a compressed range using a logarithmic scale.
@@ -47,6 +47,6 @@ This feature improves the velocity handling in `gimpmotionbuffer.c` by implement
   - Refactors code to correctly update `buffer->last_coords.velocity` after assignments to prevent unintended overwrites.
   - Includes detailed comments explaining the purpose of constants like `V_MAX`, `k`, and `V_THRESHOLD`, aiding future maintenance and readability.
 
-**Impact:**
+### Benefit
 
 These enhancements result in more responsive and natural tool dynamics within GIMP's drawing tools, offering users improved control and a better overall experience when interacting with dynamic brushes and other velocity-dependent features.
