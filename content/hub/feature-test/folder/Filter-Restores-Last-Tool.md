@@ -4,7 +4,7 @@ type: docs
 
 # Objective
 
-Removes a longstanding GUI issue.
+Removes a long-standing GUI issue.
 
 ## Key Concepts and Definitions
 
