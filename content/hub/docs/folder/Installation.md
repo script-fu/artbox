@@ -243,10 +243,10 @@ BUILD_BABL="true"       # Set to "false" to skip building BABL
 BUILD_GEGL="true"       # Set to "false" to skip building GEGL
 BUILD_FORK="artbox"     # Set to "gimp"  to build GIMP instead
 
-# Find the directory where this script is located
+# This automatically finds the directory where this script is located
 SCRIPT_DIR="$(dirname "$(realpath "$0")")"
 
-# Save the initial directory to return to it later
+# This saves the initial directory to return to it later
 INITIAL_DIR="$(pwd)"
 
 # Load the environment variables
@@ -380,10 +380,10 @@ RESET_GEGL="true"
 RESET_GIMP="true"
 RESET_ARTBOX="true"
 
-# Find the directory where this script is located
+# This automatically finds the directory where this script is located
 SCRIPT_DIR="$(dirname "$(realpath "$0")")"
 
-# Save the initial directory to return to it later
+# This saves the initial directory to return to it later
 INITIAL_DIR="$(pwd)"
 
 # Load the environment variables
