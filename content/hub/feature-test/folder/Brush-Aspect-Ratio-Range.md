@@ -10,7 +10,7 @@ The brush aspect ratio should be easily understood, and predictable to use. A fi
 
 | **Revision**  | **Current Design**  | **Issues**  | **Changes** |
 |--------------------------------------------|---------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------|-----------------------------------------------------------|
-| **1. Use Normalized Aspect ratio** | Range is from -20 to 20, 0 is undistorted, non-linear distortion up to 20 where there is a distortion clamp | Historical reasons that are confusing in the GUI and confusing in the code | An aspect ratio of 1 is undistorted, 0, is very distorted, -1 flips the brush stamp, linear distortion |
+| **1. Use Normalized Aspect ratio** | Range is from -20 to 20, 0 is undistorted, non-linear distortion up to 20 where there is a distortion clamp that limits the effect. | Historical reasons that are confusing in the GUI and confusing in the code | An aspect ratio of 1 is undistorted, 0, is very distorted, -1 flips the brush stamp, linear distortion |
 
 ## MR Description
 
