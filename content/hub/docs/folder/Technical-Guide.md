@@ -73,7 +73,7 @@ A convert branch is used to adjust the latest GIMP master branch to support the 
 
 The current strategy is to place any heavily modified file that supports multiple feature branches—through the addition of new data structures—into a convert branch. This approach helps consolidate overlapping changes in one place, while maintaining the core code that performs the main functions in separate feature branches.
 
-The convert branches are:
+The current convert branches are:
 
 - **convert-to-artbox:** The main branch that combines all other convert branches.
   - **convert-data-remote:** Handles the gimp-data remote url.
@@ -96,16 +96,11 @@ These conflicts can be resolved fairly easily due to the automated construction 
 
 #### Example of a Convert Branch
 
-A unusually complex convert branch like 'convert-paintbrush-all-merged' is itself a combined branch that integrates multiple smaller changes.
+A unusually complex convert branch like 'convert-paintbrush-all-merged' is a branch that integrates multiple smaller changes, it's commit history is more than one change.
 
 - convert-paintbrush-all-merged: Integrates modifications to the paintbrush tool, history is intact.
-  - convert-paintbrush-simple-boundary
-  - convert-paintbrush-simple-boundary
-  - convert-paintbrush-status-alt
-  - convert-paintbrush-erase
-  ...
 
-These sub-branches implement smaller, specific changes. If a conflict arises between convert-paintbrush-all-merged and the GIMP development branch, an interactive rebase can be done to edit and resolve that particular commit.
+If a conflict arises between convert-paintbrush-all-merged and the GIMP development branch, an interactive rebase can be done to edit and resolve that particular commit.
 
 ### Feature Branches
 

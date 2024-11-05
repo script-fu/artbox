@@ -4,28 +4,29 @@ type: docs
 
 # Objective
 
-Make sense of the mapping graphs for dynamic features by removing the velocity inversion.
+Remove the velocity inversion, so that the dynamic mapping graphs representation is accurate.
 
 ## Related Links
 
 - Branches: Artbox and [feature-remove-inverted-dynamic-velocity](https://gitlab.gnome.org/pixelmixer/artbox/-/tree/feature-remove-inverted-dynamic-velocity?ref_type=heads)
+- https://gitlab.gnome.org/GNOME/gimp/-/issues/958
 
 ## Design Revisions
 
 | **Revision**  | **Current Design**  | **Issues**  | **Changes** |
 |--------------------------------------------|---------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------|-----------------------------------------------------------|
-| **1. Remove Velocity Inversion** | Velocity is math inverted | The max and min values are inverted in the spacing curve graph  | The velocity math is not inverted and the graph for velocity mapping is accurate |
+| **1. Remove Velocity Inversion** | The velocity calculations are inverted | The maximum and minimum values are inverted in the spacing curve graph  | The velocity calculations are no longer inverted, and the velocity mapping graph is accurate |
 
 ## MR Description
 
-This MR removes the velocity inversion in the dynamic features, ensuring the velocity mapping is more intuitive and accurate.
+This merge request removes the velocity inversion in dynamics, simplifying the velocity mapping for easier use.
 
 ### Changes
 
 - **Remove Velocity Inversion**:
   - The velocity is no longer inverted (`1.0 - coords->velocity` removed).
-  - Now, `coords->velocity` is mapped directly, making the graph for velocity mapping more accurate.
+  - `coords->velocity` is mapped directly, making the graph for velocity mapping more accurate.
 
 ### Benefit
 
-- This change ensures that the velocity mapping in the dynamic features behaves correctly, making it easier for users to understand and control their brush settings without inverted values.
+- This change corrects the velocity mapping in dynamic features, helping users understand and control brush settings without dealing with inverted values.

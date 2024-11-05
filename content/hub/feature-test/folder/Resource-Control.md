@@ -37,7 +37,7 @@ Improve the usability and data saving of resources and Tool Presets in Artbox.
 | **7. Edit Brush deals with Parametric and Image types** | See Brushes Menu items | Confusion over brush types |  Double clicking an image type opens the image for editing, Double clicking a parametric type opens the Brush Editor |
 | **8. Inform the user about locked resources** | Folder locked resources can not be edited | User confusion | An informative message is displayed in the Brush Editor if the resource is locked |
 | **9. Copy and Paste as New Brush** | New Feature | Create a brush from the active drawable | Added to the Brushes Menu via a Script-Fu plug-in |
-
+| **9. Tool Preset Name in Tool Options Title** | New Feature | See the active Tool Preset name requires the Tool Preset Editor to be open or the Tool Preset selector to be in list mode | Added the active Tool Preset name after the Tool name in the Tool Options title. Tool Name | Tool Preset Name |
 ## MR Description
 
 This merge request improves the usability and data-saving mechanisms for resources and Tool Presets in Artbox. Below is a summary of the key changes made to enhance the user experience with resources, including active tool presets, and their associated assets:
@@ -71,6 +71,9 @@ This merge request improves the usability and data-saving mechanisms for resourc
 
 9. **Save Active Tool Assets:**
    - Introduced a 'Save All Active Tool Assets' feature, allowing users to save all the active tool assets (brush, gradient, palette, dynamics) in a session for easier resource management. Note: the concept of saving a 'tool package' is not yet implemented.
+
+10. **Tool Preset Name in Tool Options Title:**
+   - Added the active Tool Preset name after the Tool name in the Tool Options title. Tool Name | Tool Preset Name.  We can see which Tool Preset is active from the Tool Options Title.
 
 ### Benefit
 

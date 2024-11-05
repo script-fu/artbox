@@ -7,6 +7,8 @@ Artbox is a digital painting and illustration application for Linux, specificall
 
 **Use at your own risk**, it's _not_ GIMP stable. When working in Artbox I use [incremental saving](/artbox/hub/plugins/folder/incremental-save/) and an [auto-save](/artbox/hub/plugins/folder/almost-autosave/). Artbox is hardcoded to use a different .config folder called 'Artbox'.
 
+Artbox is configured to use a distinct set of data resource folders, separate from GIMP's, to safeguard GIMP assets from being modified by Artbox. For instance, default brushes and dynamics are stored in these dedicated folders. This separation ensures that Artbox maintains its own user data directory under .config and manages its default resource folders independently.
+
 Artbox is powered by the [GNU Image Manipulation Program](https://www.gimp.org/) open source project.
 
 ![artbox-logo](/images/artbox-logo.webp)
