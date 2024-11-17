@@ -5,7 +5,11 @@ type: docs
 
 ## Introduction
 
-Personalize your creative experience with a selection of custom themes for GIMP and Artbox! Whether you prefer a high-contrast interface for easy visibility, a warm and cozy palette, or a dark theme for a more focused environment, these themes offer a variety of options to suit your style. Easy to install and compatible with multiple platforms, these themes will help you tailor the look and feel of your Artbox interface to match your preferences. 
+Personalize your experience with custom themes for GIMP and Artbox! Choose from high-contrast options for better visibility, warm palettes for a cozy feel, or dark themes for focused work. These themes are easy to install, compatible with multiple platforms, and let you customize the Artbox interface to your style.
+
+When Artbox is installed via AppImage or compiled from source, the default theme is the System theme. This theme uses CSS styles from your OS to define the appearance of your GUI. Many system themes can be downloaded, though their quality may vary. Factors like your Linux distribution and Display Manager also influence how system themes work.
+
+These CSS rules are independent of Artbox. Artbox minimally alters the system theme, ensuring continuity with the OS look. Pixelmixer themes, included in the AppImage and compiled versions, are custom CSS styles designed for better usability in Artbox. For GIMP, these themes can be installed as follows:
 
 1. [Download](/artbox/downloads/themes.zip)
 2. Once the themes.zip has downloaded, extract the themes directory.
