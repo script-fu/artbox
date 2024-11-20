@@ -11,7 +11,7 @@ If you wish to deactivate these plugins you can do so by changing your preferenc
 
 Edit -> Preferences -> Folders -> Plug-ins  
 
-Remove the share/artbox/ path. 
+Remove the `share/artbox/` path.
 
 ### Related Sites
 
