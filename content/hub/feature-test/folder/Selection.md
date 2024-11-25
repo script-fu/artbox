@@ -16,7 +16,7 @@ Improve the quality of the painting experience in Artbox
 |--------------------------------------------|---------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------|-----------------------------------------------------------|
 | **1. Auto commit** | The selection has to be committed before another selection can be made. | It makes drawing multiple areas snaggy. | An option to `Auto commit` when a selection is made |
 | **2. Fill Selection**   | New Feature | Workflow is faster and more like painting when a selection is auto filled | An option to `Fill selection` when a selection is made |
-| **3. Auto Deselect**   | New Feature  | Workflow is faster, select -> fill -> select -> fill | An option to `Auto deselect` when a selection is made, used after an auto fill has been done |
+| **3. Auto Deselect**   | New Feature  | Workflow is faster, select -> fill -> see -> select -> fill | An option to `Auto deselect` when a selection is made, used after an auto fill has been done |
 
 ## MR Description (Adapted to Table Concepts)
 

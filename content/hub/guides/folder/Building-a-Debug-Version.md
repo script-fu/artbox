@@ -10,8 +10,9 @@ A debug version is a build of a program that includes additional information, kn
 
 ## Contents
 - [Setting Up Debug Symbols](#setting-up-debug-symbols)
-- [Configure GDB](#creating-a-gdbinit-file)
-- [Build BABL, GEGL, and GIMP Debug Versions](#build-babl-gegl-and-gimp-debug-versions)
+- [Installing GDB](#installing-gdb)
+- [Configure GDB](#configure-gdb)
+- [Build Debug Versions](#build-debug-versions)
 - [Launch an App under GDB](#launch-an-app-under-gdb)
 - [GDB Server](#gdb-server)
 - [Using TTYs in Linux](#using-ttys-in-linux)
@@ -117,9 +118,9 @@ This script sets GDB to automatically log output and enables debuginfod.
 To debug issues with GIMP, it's often necessary to build debug versions of the underlying libraries, including BABL, GEGL, and GIMP itself. This allows you to get more detailed information about the execution flow of the program and identify the source of errors.
 
 There is a switch to set when we build these libraries and GIMP that allow the
-debugging to take place. We build debug versions, using the same method as described 
+debugging to take place. We build debug versions, using the same method as described
 [here](https://script-fu.github.io/artbox/hub/docs/folder/Installation/#build-artbox-babl-and-gegl), except that `build_type="release"` is set to `build_type="debug"`. Build all
-three with the debug option set before continuing. 
+three with the debug option set before continuing.
 
 Also, keep in mind that you'll need to rebuild the libraries with the build_type set to "release" when you're finished debugging, in order to get the best performance out of GIMP.
 
@@ -197,19 +198,19 @@ Enter 'continue' at the (gdb) prompt to launch GIMP in debug mode.
 
 Reading symbols from /home/mark/code/gnome/bin/gimp-3.0...
 Breakpoint 1 at 0x154fc1: file ../app/main.c, line 544.
-Starting program: /home/mark/code/gnome/bin/gimp-3.0 
+Starting program: /home/mark/code/gnome/bin/gimp-3.0
 
 This GDB supports auto-downloading debuginfo from the following URLs:
   <https://debuginfod.debian.net/>
 Enable debuginfod for this session? (y or [n]) y
 Debuginfod has been enabled.
 To make this setting permanent, add 'set debuginfod enabled on' to .gdbinit.
-[Thread debugging using libthread_db enabled]                                                                                  
+[Thread debugging using libthread_db enabled]
 Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
-                                                                                                                               
+
 Breakpoint 1, main (argc=1, argv=0x7fffffffe5f8) at ../app/main.c:544
 544	  GError         *error = NULL;
-(gdb) info sharedlibrary 
+(gdb) info sharedlibrary
 From                To                  Syms Read   Shared Object Library
 0x00007ffff7fcc060  0x00007ffff7ff0f51  Yes         /lib64/ld-linux-x86-64.so.2
 0x00007ffff7f98560  0x00007ffff7fb0bbe  Yes         /home/mark/code/gnome/lib/x86_64-linux-gnu/libgimpbase-3.0.so.0
@@ -225,7 +226,7 @@ From                To                  Syms Read   Shared Object Library
 
 0x00007ffff1fcc6b0  0x00007ffff1fe19be  Yes         /lib/x86_64-linux-gnu/libgpg-error.so.0
 (*): Shared library is missing debugging information.
-(gdb) 
+(gdb)
 
 ```
 
@@ -273,7 +274,7 @@ To switch to a TTY, use Ctrl + Alt + F1 through F6. To return to the graphical i
 
 To return to the graphical interface, use `Ctrl + Alt + F7` (or `F2` on some systems).
 
-Once in a TTY, log in and run GDB to connect to the GDB server: 
+Once in a TTY, log in and run GDB to connect to the GDB server:
 
 ```bash
 gdb /home/mark/code/gnome/bin/gimp-3.0
