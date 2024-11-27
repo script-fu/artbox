@@ -69,7 +69,6 @@ categoryId = "<category ID>"
 name = "AppImage"
 pageRef = "hub/docs/folder/AppImage"
 weight = 1
-[[menu.main]]
 
 [[menu.main]]
 name = "About"
@@ -80,8 +79,13 @@ weight = 7
 name = "Installation"
 pageRef = "hub/docs/folder/Installation"
 weight = 2
-[[menu.main]]
 
+[[menu.main]]
+name = "Funky-Fu"
+url = "https://script-fu.github.io/funky/"
+weight = 1
+
+[[menu.main]]
 name = "Documentation"
 pageRef = "hub/docs/folder/"
 weight = 3
