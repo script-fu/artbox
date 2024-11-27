@@ -6,27 +6,51 @@ Enhance the Tool Preset Editor.
 
 - Branches: [Artbox](https://gitlab.gnome.org/pixelmixer/artbox/-/tree/artbox?ref_type=heads)
 
-## Design Revisions
+### **Design Revisions**
 
 | **Revision**               | **Current Design**                                           | **Issues**                                                                                             | **Changes**                                                                                               |
 |----------------------------|--------------------------------------------------------------|--------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------|
-| **1. Icon Picker Update**  | The icon picker is very small on a HDPI screen.             | Limited icon visibility, reducing ease of use and feature discovery.                                   | Added a new `icon_tool_preset` boolean property to adjust the picker size in the Tool Preset Editor, enlarging and centering the icon picker. |
-| **2. Tool Preset Expander** | Tool Preset editor apply options are listed without context. | Lack of organization leads to a cluttered UI in the Tool Preset Editor and an oversized dock.          | Implemented an expandable frame grouping preset toggle options under "Preset Application Filter" for a cleaner, and minimum height, layout.                         |
+| **1. Icon Picker Update**  | The icon picker is very small on HDPI screens.              | Limited icon visibility reduces ease of use and impacts feature discoverability.                        | Added a new `icon_tool_preset` boolean property to adjust the icon picker size in the Tool Preset Editor. Enlarged and centered the icon picker for better visibility and usability. |
+| **2. Tool Preset Information Table** | **New Feature** | Users lack insight into the saved and active states of resources linked to Tool Presets, hindering editing and creation workflows. | Implemented an information table that clearly displays the saved and active states of resources associated with Tool Presets. |
+| **3. Resource Reloading Options** | Tool Preset Editor options are listed without context. | Unorganized options create a cluttered interface and lead to an oversized dock, reducing efficiency.   | Grouped related options under a collapsible "Resource Reloading" frame using an expandable widget. Added explanatory tooltips for clarity. |
+| **4. Linked Resource Saving Options** | **New Feature** | There are no options for managing linked resources when creating new Tool Presets.                     | Introduced an expandable "Linked Resource Saving" frame that provides toggleable options for managing linked resources. These options apply when saving Tool Presets or linked resources. |
+| **5. Linked Resource Save-As Feature** | **New Feature** | No streamlined method for creating additional presets with named copies of linked resources.            | Added a "Save As" button and menu option to save linked resources with new names. Implemented a dialog that provides a guided workflow for naming and saving linked resources along with Tool Presets. |
 
-## MR Description
+---
 
-This MR improves the tool preset editor's usability and enhances icon picker customization, focusing on visual improvements and configurable options for a more intuitive user experience.
+### **Merge Request (MR) Description**
 
-### Changes
+This Merge Request (MR) enhances the usability of the Tool Preset Editor by focusing on visual improvements, icon picker customization, and new configurable options for managing linked resources. These updates provide a more intuitive, compact, and organized user interface, improving both visual clarity and workflow efficiency.
+
+#### **Key Changes**
 
 1. **Icon Picker Update**:
-   - Added a new `icon_tool_preset` boolean property to conditionally adjust the picker size for the Tool Preset Editor.
-   - The icon picker is placed in the center of the editor.
+   - Added a new `icon_tool_preset` boolean property to dynamically adjust the icon picker's size in the Tool Preset Editor.
+   - Enlarged and centered the icon picker for better usability on HDPI screens.
 
-2. **Tool Preset Expander**:
-   - Added a collapsible `Preset Application Filter` frame in the Tool Preset Editor to contain various preset options as checkboxes.
-   - Used the GTK expander widget to create a compact interface that keeps options accessible while minimizing visual clutter.
+2. **Tool Preset Information Table**:
+   - Introduced an information table that displays both the saved and active states of resources linked to Tool Presets.
+   - This provides users with clear insights into linked resource configurations, enhancing editing and creation workflows.
 
-### Benefit
+3. **Resource Reloading Options**:
+   - Consolidated the Tool Preset Editor’s resource reloading options into a collapsible "Resource Reloading" frame using a GTK expander widget.
+   - Added tooltips to clarify the purpose of each option, improving usability and reducing interface clutter.
 
-- The enlarged icon picker and organized Tool Preset Editor improve visual feedback and provide a structured layout for managing complex tool configurations. The `Preset Application Filter` expander reduces interface clutter and reduces dock height, optimizing usability.
+4. **Linked Resource Saving Options**:
+   - Added a collapsible "Linked Resource Saving" frame for managing linked resource options when saving Tool Presets.
+   - Ensures streamlined handling of linked resources for both new and existing presets.
+
+5. **Save-As Feature for Linked Resources**:
+   - Introduced a "Save As" button and menu option for saving linked resources with new names.
+   - Created an interactive dialog to guide users through naming linked resources and saving Tool Presets.
+
+---
+
+### **Benefits**
+
+- **Improved Usability**: The enlarged icon picker and structured layout of the Tool Preset Editor enhance visual feedback and accessibility.
+- **Streamlined Workflows**: New options for managing linked resources simplify the process of creating and editing Tool Presets.
+- **Reduced Interface Clutter**: Collapsible frames and grouped options reduce visual noise, ensuring an organized and compact interface.
+- **Enhanced Discoverability**: Tooltips and guided dialogs improve feature discoverability, particularly for new users.
+
+This MR makes the Tool Preset Editor more user-friendly and visually consistent while introducing robust options for managing linked resources effectively.
