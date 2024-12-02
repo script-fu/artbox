@@ -2,16 +2,6 @@
 
 Improve the usability of the Paintbrush GUI.
 
-## Key Concepts and Definitions
-
-- **Reset Brush Option**: Resets the slider to a default value.
-- **Brush Link Button**: Links the paintbrush options to the brush editor options.
-- **Expander**: A collapsible GUI section for organizing lesser-used options.
-
-## Related Links
-
-- Branches: Artbox and [convert-paintbrush-all-merged](https://gitlab.gnome.org/pixelmixer/artbox/-/tree/convert-paintbrush-all-merged?ref_type=heads)
-
 ## Design Revisions
 
 | **Revision** | **Current Design** | **Issues** | **Changes** |
@@ -24,10 +14,6 @@ Improve the usability of the Paintbrush GUI.
 | **6. Smooth Stroke Position** | 'Smooth Stroke' is located lower down in the dock. | It’s a frequently used option for painting. | Move it higher up in the dock within 'Stroke Effects'. |
 | **7. Stroke Effects Expander** | New feature. | Options clutter the Paintbrush GUI, or don't flow visually. | Create a 'Stroke Effects' expander to organize these related options. The state of the expander is saved and restored. |
 | **8. Pick Layer** | New feature. | It's difficult to find layers in complex layer stacks | Added an option in `Additional Options` to `Pick Layer`. The layer under the brush is selected when Alt is pressed.  |
-
-## MR Description
-
-This MR enhances the Paintbrush GUI in several ways, making it more intuitive and streamlined by removing unnecessary elements and organizing options more efficiently.
 
 ### Changes
 
@@ -57,7 +43,7 @@ This MR enhances the Paintbrush GUI in several ways, making it more intuitive an
 8. **Pick Layer**:
     - Added a new "Pick Layer" option in the **Additional Options** expander. This feature allows users to hold the <kbd>Alt</kbd> key to automatically select the layer under the brush cursor. This option simplifies workflows with complex layer stacks by enabling quick access to the correct layer without manually searching through the layers panel.
 
-### Benefit
+### **Benefits**
 
 This set of changes significantly improves the usability and efficiency of the Paintbrush GUI. By reducing visual clutter, hiding advanced options behind expanders, and simplifying the interface, users can now navigate the Paintbrush settings more easily while still accessing the features they need.
 

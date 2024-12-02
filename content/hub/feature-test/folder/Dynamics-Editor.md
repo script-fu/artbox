@@ -2,10 +2,6 @@
 
 Enhance the Dynamics Editor.
 
-## Related Links
-
-- Branches: [Artbox](https://gitlab.gnome.org/pixelmixer/artbox/-/tree/artbox?ref_type=heads)
-
 ---
 
 ### **Design Revisions**
@@ -18,10 +14,6 @@ Enhance the Dynamics Editor.
 | **4. Dynamic Attributes**   | See GIMP Dynamics Editor                                     | The Dynamic Attributes treeview is not in a scrollable window, making the Dynamics Editor dock excessively large and inflexible. | Enclosed the Dynamic Attributes treeview in a scrollable window to improve layout flexibility and reduce dock size. |
 
 ---
-
-### **Merge Request (MR) Description**
-
-This Merge Request (MR) focuses on enhancing the Dynamics Editor by addressing key usability concerns and introducing new functionality to improve user experience. The revisions emphasize visual clarity, structured layout, and better management of curve data.
 
 #### **Key Changes**
 
@@ -52,4 +44,3 @@ This Merge Request (MR) focuses on enhancing the Dynamics Editor by addressing k
 - **Data Protection**: The reset confirmation dialog safeguards user data, ensuring no unintended loss of work.
 - **Flexible Interface**: Scrollable windows for the Mapping Matrix and Dynamic Attributes treeview reduce dock size constraints, allowing users to customize their workspace more effectively.
 
-This MR enhances the Dynamics Editor by addressing usability concerns, improving functionality, and providing a more user-friendly interface that supports efficient workflows.

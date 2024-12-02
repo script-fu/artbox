@@ -66,24 +66,13 @@ To keep Artbox up-to-date with the GIMP development branch, we follow a structur
 
 - **Reset Artbox Branch:** Reset the 'artbox' branch to the 'convert-to-artbox' branch to incorporate the latest changes.
 - **Merge Updated Feature Branches:** Merge all updated feature branches into the 'artbox' branch to consolidate the changes.
+- **Squash Commit History:** Squash the commit history of these merges into a single commit to simplify history.
 
 ### Convert Branches
 
 A convert branch is used to adjust the latest GIMP master branch to support the Artbox feature branches or to make specific changes to the default GIMP application. These branches are merged into a single 'convert-to-artbox' branch, which serves as the common base layer.
 
 The current strategy is to place any heavily modified file that supports multiple feature branches—through the addition of new data structures—into a convert branch. This approach helps consolidate overlapping changes in one place, while maintaining the core code that performs the main functions in separate feature branches.
-
-The current convert branches are:
-
-- **convert-to-artbox:** The main branch that combines all other convert branches.
-  - **convert-data-remote:** Handles the gimp-data remote url.
-  - **convert-context-all-merged:** Consolidates context-related changes.
-  - **convert-paintbrush-all-merged:** Handles the GUI changes and additional options for the Paintbrush Tool
-  - **convert-pref-all-merged:** Merges changes to preferences.
-  - **convert-force-artbox-config:** Forces a specific config folder for Artbox.
-  - **convert-name:** Manages web-links and renaming of GIMP strings to Artbox.
-  - **convert-readme:** Updates the README.md 
-  - **convert-git-lab-build:** Asks GitLab to only build the Artbox branch.
 
 #### Identifying Conflicts
 
@@ -94,17 +83,9 @@ Updating Artbox to the GIMP development branch involves identifying any conflict
 
 These conflicts can be resolved fairly easily due to the automated construction process and granularity of the changes.
 
-#### Example of a Convert Branch
-
-A unusually complex convert branch like 'convert-paintbrush-all-merged' is a branch that integrates multiple smaller changes, it's commit history is more than one change.
-
-- convert-paintbrush-all-merged: Integrates modifications to the paintbrush tool, history is intact.
-
-If a conflict arises between convert-paintbrush-all-merged and the GIMP development branch, an interactive rebase can be done to edit and resolve that particular commit.
-
 ### Feature Branches
 
-Feature branches are concerned with the core code implementation of a new feature. They may rely upon a convert branch to have paved the way with additional GUI options, preferences or other global variables. The ideal feature branch would be a one tiny change, like [Dynamic Velocity Output](/artbox/hub/feature-test/folder/dynamic-velocity-output). The worst case is a system wide feature, like [Resource Control](/artbox/hub/feature-test/folder/resource-control).
+Feature branches are concerned with the core code implementation of a new feature. They may rely upon a convert branch to have paved the way with additional GUI options, preferences or other global variables.
 
 ### Notes
 

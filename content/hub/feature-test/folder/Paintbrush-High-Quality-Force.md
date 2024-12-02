@@ -6,11 +6,6 @@ type: docs
 
 Improve the quality of the painting.
 
-## Key Concepts and Definitions
-
-- **Brush Stamp**: The mask that is used as a brush 'stamp'.
-- **Force**: A paintbrush option that affects the pre-processing of the brush stamp.
-
 ## Related Links
 
 - Branches: Artbox and [feature-paintbrush-high-quality-force](https://gitlab.gnome.org/pixelmixer/artbox/-/tree/feature-paintbrush-high-quality-force?ref_type=heads)

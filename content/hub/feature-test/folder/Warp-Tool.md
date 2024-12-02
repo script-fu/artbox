@@ -10,7 +10,6 @@ Enable warping functionality for Layer Groups in Artbox to support a flexible de
 
 ## Related Links
 
-- Branches: [Artbox](https://gitlab.gnome.org/pixelmixer/artbox/-/tree/artbox?ref_type=heads)
 - Youtube [Demo](https://youtu.be/nUbQFMhGr1s)
 
 ## Design Revisions
@@ -25,10 +24,6 @@ Enable warping functionality for Layer Groups in Artbox to support a flexible de
 | **6. Layer Change Notification**    | Users can switch layers while performing a group warp.                                          | Switching layers mid-warp may cause data inconsistencies and unexpected visual results in the warped layer. | Added a notification that prompts users to commit the current warp before switching layers and reselects the warp layer. |
 | **7. Display Change Auto-Commit**   | Users can switch displays mid-warp without committing, leading to potential data loss or visual issues. | Changing displays mid-warp can prevent the warp tool’s indicator circle from drawing correctly on either display. | Auto-commit on display switch ensures correct behavior and prepares the tool for immediate use on the new display.   |
 | **8. Warp Item Validation**         | New Feature                                                                                       | Warping incompatible items, locked layers, or empty content may cause errors or slowdown.              | Added `is_valid_warp_item` to validate items in groups, checking for locked, empty, or out-of-bounds layers.       |
-
-## MR Description
-
-This MR extends the Warp Transform Tool to support group warping, including options for group mask handling and configurable margins. It also includes improvements in usability notifications, automatic warp commits, and item validation.
 
 ### Changes
 
@@ -63,12 +58,12 @@ This MR extends the Warp Transform Tool to support group warping, including opti
    - This function checks if an item is in `tmp_expand_layers`, is content-locked, has a valid bounding box, and intersects with the warped area.
    - Items are further examined using an enhanced `gimp_pickable_auto_shrink` function, allowing classification of items as empty, uniform, or containing non-black pixels to optimize warp applicability.
 
-### Benefit
+### **Benefits**
 
 These updates provide extended control over complex layer group warping, improve visual feedback, and prevent boundary clipping during transformations. The ability to warp group masks improves consistency for multi-layer transformations, while the margin setting allows for flexibility with expanded areas within the canvas. Usability improvements—such as automatic commits on display switches, notifications for undo limits, and compatibility validation for warp items—enhance workflow efficiency and user experience. Artists who work in a non-destructive, layered format can now refine their work at any stage using the Warp Transform on nested Layer Groups.
 
 ### Known Issues
 
-- **Undo/Redo Limitations**: Undo then Redo may fail due to an unknown issue with Layer Group mask handling. It’s advised to save before warping, and use autosave and incremental saving. 
+- **Undo/Redo Limitations**: Undo then Redo may fail due to an unknown issue with Layer Group mask handling. It’s advised to save before warping, and use autosave and incremental saving.
 - **Experimental Freeze Feature**: Freezing the Layer Stack container to improve update speed and restrict GUI interaction causes erratic behavior in the Layer Stack post-warp. This experimental feature can be enabled via a code flag. Layer Group warping requires further testing and code review due to the complexity of the operation.
 

@@ -2,12 +2,6 @@
 
 Enhance the Curve View in the Dynamics Editor and Curves Filter.
 
-## Related Links
-
-- Branches: [Artbox](https://gitlab.gnome.org/pixelmixer/artbox/-/tree/artbox?ref_type=heads)
-
----
-
 ### **Design Revisions**
 
 | **Revision**               | **Current Design**                                           | **Issues**                                                                                             | **Changes**                                                                                               |
@@ -18,10 +12,6 @@ Enhance the Curve View in the Dynamics Editor and Curves Filter.
 | **4. Shift-Key Curve Movement** | Curve manipulation in the Curve View                      | No mechanism exists to move all curve points simultaneously, limiting flexibility in curve adjustments. | Added a new feature: holding the Shift key allows all curve points to move together, enabling global curve adjustments. |
 
 ---
-
-### **Merge Request (MR) Description**
-
-This Merge Request (MR) improves the Curve View in the Dynamics Editor and Curves Filter by addressing visibility issues, refining coordinate displays, and introducing new functionality for more flexible curve manipulation.
 
 #### **Key Changes**
 
@@ -45,5 +35,3 @@ This Merge Request (MR) improves the Curve View in the Dynamics Editor and Curve
 - **Optimized for High Resolution**: Improved curve point visibility ensures seamless usability on 4K displays and beyond.
 - **Increased Flexibility**: The new Shift-key feature allows for simultaneous movement of all curve points, enabling efficient global adjustments.
 - **Streamlined Workflows**: These changes collectively improve the user experience, making the Dynamics Editor and Curves Filter more intuitive and flexible.
-
-This MR significantly enhances the Curve View by addressing key usability issues and introducing functionality that caters to modern display technologies and advanced editing workflows.

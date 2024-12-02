@@ -6,10 +6,6 @@ type: docs
 
 Enhance path editing, snapping, and visibility features while refining path commitment behavior to prevent unintentional selections.
 
-## Related Links
-
-- Branches: Artbox, [feature-snap-to-path-distance](https://gitlab.gnome.org/pixelmixer/artbox/-/tree/feature-snap-to-path-distance?ref_type=heads), [feature-path-editing](https://gitlab.gnome.org/pixelmixer/artbox/-/tree/feature-path-editing?ref_type=heads)
-
 ## Design Revisions
 
 | **Revision**                   | **Current Design**                                    | **Issues**                                                        | **Changes**                                            |
@@ -19,10 +15,6 @@ Enhance path editing, snapping, and visibility features while refining path comm
 | **3. Handle Locking**            | No lock handles option for path editing.    | Limits, making certain edits awkward.     | Added a `lock_handles` property to lock handles during editing. |
 | **4. Enhanced Movement Controls** | Movement lacks refined state controls for duplicating and snapping. | Limited control and feedback for path manipulation workflows. | Added automatic `Move` mode upon path duplication, intuitive handle and curve point movement, and a "Finish Edit Mode" button. |
 | **5. Enter Key Path Commitment**  | Enter previously selected enclosed area on path commitment. | Selection behavior was often distracting and unwanted.            | Updated Enter to commit path edits without selecting enclosed areas. |
-
-## MR Description
-
-This merge request refines snapping, visibility, movement, handle locking, and commit behavior, providing users with greater flexibility and control in path manipulation.
 
 ### Changes
 
@@ -44,7 +36,7 @@ This merge request refines snapping, visibility, movement, handle locking, and c
 5. **Enter Key Path Commitment**:
    - Updated the `Enter` key functionality to commit path edits without selecting the enclosed area, preventing unintended selections that could disrupt workflow, especially with linear paths.
 
-### Benefit
+### **Benefits**
 
 - **Improved Snap Control**: Users can adjust snap distances independently for paths, providing more precise control based on element type (e.g., paths vs. grids).
 - **Enhanced Workflow with Auto-Visibility**: Paths are automatically visible upon creation, improving user feedback and reducing manual toggling.

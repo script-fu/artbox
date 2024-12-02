@@ -51,7 +51,7 @@ This set up has the GIMP gimp-data as an upstream remote called gimp-data-origin
 
 The .gitmodules file in the parent repo should be adjusted to point at the Artbox gimp-data repo:
 
-``` 
+```
 [submodule "gimp-data"]
 	path = gimp-data
 	url = https://gitlab.gnome.org/pixelmixer/artbox-data.git

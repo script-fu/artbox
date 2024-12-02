@@ -2,10 +2,6 @@
 
 Enhance the Tool Preset Editor.
 
-## Related Links
-
-- Branches: [Artbox](https://gitlab.gnome.org/pixelmixer/artbox/-/tree/artbox?ref_type=heads)
-
 ### **Design Revisions**
 
 | **Revision**               | **Current Design**                                           | **Issues**                                                                                             | **Changes**                                                                                               |
@@ -17,10 +13,6 @@ Enhance the Tool Preset Editor.
 | **5. Linked Resource Save-As Feature** | **New Feature** | No streamlined method for creating additional presets with named copies of linked resources.            | Added a "Save As" button and menu option to save linked resources with new names. Implemented a dialog that provides a guided workflow for naming and saving linked resources along with Tool Presets. |
 
 ---
-
-### **Merge Request (MR) Description**
-
-This Merge Request (MR) enhances the usability of the Tool Preset Editor by focusing on visual improvements, icon picker customization, and new configurable options for managing linked resources. These updates provide a more intuitive, compact, and organized user interface, improving both visual clarity and workflow efficiency.
 
 #### **Key Changes**
 
@@ -53,4 +45,3 @@ This Merge Request (MR) enhances the usability of the Tool Preset Editor by focu
 - **Reduced Interface Clutter**: Collapsible frames and grouped options reduce visual noise, ensuring an organized and compact interface.
 - **Enhanced Discoverability**: Tooltips and guided dialogs improve feature discoverability, particularly for new users.
 
-This MR makes the Tool Preset Editor more user-friendly and visually consistent while introducing robust options for managing linked resources effectively.

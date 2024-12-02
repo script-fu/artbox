@@ -6,18 +6,6 @@ type: docs
 
 Improve the usability and data saving of resources and Tool Presets in Artbox.
 
-## Key Concepts and Definitions
-
-- **Resources**: Tool Presets, Patterns, Gradients, Brushes, Palettes, and Dynamics.
-- **Tool Options**: The set of adjustable parameters presented to the user for each Tool in Artbox.
-- **Tool Presets**: A saved set of Tool Options, with an embedded filter that can be configured in the Tool Preset Editor.
-
-## Related Links
-
-- [Tool-Presets-Revision](https://gitlab.gnome.org/americo_gobbo/GIMPBrushwork/-/wikis/Tool-Presets-Revision-Presentation)
-- [Design Revision: Brushes Dialog and Brush Editor](https://gitlab.gnome.org/americo_gobbo/GIMPBrushwork/-/wikis/Design-Revision:-Brushes-Dialog-and-Brush-Editor)
-- Branches: Artbox and [feature-resource-control](https://gitlab.gnome.org/pixelmixer/artbox/-/tree/feature-resource-control?ref_type=heads)
-
 ## Revised Preferences
 
 - Preferences -> Folders
@@ -38,9 +26,6 @@ Improve the usability and data saving of resources and Tool Presets in Artbox.
 | **8. Inform the user about locked resources** | Folder locked resources can not be edited | User confusion | An informative message is displayed in the Brush Editor if the resource is locked |
 | **9. Copy and Paste as New Brush** | New Feature | Create a brush from the active drawable | Added to the Brushes Menu via a Script-Fu plug-in |
 | **9. Tool Preset Name in Tool Options Title** | New Feature | See the active Tool Preset name requires the Tool Preset Editor to be open or the Tool Preset selector to be in list mode | Added the active Tool Preset name after the Tool name in the Tool Options title. Tool Name | Tool Preset Name |
-## MR Description
-
-This merge request improves the usability and data-saving mechanisms for resources and Tool Presets in Artbox. Below is a summary of the key changes made to enhance the user experience with resources, including active tool presets, and their associated assets:
 
 ### Changes
 
@@ -75,6 +60,6 @@ This merge request improves the usability and data-saving mechanisms for resourc
 10. **Tool Preset Name in Tool Options Title:**
    - Added the active Tool Preset name after the Tool name in the Tool Options title. Tool Name | Tool Preset Name.  We can see which Tool Preset is active from the Tool Options Title.
 
-### Benefit
+### **Benefits**
 
 These changes aim to provide better control over resources and presets, allowing users to manage their assets more intuitively and prevent unintended modifications.
