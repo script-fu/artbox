@@ -1,4 +1,4 @@
 ---
 type: docs
 ---
-![high-contrast](/images/themes/themes_4.jpg)  
+![high-contrast](/images/themes/themes_contrast.jpg)

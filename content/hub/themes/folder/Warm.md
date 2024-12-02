@@ -2,4 +2,4 @@
 type: docs
 ---
 
-![warm](/images/themes/themes_8.jpg)  
+![warm](/images/themes/themes_warm.jpg)
