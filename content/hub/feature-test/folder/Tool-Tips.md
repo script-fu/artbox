@@ -14,10 +14,10 @@ Improve the quality of the user interface experience by optionally deactivating 
 
 ### Changes
 
-1. **Configurable Tooltip Property**:
+- **Configurable Tooltip Property**:
    - Added a new `show_tool_tips` property to the `GimpGuiConfig` structure, making tooltip display configurable through the codebase.
 
-2. **Tooltip Preference Integration**:
+- **Tooltip Preference Integration**:
    - Integrated the tooltip preference under `Preferences -> Interface -> Help System -> General -> Show tool tips`, allowing users to toggle tooltip visibility easily within the UI.
 
 ### **Benefits**

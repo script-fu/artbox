@@ -16,17 +16,17 @@ Improve the quality of the painting experience in Artbox
 
 ### Changes
 
-1. **Easy Cursor Location**:
+- **Easy Cursor Location**:
      - Introduced a new function `gimp_draw_brush_cursor` that ensures a minimum cursor size, even when the brush is very small or not visible (e.g., zero-pressure).
      - Defined constants `FINDER_SIZE` and `CORE_SIZE` to ensure a small 'filled' contact circle is always drawn, making the cursor easier to locate.
      - If the brush outline is too small, `should_locate` triggers a fallback locator circle.
 
-2. **Indicate Erase Mode**:
+- **Indicate Erase Mode**:
      - The new `gimp_is_erasing_paint` function detects when the user is in 'Eraser Tool' mode or the 'Erase Paint' blending mode.
      - When erasing is active, the cursor switches to a dashed circle by invoking `gimp_draw_arc_circle`, providing clear visual feedback.
      - A small filled circle is also drawn at the center to help users identify the brush's contact point.
 
-3. **Simple Brush Boundary**:
+- **Simple Brush Boundary**:
      - Added a new boolean option `brush_simple_boundary` in the Paintbrush Options GUI.
      - In the `gimp_paint_tool_draw` function, the standard complex outline of the brush (derived from the image brush mask) is bypassed when this option is enabled.
      - Instead, a simple circular boundary is drawn by the `draw_brush_circle` function, providing a cleaner, less noisy visual representation for large or complex brushes.

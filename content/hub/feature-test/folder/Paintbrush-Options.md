@@ -17,30 +17,28 @@ Improve the usability of the Paintbrush GUI.
 
 ### Changes
 
-1. **Remove Reset Brush Button**:
-    - Made the `Reset to brush default` buttons optional. Added a new feature to <kbd>Ctrl + Click</kbd> to also reset
-    the Tool Option to the brush defined setting.
+- **Remove Reset Brush Button**:
+    - Made the `Reset to brush default` buttons optional. Added a new feature to <kbd>Ctrl + Right Click</kbd> to also reset the Tool Option to the brush defined setting.
 
-2. **Remove Brush Link Button**:
-    - Made the 'Link to Brush Editor' button optional, which previously allowed linking the Paintbrush options to the Brush Editor options. This simplifies the GUI for those that do not use this feature.
-
-3. **Add Expander for Additional Options**:
+- **Remove Brush Link Button**:
+    - Made the 'Link to Brush Editor' button optional, which previously allowed linking the Paintbrush options to the Brush Editor options. This simplifies the GUI for those that do not use this feature. 
+- **Add Expander for Additional Options**:
     - Introduced a new "Additional Options" expander in the Paintbrush options panel. This organizes less frequently used options (such as 'Lock Brush to View' and 'Simple Brush Boundary' toggles) into a collapsible section, saving space and reducing clutter in the GUI.
 
-4. **Separate Dynamics (Fade and Colour)**:
+- **Separate Dynamics (Fade and Colour)**:
     - Moved the 'Fade and Colour' options (related to brush dynamics) into a separate expander that appears only when 'Enable Dynamics' is checked. This keeps the interface cleaner by hiding these advanced options when dynamics are not in use.
     - Added `fade-multiply` and `brush-pressure-multiply` toggles to enable pressure and fade dynamics, providing more fine-tuned control.
 
-5. **Compact Resource Chooser**:
+- **Compact Resource Chooser**:
     - Removed the label from the resource chooser (used for selecting brushes, dynamics, etc.), making the chooser more compact and saving space in the dockable panel. The chooser’s function is self-explanatory, so the label was deemed unnecessary.
 
-6. **Smooth Stroke Position**:
+- **Smooth Stroke Position**:
     - Moved the 'Smooth Stroke' options higher up in the Paintbrush options panel, reflecting its frequent use. This improves accessibility and better aligns with user expectations.
 
-7. **Stroke Effects Expander**:
+- **Stroke Effects Expander**:
     - Added a new "Stroke Effects" expander to group related stroke options into one collapsible section. The state of the expander is saved and restored across sessions, preserving the user's preference for a consistent experience.
 
-8. **Pick Layer**:
+- **Pick Layer**:
     - Added a new "Pick Layer" option in the **Additional Options** expander. This feature allows users to hold the <kbd>Alt</kbd> key to automatically select the layer under the brush cursor. This option simplifies workflows with complex layer stacks by enabling quick access to the correct layer without manually searching through the layers panel.
 
 ### **Benefits**

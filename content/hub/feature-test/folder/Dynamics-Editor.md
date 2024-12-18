@@ -17,21 +17,21 @@ Enhance the Dynamics Editor.
 
 #### **Key Changes**
 
-1. **Mapping Matrix Improvements**:
+- **Mapping Matrix Improvements**:
    - Renamed awkward labels like `Aspect Ratio` and `Rotation/Wheel` for clarity.
    - Added margins to checkboxes to prevent label overlap and improve layout consistency.
    - Included tooltips for each checkbox to explain its function.
    - Enclosed the Mapping Matrix in a scrollable window, reducing the minimum size of the Dynamics Editor dock and enhancing interface flexibility.
 
-2. **Output Editor Reset Confirmation**:
+- **Output Editor Reset Confirmation**:
    - Implemented a confirmation dialog that warns users before resetting curves.
    - This ensures that user data is not lost unintentionally, improving overall reliability.
 
-3. **Copy and Paste Curve Functionality**:
+- **Copy and Paste Curve Functionality**:
    - Introduced `Copy Curve` and `Paste Curve` buttons for reusing and sharing curve data.
    - Enabled saving curve points to text files, allowing persistence between sessions and simplifying data management.
 
-4. **Dynamic Attributes Treeview**:
+- **Dynamic Attributes Treeview**:
    - Enclosed the Dynamic Attributes treeview in a scrollable window, reducing the size constraints of the Dynamics Editor dock.
    - This update provides a more flexible layout and ensures that the interface remains compact and manageable.
 

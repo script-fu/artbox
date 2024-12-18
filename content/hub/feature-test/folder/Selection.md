@@ -16,15 +16,15 @@ Improve the quality of the painting experience in Artbox
 
 ### Changes
 
-1. **Auto Commit**:
+- **Auto Commit**:
    - Added a new option to automatically commit a selection once it is made, eliminating the need to manually commit before creating another selection.
    - This enhancement removes interruptions, making the process of drawing multiple areas smoother.
 
-2. **Fill Selection**:
+- **Fill Selection**:
    - Introduced an option to automatically fill a selection once it is made.
    - This feature streamlines the workflow by simulating a painting-like experience, reducing the steps required to complete a filled selection.
 
-3. **Auto Deselect**:
+- **Auto Deselect**:
    - Added an option to automatically deselect a selection after it has been auto-filled.
    - This update enables a continuous workflow where users can effortlessly transition from selecting to filling and back to selecting again.
 

@@ -25,40 +25,44 @@ Improve the usability and data saving of resources and Tool Presets in Artbox.
 | **7. Edit Brush deals with Parametric and Image types** | See Brushes Menu items | Confusion over brush types |  Double clicking an image type opens the image for editing, Double clicking a parametric type opens the Brush Editor |
 | **8. Inform the user about locked resources** | Folder locked resources can not be edited | User confusion | An informative message is displayed in the Brush Editor if the resource is locked |
 | **9. Copy and Paste as New Brush** | New Feature | Create a brush from the active drawable | Added to the Brushes Menu via a Script-Fu plug-in |
-| **9. Tool Preset Name in Tool Options Title** | New Feature | See the active Tool Preset name requires the Tool Preset Editor to be open or the Tool Preset selector to be in list mode | Added the active Tool Preset name after the Tool name in the Tool Options title. Tool Name | Tool Preset Name |
+| **10. Tool Preset Name in Tool Options Title** | New Feature | See the active Tool Preset name requires the Tool Preset Editor to be open or the Tool Preset selector to be in list mode | Added the active Tool Preset name after the Tool name in the Tool Options title. Tool Name | Tool Preset Name |
+| **11. Preferences Folder Options** | New Feature | Folders have to be manually added or removed per resource | Added a GUI to add, deactivate, or remove folder paths to a set of resources, allowing quick control over active resources |
 
 ### Changes
 
-1. **Resource Saving Preferences:**
+- **Resource Saving Preferences:**
    - Introduced a new preference to toggle automatic resource saving on exit, preventing unwanted overwriting of user-set Tool Options during a session. This allows users to disable automatic saving and manually save specific changes when needed.
 
-2. **Immediate Resource Saving:**
+- **Immediate Resource Saving:**
    - Added functionality to save specific resource changes immediately upon request, ensuring that any modifications are persisted, even if the session ends unexpectedly. This avoids data loss in case of a crash.
 
-3. **Save As:**
+- **Save As:**
    - A 'Save As' feature was added, allowing users to name and save resources with custom filenames, enhancing clarity and preventing confusion between resource names and file names.
 
-4. **Save All:**
+- **Save All:**
    - Introduced a 'Save All' option to the Preset Editor, enabling users to save all active changes across tool presets, brushes, palettes, and other resources, reducing the need for manual per-resource saves.
 
-5. **Simplified Menus and Button Bar:**
+- **Simplified Menus and Button Bar:**
    - Cleaned up the interface by providing an option to hide the 'Copy Resource Location' menu item, which was seldom used, thereby reducing menu clutter.
    - Rearranged the Button Bar to reflect the new saving behaviors and align with the revised menus for consistency.
 
-6. **Brush Editor Enhancements:**
+- **Brush Editor Enhancements:**
    - Adjusted the behavior for brush types so that double-clicking on image-type brushes opens the image for editing, while double-clicking on parametric brushes opens the Brush Editor. This resolves the confusion around brush types.
 
-7. **Locked Resource Notification:**
+- **Locked Resource Notification:**
    - When a resource is locked (due to folder permissions), the user will now receive an informative message in the Brush Editor, improving clarity on why the resource cannot be modified.
 
-8. **Create New Brush from Drawable:**
+- **Create New Brush from Drawable:**
    - Added the ability to copy and paste a drawable as a new brush via a Script-Fu plug-in, accessible from the Brushes Menu.
 
-9. **Save Active Tool Assets:**
-   - Introduced a 'Save All Active Tool Assets' feature, allowing users to save all the active tool assets (brush, gradient, palette, dynamics) in a session for easier resource management. Note: the concept of saving a 'tool package' is not yet implemented.
+- **Save Active Tool Assets:**
+   - Introduced a 'Save All Active Tool Assets' feature, allowing users to save all the active tool assets (brush, gradient, palette, dynamics) in a session for easier resource management.
 
-10. **Tool Preset Name in Tool Options Title:**
+- **Tool Preset Name in Tool Options Title:**
    - Added the active Tool Preset name after the Tool name in the Tool Options title. Tool Name | Tool Preset Name.  We can see which Tool Preset is active from the Tool Options Title.
+
+- **Preferences Folder Options:**
+   - Added a GUI to add, deactivate, or remove folder paths for a sets of resources, allowing quick control over in session resources.
 
 ### **Benefits**
 
