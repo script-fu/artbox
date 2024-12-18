@@ -20,7 +20,7 @@ Extend Script-Fu to include additional functions that help the user.
 
 ### Changes
 
-1. **New Script-Fu Functions**:
+- **New Script-Fu Functions**:
    - `(gimp-context-get-display)`: Retrieves the active display ID. This ID can then be used with other display-related functions like `(gimp-display-present display-id)`.
    - `(gimp-context-eraser-toggle)`: Toggles the active tool between the eraser and the previously active tool.
    - `(gimp-items-set-visible)`: Allows setting the visibility of a vector list of items in bulk. This can help streamline visibility management for layers, paths, or other drawable items.

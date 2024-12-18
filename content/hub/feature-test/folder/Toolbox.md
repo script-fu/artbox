@@ -27,15 +27,15 @@ Improve the usability of the Toolbox.
 
 ### Changes
 
-1. **Optional Removal of Flowbox**:
+- **Optional Removal of Flowbox**:
    - The Flowbox, which arranges active resources, FG/BG color widget, and active image beneath the Tool Palette, is now optional. Users can choose to keep or remove the Flowbox based on their preferences.
    - Removing the Flowbox allows for a more compact and efficient Toolbox layout by eliminating empty space when fewer elements are displayed.
 
-2. **Position and Scale FG/BG Widget**:
+- **Position and Scale FG/BG Widget**:
    - The FG/BG color widget can now be positioned (Top, Bottom, Left, or Right) relative to the Tool Palette. This improves layout flexibility and user customization.
    - The FG/BG widget can also be scaled, providing better usability for HDPI displays or different screen configurations.
 
-3. **Revised Toolbox Preferences**:
+- **Revised Toolbox Preferences**:
    - Added preferences in the Toolbox Appearance settings:
      - Control over showing the Flowbox with color, active resources, and active image.
      - Set the preferred position of the FG/BG widget relative to the Tool Palette.

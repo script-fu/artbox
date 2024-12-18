@@ -16,23 +16,23 @@ Enhance the Tool Preset Editor.
 
 #### **Key Changes**
 
-1. **Icon Picker Update**:
+- **Icon Picker Update**:
    - Added a new `icon_tool_preset` boolean property to dynamically adjust the icon picker's size in the Tool Preset Editor.
    - Enlarged and centered the icon picker for better usability on HDPI screens.
 
-2. **Tool Preset Information Table**:
+- **Tool Preset Information Table**:
    - Introduced an information table that displays both the saved and active states of resources linked to Tool Presets.
    - This provides users with clear insights into linked resource configurations, enhancing editing and creation workflows.
 
-3. **Resource Reloading Options**:
+- **Resource Reloading Options**:
    - Consolidated the Tool Preset Editor’s resource reloading options into a collapsible "Resource Reloading" frame using a GTK expander widget.
    - Added tooltips to clarify the purpose of each option, improving usability and reducing interface clutter.
 
-4. **Linked Resource Saving Options**:
+- **Linked Resource Saving Options**:
    - Added a collapsible "Linked Resource Saving" frame for managing linked resource options when saving Tool Presets.
    - Ensures streamlined handling of linked resources for both new and existing presets.
 
-5. **Save-As Feature for Linked Resources**:
+- **Save-As Feature for Linked Resources**:
    - Introduced a "Save As" button and menu option for saving linked resources with new names.
    - Created an interactive dialog to guide users through naming linked resources and saving Tool Presets.
 

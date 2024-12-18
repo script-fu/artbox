@@ -14,16 +14,16 @@ The brush aspect ratio should be easily understood, and predictable to use. A fi
 
 ### Changes
 
-1. **Normalized Aspect Ratio**:
+- **Normalized Aspect Ratio**:
    - Replaced the old non-linear aspect ratio range of `-20 to 20` with a simplified linear range from `-1 to 1`, where `1` means undistorted, `0` represents high distortion, and `-1` flips the brush stamp.
    - The aspect ratio is now applied directly, and non-linear clamping behavior is removed.
    - Special handling for `0` aspect ratio is introduced to prevent problematic behavior, ensuring a minimal distortion of `0.005` when set to `0`.
 
-2. **Code Adjustments for Consistency**:
+- **Code Adjustments for Consistency**:
    - Updated the aspect ratio scaling logic in the `gimp_brush_transform_get_scale`, `gimp_brush_generated_transform_size`, and related functions to reflect the linear aspect ratio system.
    - Refactored the calculation logic to remove historical non-linear clamps and simplify the math, providing a clearer, more predictable transformation.
 
-3. **UI Simplifications**:
+- **UI Simplifications**:
    - The brush editor now uses a `-1 to 1` range for the aspect ratio, with linear steps for finer control.
    - Updated the PDB interface to reflect the new range, removing the old `-20 to 20` bounds for both internal and user-accessible API calls.
 

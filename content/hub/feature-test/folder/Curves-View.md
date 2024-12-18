@@ -15,16 +15,16 @@ Enhance the Curve View in the Dynamics Editor and Curves Filter.
 
 #### **Key Changes**
 
-1. **Grid Line Visibility**:
+- **Grid Line Visibility**:
    - Implemented rendering modes for grid lines, ensuring consistent visibility across various background tones in the Curve View.
 
-2. **Refined Coordinate Display**:
+- **Refined Coordinate Display**:
    - Redesigned the X, Y coordinate display to eliminate block highlighting, improving readability and reducing visual distraction.
 
-3. **Improved Curve Point Visibility**:
+- **Improved Curve Point Visibility**:
    - Enhanced the visibility and selection of curve points, particularly on high-resolution (e.g., 4K) displays, for a more accessible user experience.
 
-4. **Shift-Key Curve Movement**:
+- **Shift-Key Curve Movement**:
    - Introduced the ability to move all curve points simultaneously by holding down the Shift key, providing a quick and efficient way to adjust the entire curve.
 
 ---

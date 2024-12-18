@@ -27,33 +27,33 @@ Enable warping functionality for Layer Groups in Artbox to support a flexible de
 
 ### Changes
 
-1. **Warp Layer Groups**:
+- **Warp Layer Groups**:
    - Introduced `WarpGroup` structure to handle warping across multiple items within a layer group.
    - Enhanced functions like `gimp_warp_tool_group_commit` and `initialize_warp_tool` to process Layer Groups, including bounding box calculations and grouped warping.
 
-2. **Warp Group Masks**:
+- **Warp Group Masks**:
    - Added a toggle (`PROP_GROUP_WARP_GROUP_MASKS`) in `gimp_warp_options_gui` to control mask warping within groups.
    - This boolean setting allows users to include group masks in the warp transformations, depending on artistic needs.
 
-3. **Configurable Warp Margin**:
+- **Configurable Warp Margin**:
    - Implemented the `PROP_GROUP_MARGIN` setting for customizable margins around layer groups.
    - This margin prevents content clipping during warp transformations by providing a configurable buffer, adjustable from 16 to 2048 pixels.
 
-4. **Tool Restart in Usable State**:
+- **Tool Restart in Usable State**:
    - Ensures the tool restarts in `Move` mode if previous actions would otherwise leave it in `Erase` or `Smooth` modes, which require existing content to function.
 
-5. **Last Undo Notification**:
+- **Last Undo Notification**:
    - Provides a status message alerting users when they are at the final undo step, guiding them to proceed carefully.
 
-6. **Layer Change Notification**:
+- **Layer Change Notification**:
    - In group warping mode, the tool prompts users to commit the current warp before switching layers.
    - The warp layer is automatically reselected, ensuring that users complete changes on the active layer before proceeding with other edits.
 
-7. **Display Change Auto-Commit**:
+- **Display Change Auto-Commit**:
    - When the user changes displays mid-warp, the tool automatically commits the current warp.
    - This adjustment maintains data consistency across displays and prepares the tool for immediate use on the new display.
 
-8. **Warp Item Validation**:
+- **Warp Item Validation**:
    - Introduced `is_valid_warp_item` to validate items within groups for compatibility with the warp process.
    - This function checks if an item is in `tmp_expand_layers`, is content-locked, has a valid bounding box, and intersects with the warped area.
    - Items are further examined using an enhanced `gimp_pickable_auto_shrink` function, allowing classification of items as empty, uniform, or containing non-black pixels to optimize warp applicability.
