@@ -1,5 +1,6 @@
 ---
 type: docs
+url: "hub/docs/folder/Technical-Guide"
 ---
 
 # Introduction

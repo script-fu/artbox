@@ -1,5 +1,6 @@
 ---
 type: docs
+url: "hub/docs/folder/Data"
 ---
 
 # Introduction
