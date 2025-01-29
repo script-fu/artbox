@@ -9,6 +9,8 @@ The GIMP development team are experimenting with AppImages. An AppImage is a ver
 
 This AppImage for Artbox has been built for nearly all Linux distos: [download](https://gitlab.gnome.org/pixelmixer/artbox/-/raw/feature-appimage/AppImage/Artbox.AppImage?ref_type=heads&inline=false)
 
+The AppImage is from the GitLab CI build of the artbox branch in the [Artbox Stable](https://gitlab.gnome.org/pixelmixer/artbox-stable/-/commits/artbox?ref_type=heads) repository
+
 ## Related Links
 
 [AppImage](https://appimage.org/)
