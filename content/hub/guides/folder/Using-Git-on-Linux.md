@@ -1,5 +1,6 @@
 ---
 type: docs
+url: "hub/guides/folder/Using-Git-on-Linux"
 ---
 
 # Introduction

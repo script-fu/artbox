@@ -1,5 +1,6 @@
 ---
 type: docs
+url: "hub/guides/folder/Building-a-Debug-Version"
 ---
 
 # Introduction

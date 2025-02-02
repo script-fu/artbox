@@ -1,5 +1,6 @@
 ---
 type: docs
+url: "hub/guides/folder/A-Linux-System-Overview"
 ---
 
 # Introduction

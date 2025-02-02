@@ -1,5 +1,7 @@
 ---
 type: docs
+url: "hub/guides/folder/Installing-Debian"
+
 ---
 
 # Introduction
