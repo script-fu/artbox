@@ -5,11 +5,11 @@ type: docs
 
 ## Introduction
 
-This plug-in allows the user to toggle the active tool to the Eraser tool. It also doubles the brush size when using the Eraser.
+This plug-in allows the user to toggle between the Paintbrush Tool and the Eraser tool. It also doubles the brush size when using the Eraser.
 
 ### Plug-in Menu Location
 
-_Tools -> Paint Tools -> Toggle Eraser_
+_Tools -> Paint Tools -> Toggle Paintbrush Eraser_
 
 ### Keyboard Shortcut
 
