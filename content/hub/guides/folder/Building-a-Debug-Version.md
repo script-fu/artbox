@@ -120,11 +120,9 @@ To debug issues with GIMP, it's often necessary to build debug versions of the u
 
 There is a switch to set when we build these libraries and GIMP that allow the
 debugging to take place. We build debug versions, using the same method as described
-[here](https://script-fu.github.io/artbox/hub/docs/folder/Installation/#build-artbox-babl-and-gegl), except that `build_type="release"` is set to `build_type="debug"`. Build all
-three with the debug option set before continuing.
+[here](https://script-fu.github.io/artbox/hub/docs/folder/Installation/#build-artbox-babl-and-gegl), except that `build_type` is set to `build_type="debug"`. Build all three with the debug option set before continuing.
 
-Also, keep in mind that you'll need to rebuild the libraries with the build_type set to "release" when you're finished debugging, in order to get the best performance out of GIMP.
-
+Also, keep in mind that you'll need to rebuild with the build_type set to "debugoptimized" when you're finished debugging, in order to get the best performance out of GIMP.
 
 ## Launch an App under GDB
 

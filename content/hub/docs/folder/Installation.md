@@ -326,7 +326,7 @@ mkdir -p "${GIMP_PREFIX}/build/$BUILD_FORK/_build"
 cd "${GIMP_PREFIX}/build/$BUILD_FORK/_build"
 
 # Run Meson setup and build commands
-meson setup .. -Dprefix="${GIMP_PREFIX}" --buildtype="release"
+meson setup .. -Dprefix="${GIMP_PREFIX}" --buildtype="debugoptimized"
 ninja
 ninja install
 
