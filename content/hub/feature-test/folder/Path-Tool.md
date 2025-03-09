@@ -15,6 +15,7 @@ Enhance path editing, snapping, and visibility features while refining path comm
 | **3. Handle Locking**            | No lock handles option for path editing.    | Limits, making certain edits awkward.     | Added a `lock_handles` property to lock handles during editing. |
 | **4. Enhanced Movement Controls** | Movement lacks refined state controls for duplicating and snapping. | Limited control and feedback for path manipulation workflows. | Added automatic `Move` mode upon path duplication, intuitive handle and curve point movement, and a "Finish Edit Mode" button. |
 | **5. Enter Key Path Commitment**  | Enter previously selected enclosed area on path commitment. | Selection behavior was often distracting and unwanted.            | Updated Enter to commit path edits without selecting enclosed areas. |
+| **2. Path Rendering**   | New Feature | No way to adjust the thickness or harshness of a Path | Added preferences to adjust the Path Rendering |
 
 ### Changes
 
@@ -36,9 +37,13 @@ Enhance path editing, snapping, and visibility features while refining path comm
 5. **Enter Key Path Commitment**:
    - Updated the `Enter` key functionality to commit path edits without selecting the enclosed area, preventing unintended selections that could disrupt workflow, especially with linear paths.
 
+6. **Edit > Preferences > Image Windows > Path Rendering**
+   - Adjust the alpha and thickness of path lines.
+
 ### **Benefits**
 
 - **Improved Snap Control**: Users can adjust snap distances independently for paths, providing more precise control based on element type (e.g., paths vs. grids).
 - **Enhanced Workflow with Auto-Visibility**: Paths are automatically visible upon creation, improving user feedback and reducing manual toggling.
 - **Streamlined Movement & Editing**: Movement and editing controls are more refined, with automatic `Move` mode for path duplicates, handle locking options, and a quick exit button from edit mode.
 - **Refined Path Commitment**: The Enter key now only commits path changes without selecting enclosed areas, reducing distractions and providing a smoother workflow for linear and complex paths.
+- **Adjustable Rendering**: See the work behind the path.
