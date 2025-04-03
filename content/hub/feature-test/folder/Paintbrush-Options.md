@@ -13,9 +13,8 @@ Improve the usability of the Paintbrush GUI.
 | **5. Compact Resource Chooser** | Picking a resource such as a brush or a dynamic is done via a chooser in the Paintbrush GUI. | The chooser takes up two rows of the dockable panel due to a label above the combo box. The icons on either side are distorted to fill the gap, which looks poor. GUI space is wasted. | Remove the label to make the chooser more compact. The purpose of the chooser is self-evident and does not need a label. |
 | **6. Smooth Stroke Position** | 'Smooth Stroke' is located lower down in the dock. | It’s a frequently used option for painting. | Move it higher up in the dock within 'Stroke Effects'. |
 | **7. Stroke Effects Expander** | New feature. | Options clutter the Paintbrush GUI, or don't flow visually. | Create a 'Stroke Effects' expander to organize these related options. The state of the expander is saved and restored. |
-| **8. Pick Layer** | New feature. | It's difficult to find layers in complex layer stacks | Added an option in `Additional Options` to `Pick Layer`. The layer under the brush is selected when Alt is pressed.  |
-| **9. Jitter Slider** | New feature. | Jitter was under `Apply Jitter` down the options, using relative to brush size jittering | Added a 'Jitter' slider with a pixel sized jitter. |
-| **10. Eraser Slider** | New feature. | Eraser size is same as brush size or unique to the eraser | Added an 'Eraser' slider to work with a custom plug-in that toggles to the eraser tool. The slider value is applied as a scale on the eraser brush size. This allows all the painting tool presets to have a specific sized eraser. Erase pencil lines with a big eraser, cut into brush strokes with a smaller eraser.|
+| **8. Jitter Slider** | New feature. | Jitter was under `Apply Jitter` down the options, using relative to brush size jittering | Added a 'Jitter' slider with a pixel sized jitter. |
+| **9. Eraser Slider** | New feature. | Eraser size is same as brush size or unique to the eraser | Added an 'Eraser' slider to work with a custom plug-in that toggles to the eraser tool. The slider value is applied as a scale on the eraser brush size. This allows all the painting tool presets to have a specific sized eraser. Erase pencil lines with a big eraser, cut into brush strokes with a smaller eraser.|
 
 ### Changes
 
@@ -40,9 +39,6 @@ Improve the usability of the Paintbrush GUI.
 - **Stroke Effects Expander**:
     - Added a new "Stroke Effects" expander to group related stroke options into one collapsible section. The state of the expander is saved and restored across sessions, preserving the user's preference for a consistent experience.
 
-- **Pick Layer**:
-    - Added a new "Pick Layer" option in the **Additional Options** expander. This feature allows users to hold the <kbd>Alt</kbd> key to automatically select the layer under the brush cursor. This option simplifies workflows with complex layer stacks by enabling quick access to the correct layer without manually searching through the layers panel.
-
 - **Jitter Slider**:
     - Added a 'Jitter' slider with a pixel sized jitter, it's an important feature for painting and feels great to have it as a slider.
 
@@ -53,5 +49,3 @@ Improve the usability of the Paintbrush GUI.
 ### **Benefits**
 
 This set of changes significantly improves the usability and efficiency of the Paintbrush GUI. By reducing visual clutter, hiding advanced options behind expanders, and simplifying the interface, users can now navigate the Paintbrush settings more easily while still accessing the features they need.
-
-`Pick Layer` reduces layer stack searching and will be improved to handle multiple layers under the cursor in the future.
