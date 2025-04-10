@@ -27,6 +27,7 @@ Improve the usability and data saving of resources and Tool Presets in Artbox.
 | **9. Copy and Paste as New Brush** | New Feature | Create a brush from the active drawable | Added to the Brushes Menu via a Script-Fu plug-in |
 | **10. Tool Preset Name in Tool Options Title** | New Feature | See the active Tool Preset name requires the Tool Preset Editor to be open or the Tool Preset selector to be in list mode | Added the active Tool Preset name after the Tool name in the Tool Options title. Tool Name | Tool Preset Name |
 | **11. Preferences Folder Options** | New Feature | Folders have to be manually added or removed per resource | Added a GUI to add, deactivate, or remove folder paths to a set of resources, allowing quick control over active resources |
+| **11. Resource Filtering** | New Feature | User never uses filtering and it takes up GUI space and adds complexity | Added Preference option, Interface > Resource Filtering > Enable Resource Filtering and Tagging |
 
 ### Changes
 
@@ -63,6 +64,9 @@ Improve the usability and data saving of resources and Tool Presets in Artbox.
 
 - **Preferences Folder Options:**
    - Added a GUI to add, deactivate, or remove folder paths for a sets of resources, allowing quick control over in session resources.
+
+- **Resource Filtering:**
+   - Added Preference option, Interface > Resource Filtering > Enable Resource Filtering and Tagging. This allows the user who does not use the filtering to have a simpler GUI.
 
 ### **Benefits**
 
