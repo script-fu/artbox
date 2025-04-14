@@ -5,7 +5,7 @@ type: docs
 
 ## Introduction
 
-This plug-in allows the user to toggle the active paint mode to the erase mode.
+This plug-in allows the user to toggle the active paint mode to the erase mode. It also uses the "Eraser" slider value to scale the eraser size.
 
 ### Plug-in Menu Location
 

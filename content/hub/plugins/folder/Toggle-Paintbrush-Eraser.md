@@ -1,11 +1,11 @@
 ---
-title: Toggle Eraser
+title: Toggle Paintbrush Eraser
 type: docs
 ---
 
 ## Introduction
 
-This plug-in allows the user to toggle between the Paintbrush Tool and the Eraser tool. It also doubles the brush size when using the Eraser.
+This plug-in allows the user to toggle between the Paintbrush Tool and the Eraser tool. It also uses the "Eraser" slider value to scale the eraser size.
 
 ### Plug-in Menu Location
 
