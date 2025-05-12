@@ -22,6 +22,7 @@ Extend Script-Fu to include additional functions that help the user.
 | (gimp-context-get-brush-eraser-scale) |  Returns the Paint Tool eraser scale |
 | (gimp-context-get-brush-jitter) |  Returns the Paint Tool jitter slider value |
 | (gimp-context-set-brush-jitter) |  Set _all_ the Paint Tools jitter slider values |
+| (gimp-layer-combine-alpha) |  Combine the alpha channels of two layers |
 ### Changes
 
 - **New Script-Fu Functions**:
@@ -33,7 +34,6 @@ Extend Script-Fu to include additional functions that help the user.
    - `(gimp-context-get-brush-eraser-scale)`: Gets the Paint Tool eraser scale option to use with the eraser toggles. This allows all the painting tool presets to have a specific sized eraser. Erase pencil lines with a big eraser, cut into brush strokes with a smaller eraser.
    - `(gimp-context-get-brush-jitter)`: Gets the Paint Tool jitter option to use with the eraser toggles. This allows us to set the jitter for the eraser to be the same as the brush, in a hacky way.
    - `(gimp-context-set-brush-jitter)`: Sets all the Paint Tools jitter options to the same jitter value, eraser, paintbrush, airbrush, pencil.
-
-### **Benefits**
+   - `(gimp-layer-combine-alpha)`: This procedure combines the alpha channels of two layers and writes the result into the first layer’s alpha channel. ADD, SUBTRACT, INTERSECT or REPLACE.
 
 - These additional functions enhance the flexibility of Script-Fu, enabling users to toggle between tools, manage visibility across multiple items, and integrate display information into their scripts, leading to more powerful automation and customization.
