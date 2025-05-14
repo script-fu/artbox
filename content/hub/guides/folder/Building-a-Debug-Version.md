@@ -155,7 +155,7 @@ if [[ -z "$GIMP_PREFIX" ]]; then
 fi
 
 # Verify GIMP binary path
-gimp_binary="${GIMP_PREFIX}/bin/gimp-3.0"
+gimp_binary="${GIMP_PREFIX}/bin/gimp-3.1"
 if [[ ! -x "$gimp_binary" ]]; then
   echo "Error: GIMP not found or not executable at $gimp_binary"
   read -n 1 -r -s -p "Press any key to exit..."
@@ -248,7 +248,7 @@ script_dir="$(dirname "$(realpath "$0")")"
 
 source "$script_dir/build_env.sh"
 
-gdbserver :9999 `which gimp-3.0` --g-fatal-warnings
+gdbserver :9999 `which gimp-3.1` --g-fatal-warnings
 
 ```
 
@@ -261,7 +261,7 @@ bash gdbserver.sh
 The server will output something like:
 
 ```bash
-Process /home/mark/code/gnome/bin/gimp-3.0 created; pid = 14224
+Process /home/mark/code/gnome/bin/gimp-3.1 created; pid = 14224
 Listening on port 9999
 ```
 
@@ -276,7 +276,7 @@ To return to the graphical interface, use `Ctrl + Alt + F7` (or `F2` on some sys
 Once in a TTY, log in and run GDB to connect to the GDB server:
 
 ```bash
-gdb /home/mark/code/gnome/bin/gimp-3.0
+gdb /home/mark/code/gnome/bin/gimp-3.1
 ```
 
 Then, connect to the GDB server and resume execution:

@@ -11,8 +11,9 @@ Improve the quality of the painting experience in Artbox by enhancing the active
 | **Revision**  | **Current Design**  | **Issues**  | **Changes** |
 |--------------------------------------------|---------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------|-----------------------------------------------------------|
 | **1. Selection Mask Highlighting** | Rectangle selection highlighting is on a few tools, and is not global | Knowing if there is an active selection can be an issue. Working without selection borders becomes difficult. Changing tools loses the selection highlighting. | Draw a shaded overlay that masks out unselected areas. Additional preference options for the shade alpha and colour. Additional View option 'Show Selection Highlight' to toggle with a shortcut to quickly turn off and on. |
-| **2. Selection Borders**   | New Feature | No way to adjust the thickness or harshness of selection borders | Added preferences to adjust the selection border |
-| **3. Selection Status**   | New Feature | When 'Show Selection', and in Artbox 'Show Selection Highlight' are off, no indiction of an active selection is given | Added a Status Bar label that indicates when there is an 'invisible' selection |
+| **2. Select All Highlighting** | No clear indication of a `Select All` state | Knowing if there is an active select all can be an issue. | Draw a shaded frame on the canvas padding that indicates select all. |
+| **3. Selection Borders**   | New Feature | No way to adjust the thickness or harshness of selection borders | Added preferences to adjust the selection border |
+| **4. Selection Status**   | New Feature | When 'Show Selection', and in Artbox 'Show Selection Highlight' are off, no indiction of an active selection is given | Added a Status Bar label that indicates when there is an 'invisible' selection |
 
 ### **Benefits**
 
