@@ -225,7 +225,7 @@ export GI_TYPELIB_PATH="${GIMP_PREFIX}/${LIB_DIR}/${LIB_SUBDIR}girepository-1.0$
 
 ## Build Artbox, BABL and GEGL
 
-To build or run the software, we can use another shell script, that uses this file to build, compile or run the software. Copy the following and save it as `artbox.sh` in the bash folder. Then in your File Manager, right click the artbox.sh file, properties, permissions, `Allow executing file as program`.
+To build the software, we can use another shell script, that uses this file to build or compile the software. Copy the following and save it as `artbox.sh` in the bash folder. Then in your File Manager, right click the artbox.sh file, properties, permissions, `Allow executing file as program`.
 
 Notice that BABL and GEGL are also being built, these two additional packages don't have to be built every time. When
 COMPILE_ONLY is set to "true", after a full build perhaps, they are skipped.
@@ -339,13 +339,34 @@ sleep 3
 
 To run the build script you can open a terminal in the bash folder and enter: `bash artbox.sh`
 
+## Run Artbox
+
+To run the software, we use a shell script. Copy the following and save it as `artbox-run.sh` in the bash folder. Then in your File Manager right click the artbox-run.sh file, properties, permissions, `Allow executing file as program`.
+
+```bash
+#!/usr/bin/env bash
+# Launches Artbox
+
+# This automatically finds the directory where this script is located
+SCRIPT_DIR="$(dirname "$(realpath "$0")")"
+
+# Load the environment variables
+source "$SCRIPT_DIR/build_env.sh"
+
+# The current version of the exe we built that can be found in ${GIMP_PREFIX}/bin/
+export GIMP_VERSION="3.1"
+
+# Launch command based on the build version
+"${GIMP_PREFIX}/bin/gimp-${GIMP_VERSION}"
+```
+
 ## Desktop Launcher (System Specific)
 
 Alternatively you can launch Artbox using a desktop launcher, save the following as a file to your desktop, and then right click it, properties, permissions, `Allow executing file as program`.
 
 ```shell
 [Desktop Entry]
-Exec=gnome-terminal -- /home/your-home/code/bash/artbox.sh
+Exec=gnome-terminal -- /home/your-home/code/bash/artbox-run.sh
 Terminal=True
 Icon=cinnamon-panel-launcher
 Type=Application
@@ -355,7 +376,7 @@ Name[en_GB]=Artbox
 You'll have to change `your-home` to get it to work, this is a Linux thing, on my system the line would be:
 
 ```sh
-gnome-terminal -- /home/mark/code/bash/artbox.sh
+gnome-terminal -- /home/mark/code/bash/artbox-run.sh
 ```
 
 It also assumes you are using a specific desktop environment (Cinnamon). My tip would be to look at how to create a desktop launcher for your particular system, or copy and edit an existing one you may have.
