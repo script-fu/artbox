@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+  <loc>https://script-fu.github.io/artbox/</loc>
+  <lastmod>2025-05-23T12:50:55+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://script-fu.github.io/artbox/hub/docs/folder/AppImage/</loc>
+  <lastmod>2025-05-23T12:50:55+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://script-fu.github.io/artbox/hub/docs/folder/Installation/</loc>
+  <lastmod>2025-05-23T12:50:55+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://script-fu.github.io/artbox/hub/docs/folder/</loc>
+  <lastmod>2025-05-23T12:50:55+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://script-fu.github.io/artbox/hub/feature-test/folder/</loc>
+  <lastmod>2025-05-23T12:50:55+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://script-fu.github.io/artbox/hub/guides/folder/</loc>
+  <lastmod>2025-05-23T12:50:55+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://script-fu.github.io/artbox/hub/about/</loc>
+  <lastmod>2025-05-23T12:50:55+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://script-fu.github.io/artbox/hub/</loc>
+  <lastmod>2025-05-23T12:50:55+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://script-fu.github.io/artbox/hub/about/Patreon/</loc>
+  <lastmod>2025-05-23T12:50:55+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://script-fu.github.io/artbox/hub/docs/folder/Data/</loc>
+  <lastmod>2025-05-23T12:50:55+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://script-fu.github.io/artbox/hub/docs/folder/Technical-Guide/</loc>
+  <lastmod>2025-05-23T12:50:55+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://script-fu.github.io/artbox/hub/docs/folder/Troubleshooting/</loc>
+  <lastmod>2025-05-23T12:50:55+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://script-fu.github.io/artbox/hub/feature-test/folder/brush-aspect-ratio-range/</loc>
+  <lastmod>2025-05-23T12:50:55+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://script-fu.github.io/artbox/hub/feature-test/folder/color-picker-tool/</loc>
+  <lastmod>2025-05-23T12:50:55+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://script-fu.github.io/artbox/hub/feature-test/folder/curves-view/</loc>
+  <lastmod>2025-05-23T12:50:55+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://script-fu.github.io/artbox/hub/feature-test/folder/dynamic-brush-spacing/</loc>
+  <lastmod>2025-05-23T12:50:55+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://script-fu.github.io/artbox/hub/feature-test/folder/dynamic-multiply-modes/</loc>
+  <lastmod>2025-05-23T12:50:55+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://script-fu.github.io/artbox/hub/feature-test/folder/dynamic-velocity-compression/</loc>
+  <lastmod>2025-05-23T12:50:55+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://script-fu.github.io/artbox/hub/feature-test/folder/dynamic-velocity-output/</loc>
+  <lastmod>2025-05-23T12:50:55+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://script-fu.github.io/artbox/hub/feature-test/folder/dynamics-editor/</loc>
+  <lastmod>2025-05-23T12:50:55+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://script-fu.github.io/artbox/hub/feature-test/folder/filter-restores-last-tool/</loc>
+  <lastmod>2025-05-23T12:50:55+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://script-fu.github.io/artbox/hub/feature-test/folder/fullscreen/</loc>
+  <lastmod>2025-05-23T12:50:55+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://script-fu.github.io/artbox/hub/feature-test/folder/layer-picking/</loc>
+  <lastmod>2025-05-23T12:50:55+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://script-fu.github.io/artbox/hub/feature-test/folder/paint-tool/</loc>
+  <lastmod>2025-05-23T12:50:55+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://script-fu.github.io/artbox/hub/feature-test/folder/paintbrush-high-quality-force/</loc>
+  <lastmod>2025-05-23T12:50:55+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://script-fu.github.io/artbox/hub/feature-test/folder/paintbrush-options/</loc>
+  <lastmod>2025-05-23T12:50:55+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://script-fu.github.io/artbox/hub/feature-test/folder/paintbrush-smooth-stroke/</loc>
+  <lastmod>2025-05-23T12:50:55+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://script-fu.github.io/artbox/hub/feature-test/folder/path-tool/</loc>
+  <lastmod>2025-05-23T12:50:55+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://script-fu.github.io/artbox/hub/feature-test/folder/presets-restore/</loc>
+  <lastmod>2025-05-23T12:50:55+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://script-fu.github.io/artbox/hub/feature-test/folder/resource-control/</loc>
+  <lastmod>2025-05-23T12:50:55+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://script-fu.github.io/artbox/hub/feature-test/folder/script-fu/</loc>
+  <lastmod>2025-05-23T12:50:55+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://script-fu.github.io/artbox/hub/feature-test/folder/selection-display/</loc>
+  <lastmod>2025-05-23T12:50:55+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://script-fu.github.io/artbox/hub/feature-test/folder/selection/</loc>
+  <lastmod>2025-05-23T12:50:55+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://script-fu.github.io/artbox/hub/feature-test/folder/simple-sliders/</loc>
+  <lastmod>2025-05-23T12:50:55+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://script-fu.github.io/artbox/hub/feature-test/folder/tool-preset-editor/</loc>
+  <lastmod>2025-05-23T12:50:55+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://script-fu.github.io/artbox/hub/feature-test/folder/tool-tips/</loc>
+  <lastmod>2025-05-23T12:50:55+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://script-fu.github.io/artbox/hub/feature-test/folder/toolbox/</loc>
+  <lastmod>2025-05-23T12:50:55+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://script-fu.github.io/artbox/hub/feature-test/folder/transform-tool/</loc>
+  <lastmod>2025-05-23T12:50:55+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://script-fu.github.io/artbox/hub/feature-test/folder/warp-tool/</loc>
+  <lastmod>2025-05-23T12:50:55+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://script-fu.github.io/artbox/hub/guides/folder/A-Linux-System-Overview/</loc>
+  <lastmod>2025-05-23T12:50:55+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://script-fu.github.io/artbox/hub/guides/folder/Building-a-Debug-Version/</loc>
+  <lastmod>2025-05-23T12:50:55+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://script-fu.github.io/artbox/hub/guides/folder/Installing-Debian/</loc>
+  <lastmod>2025-05-23T12:50:55+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://script-fu.github.io/artbox/hub/guides/folder/System-Backup-Clonezilla/</loc>
+  <lastmod>2025-05-23T12:50:55+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://script-fu.github.io/artbox/hub/guides/folder/Using-Git-on-Linux/</loc>
+  <lastmod>2025-05-23T12:50:55+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://script-fu.github.io/artbox/hub/plugins/folder/</loc>
+  <lastmod>2025-05-23T12:50:55+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://script-fu.github.io/artbox/hub/plugins/folder/add-path-guide/</loc>
+  <lastmod>2025-05-23T12:50:55+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://script-fu.github.io/artbox/hub/plugins/folder/almost-autosave/</loc>
+  <lastmod>2025-05-23T12:50:55+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://script-fu.github.io/artbox/hub/plugins/folder/alpha-to-show-mask/</loc>
+  <lastmod>2025-05-23T12:50:55+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://script-fu.github.io/artbox/hub/plugins/folder/gaussian-glow/</loc>
+  <lastmod>2025-05-23T12:50:55+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://script-fu.github.io/artbox/hub/plugins/folder/layer-group/</loc>
+  <lastmod>2025-05-23T12:50:55+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://script-fu.github.io/artbox/hub/plugins/folder/incremental-save/</loc>
+  <lastmod>2025-05-23T12:50:55+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://script-fu.github.io/artbox/hub/plugins/folder/layer-group-to-new-image/</loc>
+  <lastmod>2025-05-23T12:50:55+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://script-fu.github.io/artbox/hub/plugins/folder/new-layer-from-selection/</loc>
+  <lastmod>2025-05-23T12:50:55+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://script-fu.github.io/artbox/hub/plugins/folder/rename-layers/</loc>
+  <lastmod>2025-05-23T12:50:55+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://script-fu.github.io/artbox/hub/plugins/folder/toggle-eraser/</loc>
+  <lastmod>2025-05-23T12:50:55+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://script-fu.github.io/artbox/hub/plugins/folder/toggle-paint-mode/</loc>
+  <lastmod>2025-05-23T12:50:55+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://script-fu.github.io/artbox/hub/plugins/folder/toggle-paintbrush-eraser/</loc>
+  <lastmod>2025-05-23T12:50:55+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://script-fu.github.io/artbox/hub/themes/folder/</loc>
+  <lastmod>2025-05-23T12:50:55+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://script-fu.github.io/artbox/hub/themes/folder/dark/</loc>
+  <lastmod>2025-05-23T12:50:55+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://script-fu.github.io/artbox/hub/themes/folder/high-contrast/</loc>
+  <lastmod>2025-05-23T12:50:55+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://script-fu.github.io/artbox/hub/themes/folder/middle/</loc>
+  <lastmod>2025-05-23T12:50:55+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://script-fu.github.io/artbox/hub/themes/folder/system/</loc>
+  <lastmod>2025-05-23T12:50:55+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://script-fu.github.io/artbox/hub/themes/folder/warm/</loc>
+  <lastmod>2025-05-23T12:50:55+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+
+</urlset>

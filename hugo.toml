@@ -4,8 +4,8 @@ title = 'Artbox'
 theme = 'hextra'
 
 [params]
-description = "A Digital Painting and Illustration App for Linux"
-keywords = "Artbox, art, digital painting, illustration, GIMP, themes, plugins, plug-ins, Linux, Debian, Git, build, AppImage"
+description = "Artbox is a free, open-source digital painting and illustration app for Linux. Lightweight, themeable, and easy to build from source."
+keywords = "Artbox, digital painting, illustration software, Linux art app, GIMP alternative, open-source art app, Debian, AppImage, themeable UI"
 
 [params.theme]
 default = "dark"  # light | dark | system
