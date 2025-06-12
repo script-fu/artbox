@@ -66,34 +66,39 @@ categoryId = "<category ID>"
 [menu]
 
 [[menu.main]]
+name = "sweeneyworks"
+url = "https://sweeneyworks.com/"
+weight = 1
+
+[[menu.main]]
 name = "AppImage"
 pageRef = "hub/docs/folder/AppImage"
-weight = 1
+weight = 2
 
 [[menu.main]]
 name = "About"
 pageRef = "hub/about/"
-weight = 7
+weight = 8
 
 [[menu.main]]
 name = "Installation"
 pageRef = "hub/docs/folder/Installation"
-weight = 2
+weight = 3
 
 [[menu.main]]
 name = "Funky-Fu"
 url = "https://script-fu.github.io/funky/"
-weight = 1
+weight = 8
 
 [[menu.main]]
 name = "Documentation"
 pageRef = "hub/docs/folder/"
-weight = 3
+weight = 4
 
 [[menu.main]]
 name = "Features"
 pageRef = "hub/feature-test/folder/"
-weight = 4
+weight = 7
 
 [[menu.main]]
 name = "Guides"
@@ -102,7 +107,7 @@ weight = 5
 
 [[menu.main]]
 name = "Search"
-weight = 6
+weight = 9
 
   [menu.main.params]
   type = "search"
@@ -117,3 +122,7 @@ index = "content"  # index page by: content | summary | heading | title
 [services.googleAnalytics]
 ID = "G-MEASUREMENT_ID"
 
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
