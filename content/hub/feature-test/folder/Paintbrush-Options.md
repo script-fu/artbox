@@ -1,6 +1,6 @@
 # Objective
 
-Improve the usability of the Paintbrush GUI.
+Improve the usability of the Paintbrush GUI and create new stroke possibilities.
 
 ## Design Revisions
 
@@ -16,6 +16,11 @@ Improve the usability of the Paintbrush GUI.
 | **8. Jitter Slider** | New feature. | Jitter was under `Apply Jitter` down the options, using relative to brush size jittering | Added a 'Jitter' slider. |
 | **9. Eraser Slider** | New feature. | Eraser size is same as brush size or unique to the eraser | Added an 'Eraser' slider to work with a custom plug-in that toggles to the eraser tool. The slider value is applied as a scale on the eraser brush size. This allows all the painting tool presets to have a specific sized eraser. Erase pencil lines with a big eraser, cut into brush strokes with a smaller eraser.|
 | **10. Uniform Jitter** | New feature. | Jitter is has a natural bias towards the center point | Added an extra option in Additional Options called `Uniform Jitter`. When checked, the jitter is applied in a uniform manner |
+| **11. Initial Angle** | New feature. | Needed to go from an initial angle to a directional angle over a fade in length | Added an extra options in Fade and Colour, one is a slider `Initial Angle` and the other is a checkbox `Fade Initial Angle`. A linear interpolation is done independently of the fade curve according to the fade length. |
+| **12. Brush Angle Blend Factor** | New feature. | The final blend amount for the linear interpolation can be defined here | Added an extra options in Fade and Colour, a slider `Brush Angle Blend Factor`  |
+| **13. Direction Stabilization** | New feature. | Delays the start of the stroke until we have some consistent stroke information to work with| Added an extra options in Fade and Colour, a slider `Direction Stabilization` the pixel distance from the click of the stroke starting to the paint being rendered. |
+| **14. Relative Initial Angle** | New feature. | Use the initial angle as a relative offset to the direction angle.  | Added an extra options in Fade and Colour, `Use Relative Angle`. |
+| **15. Random Angle** | A random angle always added to and angle | Needed a controllable random amount that could then be used to jitter clockwise and anticlockwise the current angle | The random curve graph for angles is used to intuitively control this. |
 
 ### Changes
 
@@ -50,6 +55,32 @@ Improve the usability of the Paintbrush GUI.
 - **Uniform Jitter**: 
   - Added an extra option in Additional Options called `Uniform Jitter`. When checked, any jitter is applied in a uniformly distributed way.
 
+- **Reworked Angle Dynamics**:
+
+Computes the final dymnamic brush angle for a paint operation, combining multiple input dynamics (pressure, velocity, direction, tilt, wheel, fade, and random jitter) according to the enabled options and user-defined curves.
+
+Each enabled dynamic contributes an angle value in normalized [0,1) units, where 1.0 == 360°. These values are averaged to produce a base result.
+
+If `Fade Initial Angle` is enabled, the result is smoothly blended from the initial brush angle to the computed dynamic angle over the stroke, using unit vector interpolation for shortest-path blending. The final blend amount can be defined with `Brush Angle Blend Factor`. Check `Use Relative Angle` to apply the initial angle as an offset relative to the active dynamic angle. To avoid an unstable start to the brush stroke, or to turn off the first click stamp, set `Direction Stabilization` to a value greater than 0.
+
+Random angle jitter is applied last, as a small perturbation around the final angle. This is controlled by a user-editable curve in the GUI.
+
+Usage notes:
+
+- Enable or disable each dynamic (pressure, velocity, etc.) in the brush dynamics settings.
+
+- Adjust the corresponding input curves to control how each input affects the angle.
+
+- The "fade initial angle" option causes the stroke to start at the initial angle and transition to the dynamic angle as the stroke progresses.
+
+- The random input curve should be centered around 0.5 for symmetric jitter.
+
+- A straight line from 0.0 to 1.0 gives maximum jitter in both directions.
+
+- A flat line at 0.5 gives no jitter.
+
+- A line from 0.4 to 0.6 gives subtle jitter (±0.1 of the maximum).
+
 ### **Benefits**
 
-This set of changes significantly improves the usability and efficiency of the Paintbrush GUI. By reducing visual clutter, hiding advanced options behind expanders, and simplifying the interface, users can now navigate the Paintbrush settings more easily while still accessing the features they need.
+This set of changes significantly improves the usability and efficiency of the Paintbrush GUI. By reducing visual clutter, hiding advanced options behind expanders, and simplifying the interface, users can now navigate the Paintbrush settings more easily while still accessing the features they need. The revised angle code and options open up a new range of stroke styles.
