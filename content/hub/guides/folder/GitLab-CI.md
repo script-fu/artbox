@@ -5,67 +5,52 @@ url: "hub/docs/folder/CIPipeline"
 
 # GitLab CI/CD Overview
 
-Continuous Integration (CI) is a way to automatically test, build, and validate your code whenever changes are made. This reduces errors, speeds up development, and ensures that your project stays in a working state.
+Continuous Integration (CI) is a way to automatically test, build, and validate your code whenever changes are made.
 
 **GitLab** provides built-in CI/CD features through its `.gitlab-ci.yml` file. This file, placed in the root of your repository, tells GitLab how to build and test your project. It defines stages and scripts that are run in a clean environment every time changes are pushed.
 
-Rather than manually running build commands or tests, GitLab CI does it for you in a controlled and repeatable way.
-
-This document outlines how GitLab CI/CD works, including the role of the `.gitlab-ci.yml` file, shell scripts, and external tools such as build systems. This applies broadly across software projects, including those that use systems like Meson and Ninja.
+This document outlines how GitLab CI/CD works, including the role of the `.gitlab-ci.yml` file, shell scripts, and external tools like Meson and Ninja.
 
 ## GitLab CI/CD Basics
 
-GitLab CI/CD automates tasks such as building, testing, and deploying code. It is controlled by a file named `.gitlab-ci.yml` at the root of the repository. This file defines:
+The CI is controlled by a file named `.gitlab-ci.yml`. This file defines:
 
-- **Stages**: Ordered groups of jobs (e.g., `build`, `test`, `deploy`)
+- **Stages**: Ordered groups of jobs (e.g., `build-this`, `build-that`, `package-up`)
 - **Jobs**: Individual tasks to run within each stage
 - **Scripts**: Shell commands executed for each job
-- **Runners**: Agents (virtual machines, Docker containers, or shell environments) that GitLab uses to run jobs defined in the pipeline. They can be shared (hosted by GitLab) or custom (self-hosted).
+- **Runners**: Computers that GitLab uses to run jobs defined in the pipeline.
 
-> Note: The `.gitlab-ci.yml` file must follow strict YAML syntax. Indentation errors or syntax issues can break the pipeline.
+## Container-Based Builds
 
-### Minimal Example
+The Artbox pipeline uses containerization for consistent builds:
 
-```
-stages:
-  - build
-  - test
+1. **Creating the Build Container**: The first stage uses Kaniko to create a Docker image with all dependencies
+2. **Using the Container**: Subsequent stages run inside this container, ensuring consistent environment
 
-build-job:
-  stage: build
-  script:
-    - ./configure
-    - make
-
-test-job:
-  stage: test
-  script:
-    - make check
-```
-
-Each job runs in its own environment and is triggered according to the stage order.
+This approach ensures that builds work the same way across any GitLab runner.
 
 ## Role of Shell Scripts
 
-Jobs in `.gitlab-ci.yml` typically invoke shell commands directly. For better structure and reusability, complex operations are often moved into separate scripts stored in the repository.
+Jobs in `.gitlab-ci.yml` typically invoke shell commands directly. Complex operations are often moved into separate scripts stored in the repository.
 
+An example of a shell script being called in a yaml file
 ```
 script:
-  - ./build/linux/appimage/
+  - ./build/linux/appimage/artbox-goappimage.sh
 ```
 
 This keeps the `.gitlab-ci.yml` file clean and makes build logic easier to maintain.
 
 ## Integration with Build Systems
 
-GitLab CI/CD is agnostic to the build system used. It simply executes the commands provided. GIMP uses **Meson** and **Ninja** to prepare and then compile the code.
+Artbox uses **Meson** and **Ninja** to prepare and then build the code.
 
-For example, with Meson and Ninja:
+For example:
 
 ```
 script:
-  - meson setup _build
-  - ninja -C _build
+  - meson setup _build-${CI_RUNNER_TAG}
+  - ninja -C _build-${CI_RUNNER_TAG}
 ```
 
 Here:
@@ -81,11 +66,18 @@ The **Meson** build system uses a root `meson.build` file placed at the project�
 - From there, it **cascades recursively** into subdirectories, each of which may have its own `meson.build` file
 - These subdirectory files define targets, sources, dependencies, and build instructions relevant to that directory
 
-Meson automatically discovers and includes subdirectory build files when instructed via `subdir()` directives in the root or parent `meson.build` files.
+## Environment Variables
 
-> The `subdir()` function in Meson is used in a parent `meson.build` file to include another directory’s build file and its targets.
+Key variables in the Artbox pipeline include:
 
-### Example Structure
+```yaml
+variables:
+  COMPILER: "clang"   # Compiler selection
+  GIMP_PREFIX: "${CI_PROJECT_DIR}/_install-${CI_RUNNER_TAG}"  # Installation path
+  MESON_OPTIONS: "-Drelocatable=yes -Dvector-icons=true"  # Build configuration
+```
+
+## Example Structure
 
 ```
 project-root/
@@ -105,41 +97,33 @@ In this structure:
 - Subdirectory `meson.build` files handle compilation details for specific components or modules
 - This hierarchical layout keeps build logic modular and maintainable
 
+## Artifacts Between Stages
+
+Artifacts are files generated by jobs that are needed in subsequent stages:
+
+```yaml
+build-artbox:
+  # ...job configuration...
+  artifacts:
+    paths:
+      - "${GIMP_PREFIX}/"      # Installation files
+      - _build-${CI_RUNNER_TAG}/meson-logs/meson-log.txt  # Build logs
+```
+
 ## Pipeline Stages and Dependencies
 
-A typical pipeline consists of multiple stages:
+The Artbox pipeline consists of three key stages:
 
-```
-stages:
-  - prepare
-  - build
-  - test
-  - package
-  - deploy
-```
+1. **Environment Preparation**: Creates a containerized build environment using Kaniko, including all dependencies and pre-building babl and GEGL libraries
+2. **Application Build**: Compiles Artbox using Meson and Ninja in the prepared environment
+3. **Packaging**: Creates a distributable AppImage for end users
 
-Each job within a stage runs in parallel. A stage only begins after the previous one completes successfully.
-
-```
-build:
-  stage: build
-  script:
-    - ./ci/scripts/build.sh
-
-test:
-  stage: test
-  script:
-    - ./ci/scripts/test.sh
-```
-
-GitLab handles scheduling, isolation, logging, and failure propagation automatically.
+Each stage runs only after the previous one completes successfully.
 
 ## Summary
 
 - `.gitlab-ci.yml` defines the structure and logic of the pipeline
 - Jobs contain shell commands or external scripts
-- GitLab CI/CD does not care which tools you use—it runs what you define
 - Tools like Meson and Ninja are used inside jobs as part of the build process
-- The `subdir()` directive allows Meson to include subdirectory build definitions
 
-GitLab CI/CD’s modular and tool-agnostic architecture allows it to support diverse project structures and build systems with minimal changes. Artbox uses the GitLab CI to build it's AppImage for Debian based platforms.
+Artbox uses the GitLab CI to automatically build it's AppImage for Debian based platforms. Here is the Artbox [.gitlab-ci.yml](https://gitlab.gnome.org/pixelmixer/artbox/-/ci/editor?branch_name=artbox) to view.
