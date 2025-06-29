@@ -1,3 +1,8 @@
+---
+type: docs
+url: "hub/feature-test/folder/Paintbrush-Options"
+---
+
 # Objective
 
 Improve the usability of the Paintbrush GUI and create new stroke possibilities.
@@ -52,7 +57,7 @@ Improve the usability of the Paintbrush GUI and create new stroke possibilities.
     - Added an 'Eraser' slider to scale the eraser tool when it is toggled to using a custom Artbox plug-in. Now the painter can pair eraser sizes with tool sizes as part of a tool preset. Erase pencil lines with a big eraser, cut into brush strokes with a smaller eraser.
     Adjust the relationship as you work to shape the paint and erase the lines effectively, spend less time picking brush sizes.
 
-- **Uniform Jitter**: 
+- **Uniform Jitter**:
   - Added an extra option in Additional Options called `Uniform Jitter`. When checked, any jitter is applied in a uniformly distributed way.
 
 - **Reworked Angle Dynamics**:

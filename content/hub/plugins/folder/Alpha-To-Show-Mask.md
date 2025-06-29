@@ -1,4 +1,8 @@
 ---
+title: Alpha To Show Mask
+type: docs
+url: "hub/plugins/folder/Alpha-To-Show-Mask"
+---
 title: Alpha to Show Mask
 type: docs
 ---

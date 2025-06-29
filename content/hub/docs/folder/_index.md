@@ -1,6 +1,7 @@
 ---
 title: Artbox
 type: docs
+url: "hub/docs/folder"
 ---
 
 ## Introduction

@@ -1,3 +1,8 @@
+---
+type: docs
+url: "hub/feature-test/folder/Curves-View"
+---
+
 # Objective
 
 Enhance the Curve View in the Dynamics Editor and Curves Filter.

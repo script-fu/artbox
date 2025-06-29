@@ -1,3 +1,8 @@
+---
+type: docs
+url: "hub/feature-test/folder/Dynamics-Editor"
+---
+
 # Objective
 
 Enhance the Dynamics Editor.

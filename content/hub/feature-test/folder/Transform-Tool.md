@@ -1,5 +1,6 @@
 ---
 type: docs
+url: "hub/feature-test/folder/Transform-Tool"
 ---
 
 # Objective
@@ -15,7 +16,7 @@ Enhance transforming layers by avoiding GUI rejections and floating layers.
 ### Changes
 
 1. **Use Selection**:
-  Introduced a 'Use Selection' option on transform tools. If unchecked, the active selection is discarded and the entire layer is transformed. 
+  Introduced a 'Use Selection' option on transform tools. If unchecked, the active selection is discarded and the entire layer is transformed.
 
 ### **Benefits**
 

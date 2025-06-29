@@ -1,5 +1,6 @@
 ---
 type: docs
+url: "hub/feature-test/folder/Dynamic-Multiply-Modes"
 ---
 
 # Objective
@@ -20,7 +21,7 @@ Make a beautiful brush stroke.
 ### Changes
 
 - **Pressure Dynamics**:
-  - Added `options->brush_pressure_multiply` 
+  - Added `options->brush_pressure_multiply`
 If enabled and there are existing factors, other factors are multiplied by the pressure. Otherwise, it's added as usual.
 
 - **Fade Dynamics**:

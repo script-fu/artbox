@@ -1,5 +1,6 @@
 ---
 type: docs
+url: "hub/feature-test/folder/Paintbrush-Smooth-Stroke"
 ---
 
 # Objective

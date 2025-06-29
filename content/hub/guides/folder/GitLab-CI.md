@@ -9,7 +9,9 @@ Continuous Integration (CI) is a way to automatically test, build, and validate 
 
 **GitLab** provides built-in CI/CD features through its `.gitlab-ci.yml` file. This file, placed in the root of your repository, tells GitLab how to build and test your project. It defines stages and scripts that are run in a clean environment every time changes are pushed.
 
-This document outlines how GitLab CI/CD works, including the role of the `.gitlab-ci.yml` file, shell scripts, and external tools like Meson and Ninja.
+This document outlines how GitLab CI/CD works, including the role of the `.gitlab-ci.yml` file, shell scripts, and external tools like Meson and Ninja. The Artbox CI system has been specifically aligned with the official GIMP master CI approach for consistency and reproducibility.
+
+For detailed technical documentation of the Artbox CI build process, see [README-CI.md](https://gitlab.gnome.org/pixelmixer/artbox/-/blob/artbox/build/linux/appimage/README-CI.md) in the repository.
 
 ## GitLab CI/CD Basics
 
@@ -26,20 +28,29 @@ The Artbox pipeline uses containerization for consistent builds:
 
 1. **Creating the Build Container**: The first stage uses Kaniko to create a Docker image with all dependencies
 2. **Using the Container**: Subsequent stages run inside this container, ensuring consistent environment
+3. **Reproducible Builds**: Container isolation guarantees the same results across different runners
 
-This approach ensures that builds work the same way across any GitLab runner.
+This approach ensures that builds work the same way across any GitLab runner and provides a controlled environment for complex build processes.
 
 ## Role of Shell Scripts
 
 Jobs in `.gitlab-ci.yml` typically invoke shell commands directly. Complex operations are often moved into separate scripts stored in the repository.
 
-An example of a shell script being called in a yaml file
-```
+The Artbox CI uses modular shell scripts to organize build logic:
+
+**Example of script invocation:**
+```yaml
 script:
-  - ./build/linux/appimage/artbox-goappimage.sh
+  - bash build/linux/appimage/artbox-goappimage.sh > appimage_creation.log 2>&1
 ```
 
-This keeps the `.gitlab-ci.yml` file clean and makes build logic easier to maintain.
+**Benefits of this approach:**
+- **Clean YAML**: Keeps the `.gitlab-ci.yml` file focused on job structure
+- **Maintainability**: Complex logic is easier to debug and modify in shell scripts
+- **Reusability**: Scripts can be used in different contexts or environments
+- **Modularity**: Different aspects of the build can be separated into focused scripts
+
+This keeps the CI configuration clean while allowing sophisticated build processes.
 
 ## Integration with Build Systems
 
@@ -72,10 +83,21 @@ Key variables in the Artbox pipeline include:
 
 ```yaml
 variables:
-  COMPILER: "clang"   # Compiler selection
-  GIMP_PREFIX: "${CI_PROJECT_DIR}/_install-${CI_RUNNER_TAG}"  # Installation path
-  MESON_OPTIONS: "-Drelocatable=yes -Dvector-icons=true"  # Build configuration
+  DEBIAN_FRONTEND: "noninteractive"  # Prevents interactive prompts
+  DEB_VERSION: "bookworm"            # Debian version for consistency
+  CI_RUNNER_TAG: "x86_64"            # Architecture specification
 ```
+
+**Job-specific variables:**
+```yaml
+build-artbox:
+  variables:
+    COMPILER: "clang"                                    # Compiler selection
+    GIMP_PREFIX: "${CI_PROJECT_DIR}/_install-${CI_RUNNER_TAG}"  # Installation path
+    MESON_OPTIONS: "-Drelocatable-bundle=yes -Dvector-icons=true"  # Build configuration
+```
+
+These variables control build behavior and ensure consistency across different stages and runners.
 
 ## Example Structure
 
@@ -112,13 +134,22 @@ build-artbox:
 
 ## Pipeline Stages and Dependencies
 
-The Artbox pipeline consists of three key stages:
+The Artbox pipeline consists of three main stages:
 
-1. **Environment Preparation**: Creates a containerized build environment using Kaniko, including all dependencies and pre-building babl and GEGL libraries
-2. **Application Build**: Compiles Artbox using Meson and Ninja in the prepared environment
-3. **Packaging**: Creates a distributable AppImage for end users
+1. **Dependencies**: Creates a containerized build environment with all required tools and libraries
+2. **Build Artbox**: Compiles Artbox using Meson and Ninja in the prepared environment
+3. **AppImage**: Packages the built application into a distributable AppImage format
 
-Each stage runs only after the previous one completes successfully.
+**Stage Dependencies:**
+```yaml
+build-artbox:
+  needs: [deps-debian]  # Waits for dependency container
+
+artbox-appimage:
+  needs: [build-artbox] # Waits for application build
+```
+
+Each stage runs only after its dependencies complete successfully, ensuring proper build order and artifact availability.
 
 ## Summary
 
@@ -126,4 +157,6 @@ Each stage runs only after the previous one completes successfully.
 - Jobs contain shell commands or external scripts
 - Tools like Meson and Ninja are used inside jobs as part of the build process
 
-Artbox uses the GitLab CI to automatically build it's AppImage for Debian based platforms. Here is the Artbox [.gitlab-ci.yml](https://gitlab.gnome.org/pixelmixer/artbox/-/ci/editor?branch_name=artbox) to view.
+Artbox uses the GitLab CI to automatically build its AppImage for Debian based platforms. Here is the Artbox [.gitlab-ci.yml](https://gitlab.gnome.org/pixelmixer/artbox/-/ci/editor?branch_name=artbox) to view.
+
+For comprehensive technical details about the Artbox CI build process, including environment setup, script architecture, and troubleshooting, refer to [README-CI.md](https://gitlab.gnome.org/pixelmixer/artbox/-/blob/artbox/build/linux/appimage/README-CI.md).

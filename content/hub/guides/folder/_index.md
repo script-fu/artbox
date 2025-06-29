@@ -1,6 +1,7 @@
 ---
 title: Guides
 type: docs
+url: "hub/guides/folder"
 ---
 
 ## Introduction

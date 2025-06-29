@@ -1,5 +1,6 @@
 ---
 type: docs
+url: "hub/feature-test/folder/Selection-Display"
 ---
 
 # Objective
@@ -21,7 +22,7 @@ These updates allow the user to work without selection borders, or with softer s
 
 When the user wants to paint a selection area without any obscuring but visible indiction on the image, then a Status Bar indiction is given.
 
-**Edit > Preferences > Image Windows > Selection Highlighting**  
+**Edit > Preferences > Image Windows > Selection Highlighting**
 **View > Show Selection Highlight**
 
 Video on [YouTube](https://youtu.be/RG3rOhjXXW0)

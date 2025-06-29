@@ -1,5 +1,6 @@
 ---
 type: docs
+url: "hub/feature-test/folder/Color-Picker-Tool"
 ---
 
 # Objective

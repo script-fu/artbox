@@ -14,10 +14,12 @@ Artbox has an [AppImage](https://script-fu.github.io/artbox/hub/docs/folder/AppI
 * [Install Location](#install-location)
 * [Clone the Source Code Repositories](#clone-the-source-code-repositories)
 * [Environment Variables](#environment-variables)
+* [Build Environment Optimizations](#build-environment-optimizations)
 * [Build Artbox, BABL and GEGL](#build-artbox-babl-and-gegl)
 * [Desktop Launcher (System Specific)](#desktop-launcher-system-specific)
 * [Automatically Updating](#automatically-updating-to-the-latest-development-version)
 * [Manual Updating](#steps-to-manually-update)
+* [Troubleshooting](#troubleshooting)
 * [Conclusion](#conclusion)
 
 ## Git
@@ -110,6 +112,10 @@ PACKAGES=(
   xvfb
   xz-utils
   yelp-tools
+  # Graphics acceleration packages
+  libgl1-mesa-dev
+  libgl1-mesa-dri
+  libegl1-mesa-dev
 )
 
 # Define a function to install a package and report failure
@@ -221,7 +227,61 @@ export PKG_CONFIG_PATH="${GIMP_PREFIX}/${LIB_DIR}/${LIB_SUBDIR}pkgconfig${PKG_CO
 export LD_LIBRARY_PATH="${GIMP_PREFIX}/${LIB_DIR}/${LIB_SUBDIR}${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
 export XDG_DATA_DIRS="${GIMP_PREFIX}/share:/usr/share${XDG_DATA_DIRS:+:$XDG_DATA_DIRS}"
 export GI_TYPELIB_PATH="${GIMP_PREFIX}/${LIB_DIR}/${LIB_SUBDIR}girepository-1.0${GI_TYPELIB_PATH:+:$GI_TYPELIB_PATH}"
+
+# Hardware acceleration support
+if [ -d "/usr/lib/${LIB_SUBDIR}dri" ]; then
+    export LIBGL_DRIVERS_PATH="/usr/lib/${LIB_SUBDIR}dri"
+fi
+
+# Enable Mesa threaded rendering for better performance
+export mesa_glthread=true
+
+# Ensure proper graphics context
+export DISPLAY=${DISPLAY:-:0}
+
+# Compiler configuration (use clang for better performance)
+export CC="ccache clang"
+export CXX="ccache clang++"
+export CC_LD="lld"
+export CXX_LD="lld"
+
+# Add ccache to PATH for faster rebuilds
+export PATH="/usr/lib/ccache:$PATH"
 ```
+
+## Build Environment Optimizations
+
+The updated environment configuration includes several optimizations that improve build performance and align with the CI environment. **Note**: Artbox will work fine without these optimizations, but they provide better development experience and consistency.
+
+**Build Optimizations:**
+- **Clang compiler with LLD linker**: Faster compilation and linking compared to GCC
+- **ccache optimization**: Speeds up rebuilds by caching compiled objects
+- **Mesa threading**: Enables multi-threaded OpenGL rendering (performance enhancement)
+- **Graphics driver paths**: Explicit configuration for consistency with CI builds
+
+**Why These Matter:**
+- Faster development iteration with quicker builds
+- Better graphics performance during development testing
+- Consistent behavior between local builds and distributed AppImage
+- Alignment with official build environment
+
+**Compatibility Note:** These settings match the official Artbox AppImage build environment, ensuring your local build behaves identically to the distributed version.
+
+### OpenCL Acceleration (Experimental)
+
+Artbox includes optional OpenCL acceleration for certain graphics operations, accessible through **Edit → Preferences → Experimental Playground → Use OpenCL**.
+
+**Important Warnings:**
+- **Experimental status**: OpenCL support is unfinished and may cause crashes
+- **Performance**: May actually slow down operations rather than accelerate them
+- **Stability**: Expect potential application instability when enabled
+
+**Technical Details:**
+- OpenCL acceleration operates through GEGL (the graphics processing library)
+- Only affects "some operations" rather than comprehensive acceleration
+- Requires compatible OpenCL drivers (Intel, AMD, or NVIDIA)
+
+**Recommendation:** Leave OpenCL disabled unless you're specifically testing experimental features. The Mesa DRI hardware acceleration configured in the environment provides better stability and performance for most users.
 
 ## Build Artbox, BABL and GEGL
 
@@ -325,8 +385,8 @@ git submodule update
 mkdir -p "${GIMP_PREFIX}/build/$BUILD_FORK/_build"
 cd "${GIMP_PREFIX}/build/$BUILD_FORK/_build"
 
-# Run Meson setup and build commands
-meson setup .. -Dprefix="${GIMP_PREFIX}" --buildtype="debugoptimized"
+# Run Meson setup and build commands with modern options
+meson setup .. -Dprefix="${GIMP_PREFIX}" --buildtype="debugoptimized" -Dvector-icons=true -Dcheck-update=yes
 ninja
 ninja install
 
@@ -487,7 +547,7 @@ After running this script the next thing to do would be run the `artbox.sh` scri
 ```plaintext
 COMPILE_ONLY="false"
 BUILD_BABL="true"
-BUILD_GEGL="true" 
+BUILD_GEGL="true"
 BUILD_FORK="artbox"
 ```
 
@@ -517,6 +577,67 @@ git reset --hard origin/artbox
 * `git fetch origin`: Downloads the latest changes from the remote repository (`origin`) but does not merge them into your local branch.
 
 * `git reset --hard origin/artbox`: Resets your current branch to match the state of the `origin/artbox` branch. This is a 'hard' reset, meaning any local changes will be lost.
+
+## Troubleshooting
+
+### Graphics Performance Issues
+
+If Artbox feels slow or unresponsive during canvas operations:
+
+1. **Check hardware acceleration status:**
+   ```bash
+   glxinfo | grep -E "(OpenGL vendor|OpenGL renderer|direct rendering)"
+   ```
+   You should see "direct rendering: Yes" and your GPU listed as the renderer.
+
+2. **Verify DRI drivers are installed:**
+   ```bash
+   ls /usr/lib/x86_64-linux-gnu/dri/
+   ```
+   This should show driver files like `i965_dri.so` (Intel) or `radeonsi_dri.so` (AMD).
+
+3. **Check environment variables are set:**
+   ```bash
+   echo $LIBGL_DRIVERS_PATH
+   echo $mesa_glthread
+   ```
+
+### OpenCL Issues
+
+**If you enabled OpenCL acceleration and experience problems:**
+
+- **Application crashes**: Disable OpenCL in **Edit → Preferences → Experimental Playground**
+- **Slower performance**: OpenCL may not be beneficial for your hardware/workload combination
+- **Check OpenCL support**: Verify your graphics drivers support OpenCL:
+  ```bash
+  clinfo
+  ```
+  Install `clinfo` if needed: `sudo apt install clinfo`
+
+**OpenCL compatibility:**
+- **Intel GPUs**: Requires `intel-opencl-icd` package
+- **AMD GPUs**: Requires `mesa-opencl-icd` or `rocm-opencl-runtime`
+- **NVIDIA GPUs**: Requires proprietary drivers with OpenCL support
+
+**Recommendation**: Keep OpenCL disabled unless specifically needed for testing.
+
+### Build Issues
+
+**Common problems and solutions:**
+
+- **Missing dependencies**: Re-run the dependency installation script if meson setup fails
+- **ccache issues**: Clear ccache with `ccache -C` if you get strange compilation errors
+- **Linker errors with clang**: Ensure `lld` package is installed: `sudo apt install lld`
+- **Submodule problems**: Run `git submodule update --init --recursive` in the artbox directory
+
+### Performance Optimization
+
+For the best development experience:
+
+- Use an SSD for source code storage
+- Allocate sufficient RAM (8GB+ recommended)
+- Consider using `--buildtype=release` for final testing builds
+- Monitor ccache hit rates with `ccache -s`
 
 ## Conclusion
 

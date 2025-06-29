@@ -1,6 +1,7 @@
 ---
 title: Almost Autosave
 type: docs
+url: "hub/plugins/folder/Almost-Autosave"
 ---
 
 ## Introduction

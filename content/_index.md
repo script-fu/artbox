@@ -1,6 +1,7 @@
 ---
 toc: false
 type: default
+url: ""
 ---
 
 # ![artbox-logo](/images/artbox-logo.webp)
@@ -10,7 +11,7 @@ type: default
   {{< card link="hub/guides/folder" title="Guides" icon="book-open" >}}
   {{< card link="https://www.gimp.org/" title="GIMP" icon="home" >}}
   {{< card link="hub/docs/folder" title="Documentation" icon="cog" >}}
-  {{< card link="hub/feature-test/folder" title="Feature Testing" icon="clipboard-check" >}}
+  {{< card link="hub/feature-test" title="Features Overview" icon="clipboard-check" subtitle="See what's new in Artbox" >}}
   {{< card link="hub/plugins/folder" title="Plugins" icon="puzzle" >}}
   {{< card link="https://gitlab.gnome.org/pixelmixer/artbox" title="Artbox Source Code" icon="gitlab" >}}
   {{< card link="hub/about/Patreon" title="Patreon" title="Patreon" icon="heart" >}}

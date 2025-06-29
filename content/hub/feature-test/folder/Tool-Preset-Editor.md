@@ -1,3 +1,8 @@
+---
+type: docs
+url: "hub/feature-test/folder/Tool-Preset-Editor"
+---
+
 # Objective
 
 Enhance the Tool Preset Editor.

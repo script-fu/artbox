@@ -9,9 +9,9 @@ The GIMP development team now support AppImages. An AppImage is a version of the
 
 This AppImage for Artbox has been built for nearly all Linux distos: [download](https://gitlab.gnome.org/pixelmixer/artbox/-/raw/feature-appimage/AppImage/Artbox.AppImage?ref_type=heads&inline=false)
 
-The AppImage is from the GitLab CI build of the artbox branch in the [Artbox](https://gitlab.gnome.org/pixelmixer/artbox/-/artifacts) repository, the full artifact is usually called dist-appimage-weekly. 
+The AppImage is from the GitLab CI build of the artbox branch in the [Artbox](https://gitlab.gnome.org/pixelmixer/artbox/-/artifacts) repository.
 
 ## Related Links
 
-[AppImage](https://appimage.org/)  
-[GIMP](https://www.gimp.org/news/2024/05/28/experiments-appimage/)
+[AppImage](https://appimage.org/)
+

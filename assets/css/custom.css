@@ -1,0 +1,27 @@
+/* Custom CSS overrides for Artbox site */
+
+/* Make cards brighter */
+.hextra-card {
+  background: rgb(255, 255, 255) !important;
+  border: 1px solid rgb(229, 231, 235) !important;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06) !important;
+}
+
+/* Dark mode adjustments */
+.dark .hextra-card {
+  background: rgb(55, 65, 81) !important;
+  border: 1px solid rgb(75, 85, 99) !important;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 1px 2px 0 rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Card hover effects for brightness */
+.hextra-card:hover {
+  background: rgb(249, 250, 251) !important;
+  border-color: rgb(209, 213, 219) !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+}
+
+.dark .hextra-card:hover {
+  background: rgb(75, 85, 99) !important;
+  border-color: rgb(107, 114, 128) !important;
+}

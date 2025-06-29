@@ -1,5 +1,6 @@
 ---
 type: docs
+url: "hub/feature-test/folder/Tool-Tips"
 ---
 
 # Objective

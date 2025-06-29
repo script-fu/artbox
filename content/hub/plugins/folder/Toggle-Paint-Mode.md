@@ -1,6 +1,7 @@
 ---
 title: Toggle Paint Mode
 type: docs
+url: "hub/plugins/folder/Toggle-Paint-Mode"
 ---
 
 ## Introduction
@@ -17,7 +18,7 @@ This forces Artbox to save the shortcut for the next session. First, search for 
 
 _Edit -> Keyboard Shortcuts_
 
-Once the shortcut is working as you like, save your work then;  
+Once the shortcut is working as you like, save your work then;
 
 _File -> Quit_
 

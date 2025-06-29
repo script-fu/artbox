@@ -1,6 +1,7 @@
 ---
 title: Hub
 type: default
+url: "hub"
 ---
 
 ## Welcome to the Documentation Hub
