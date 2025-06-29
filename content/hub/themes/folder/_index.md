@@ -8,7 +8,7 @@ url: "hub/themes/folder"
 
 Personalize your experience with custom themes for Artbox and GIMP! Choose from high-contrast options for better visibility, warm palettes for a cozy feel, or dark themes for focused work. These themes are included in Artbox.
 
-Artbox also includes [numerous interface and workflow enhancements](/artbox/hub/feature-test) beyond theming, including improved toolbox layouts, enhanced painting tools, and streamlined resource management.
+Artbox also includes [numerous interface and workflow enhancements](/artbox/hub/feature-test/folder) beyond theming, including improved toolbox layouts, enhanced painting tools, and streamlined resource management.
 
 ## Available Themes
 
