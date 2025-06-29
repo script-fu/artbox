@@ -1,27 +1,27 @@
 /* Custom CSS overrides for Artbox site */
 
-/* Make cards brighter */
+/* Make cards slightly brighter */
 .hextra-card {
-  background: rgb(255, 255, 255) !important;
-  border: 1px solid rgb(229, 231, 235) !important;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06) !important;
+  background: rgb(252, 252, 253) !important;
+  border: 1px solid rgb(226, 232, 240) !important;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.03), 0 1px 2px 0 rgba(0, 0, 0, 0.02) !important;
 }
 
 /* Dark mode adjustments */
 .dark .hextra-card {
-  background: rgb(55, 65, 81) !important;
-  border: 1px solid rgb(75, 85, 99) !important;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 1px 2px 0 rgba(0, 0, 0, 0.2) !important;
+  background: rgb(42, 48, 60) !important;
+  border: 1px solid rgb(52, 58, 70) !important;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
 }
 
 /* Card hover effects for brightness */
 .hextra-card:hover {
-  background: rgb(249, 250, 251) !important;
-  border-color: rgb(209, 213, 219) !important;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+  background: rgb(250, 250, 251) !important;
+  border-color: rgb(220, 226, 235) !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04), 0 2px 4px -1px rgba(0, 0, 0, 0.02) !important;
 }
 
 .dark .hextra-card:hover {
-  background: rgb(75, 85, 99) !important;
-  border-color: rgb(107, 114, 128) !important;
+  background: rgb(48, 54, 66) !important;
+  border-color: rgb(62, 68, 80) !important;
 }
