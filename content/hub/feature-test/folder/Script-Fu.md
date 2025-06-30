@@ -3,7 +3,7 @@ type: docs
 url: "hub/feature-test/folder/Script-Fu"
 ---
 
-# Objective
+# Script-Fu
 
 Extend Script-Fu to include additional functions that help the user.
 
@@ -13,28 +13,89 @@ Extend Script-Fu to include additional functions that help the user.
 
 ## Additional Procedures
 
+{{< cards >}}
+  {{< card link="#display-functions" title="Display Functions" subtitle="Get active display ID for display-related operations." icon="desktop-computer" >}}
+  {{< card link="#eraser-toggle-functions" title="Eraser Toggle Functions" subtitle="Toggle between eraser and other painting tools." icon="pencil" >}}
+  {{< card link="#visibility-functions" title="Visibility Functions" subtitle="Manage visibility of multiple items in bulk." icon="eye" >}}
+  {{< card link="#brush-control-functions" title="Brush Control Functions" subtitle="Control brush scale and jitter settings." icon="terminal" >}}
+  {{< card link="#layer-functions" title="Layer Functions" subtitle="Combine alpha channels between layers." icon="duplicate" >}}
+{{< /cards >}}
+
+---
+
+<div class="feature-section" id="display-functions">
+
+## Display Functions
+
 | **Command** | **Purpose** |
 | --- | --- |
-| (gimp-context-get-display) | Get the active display ID |
-| (gimp-context-eraser-toggle) | Toggle the active tool to the eraser. |
-| (gimp-context-eraser-paintbrush-toggle) | Toggle the active tool to the eraser and always return to the paintbrush |
-| (gimp-context-get-eraser-active ) | Returns true if the Eraser Tool is active |
-| (gimp-items-set-visible) | Set the visibility of a vector list of items |
-| (gimp-context-get-brush-eraser-scale) |  Returns the Paint Tool eraser scale |
-| (gimp-context-get-brush-jitter) |  Returns the Paint Tool jitter slider value |
-| (gimp-context-set-brush-jitter) |  Set _all_ the Paint Tools jitter slider values |
-| (gimp-layer-combine-alpha) |  Combine the alpha channels of two layers |
-### Changes
+| `(gimp-context-get-display)` | Get the active display ID |
 
-- **New Script-Fu Functions**:
-   - `(gimp-context-get-display)`: Retrieves the active display ID. This ID can then be used with other display-related functions like `(gimp-display-present display-id)`.
-   - `(gimp-context-eraser-toggle)`: Toggles the active tool between the eraser and the previously active tool.
-   - `(gimp-context-eraser-paintbrush-toggle)`: Toggles the active tool between the eraser and the paintbrush tool.
-   - `(gimp-context-get-eraser-active)`: Returns 1 if the Eraser Tool is active or 0.
-   - `(gimp-items-set-visible)`: Allows setting the visibility of a vector list of items in bulk. This can help streamline visibility management for layers, paths, or other drawable items.
-   - `(gimp-context-get-brush-eraser-scale)`: Gets the Paint Tool eraser scale option to use with the eraser toggles. This allows all the painting tool presets to have a specific sized eraser. Erase pencil lines with a big eraser, cut into brush strokes with a smaller eraser.
-   - `(gimp-context-get-brush-jitter)`: Gets the Paint Tool jitter option to use with the eraser toggles. This allows us to set the jitter for the eraser to be the same as the brush, in a hacky way.
-   - `(gimp-context-set-brush-jitter)`: Sets all the Paint Tools jitter options to the same jitter value, eraser, paintbrush, airbrush, pencil.
-   - `(gimp-layer-combine-alpha)`: This procedure combines the alpha channels of two layers and writes the result into the first layer’s alpha channel. ADD, SUBTRACT, INTERSECT or REPLACE.
+**Implementation**: This function retrieves the active display ID which can be used with other display-related functions like `(gimp-display-present display-id)` for script automation and display management.
 
-- These additional functions enhance the flexibility of Script-Fu, enabling users to toggle between tools, manage visibility across multiple items, and integrate display information into their scripts, leading to more powerful automation and customization.
+</div>
+
+---
+
+<div class="feature-section" id="eraser-toggle-functions">
+
+## Eraser Toggle Functions
+
+| **Command** | **Purpose** |
+| --- | --- |
+| `(gimp-context-eraser-toggle)` | Toggle the active tool to the eraser |
+| `(gimp-context-eraser-paintbrush-toggle)` | Toggle the active tool to the eraser and always return to the paintbrush |
+| `(gimp-context-get-eraser-active)` | Returns true if the Eraser Tool is active |
+
+**Implementation**: These functions enable seamless tool switching, allowing scripts to toggle between the eraser and other painting tools. The paintbrush toggle ensures consistent tool return behavior for predictable workflows.
+
+</div>
+
+---
+
+<div class="feature-section" id="visibility-functions">
+
+## Visibility Functions
+
+| **Command** | **Purpose** |
+| --- | --- |
+| `(gimp-items-set-visible)` | Set the visibility of a vector list of items |
+
+**Implementation**: Allows setting the visibility of a vector list of items in bulk, streamlining visibility management for layers, paths, or other drawable items in complex compositions with many elements.
+
+</div>
+
+---
+
+<div class="feature-section" id="brush-control-functions">
+
+## Brush Control Functions
+
+| **Command** | **Purpose** |
+| --- | --- |
+| `(gimp-context-get-brush-eraser-scale)` | Returns the Paint Tool eraser scale |
+| `(gimp-context-get-brush-jitter)` | Returns the Paint Tool jitter slider value |
+| `(gimp-context-set-brush-jitter)` | Set _all_ the Paint Tools jitter slider values |
+
+**Implementation**:
+
+- **Eraser Scale**: Gets the Paint Tool eraser scale option for use with eraser toggles, allowing painting tool presets to have specific sized erasers. Erase pencil lines with a big eraser, cut into brush strokes with a smaller eraser.
+- **Jitter Control**: Enables getting and setting jitter values across all Paint Tools (eraser, paintbrush, airbrush, pencil) for consistent brush behavior and seamless tool switching.
+
+</div>
+
+---
+
+<div class="feature-section" id="layer-functions">
+
+## Layer Functions
+
+| **Command** | **Purpose** |
+| --- | --- |
+| `(gimp-layer-combine-alpha)` | Combine the alpha channels of two layers |
+
+**Implementation**: This procedure combines the alpha channels of two layers and writes the result into the first layer's alpha channel using operations like ADD, SUBTRACT, INTERSECT, or REPLACE for advanced compositing workflows.
+
+</div>
+
+---

@@ -12,25 +12,14 @@ This guide explains how to manage the 'gimp-data' submodule within the Artbox pr
 
 ## Understanding the Submodule
 
+The relationship between the components works as follows:
+
 - **Artbox Build Repository**: This is the [parent repository](https://gitlab.gnome.org/pixelmixer/artbox) that contains the 'gimp-data' submodule.
 - **Artbox Data Submodule**: The directory within the Artbox repository that links to the [Artbox data repository](https://gitlab.gnome.org/pixelmixer/artbox-data).
 - **Specific Commit in Artbox Data**: The submodule is fixed to a specific commit in the Artbox data repository.
 - **.gitmodules File**: This file in the parent repository specifies the submodule's repository location.
 
-```mermaid
-graph LR;
-    subgraph Parent Repo / Superproject
-        A([Artbox Build Repository])
-        D([.gitmodules File])
-    end
-    B([Artbox Data Submodule])
-    C([Specific Commit in Artbox Data Repository])
-
-    A --> B
-    B --> C
-    D -.-> B
-```
-_Diagram 1: This diagram illustrates the relationship between the Artbox build repository (superproject), the gimp-data submodule, and its specific commit. The .gitmodules file specifies the submodule details._
+The parent repository (superproject) contains a reference to a specific commit in the Artbox data repository. This creates a stable snapshot of the data that corresponds to the build version.
 
 ## Customizing the Submodule
 

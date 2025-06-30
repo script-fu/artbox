@@ -3,7 +3,7 @@ type: docs
 url: "hub/feature-test/folder/Paintbrush-High-Quality-Force"
 ---
 
-# Objective
+# Paintbrush High Quality Force
 
 Improve the quality of the painting.
 
@@ -13,10 +13,28 @@ Improve the quality of the painting.
 
 ## Design Revisions
 
-| **Revision**  | **Current Design**  | **Issues**  | **Changes** |
-|--------------------------------------------|---------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------|-----------------------------------------------------------|
-| **1. Enable High Quality Force** | It is not active | The Force parameter is not working as well as it could  | Enable |
+{{< cards >}}
+  {{< card link="#enable-high-quality-force" title="Enable High Quality Force" subtitle="Activate high quality force parameter for improved painting." icon="beaker" >}}
+{{< /cards >}}
+
+---
+
+<div class="feature-section" id="enable-high-quality-force">
+
+## Enable High Quality Force
+
+**Current Design**: It is not active
+
+**Issues**: The Force parameter is not working as well as it could
+
+**Changes**: Enable
+
+---
 
 ## Notes
 
 This feature is the wonderful work of [Ell] (https://gitlab.gnome.org/ell). Artbox simply enables the option by default. Performance was an issue several years ago, which led to it being deactivated.
+
+</div>
+
+---

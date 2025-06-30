@@ -5,7 +5,7 @@ url: "hub/docs/folder/Technical-Guide"
 
 # Introduction
 
-The diagram illustrates the flow of the development process. The GIMP development branch is the foundation, and the 'convert-to-artbox' branch serves as the common base for all feature branches. These feature branches contribute to the final 'Artbox' branch, which represents the integrated work from all features.
+This guide describes the structured branching model used to integrate GIMP development updates into the Artbox project.
 
 ## Contents
 
@@ -19,27 +19,9 @@ The diagram illustrates the flow of the development process. The GIMP developmen
    - [Example of a Compound Feature Branch: feature-paintbrush-options](#example-of-a-compound-feature-branch-feature-paintbrush-options)
 - [Notes](#notes)
 
-Branch Development Flow for GIMP to Artbox
+## Branch Development Flow for GIMP to Artbox
 
----
-```mermaid
-graph LR;
-    A([GIMP Dev])
-    B([Convert to Artbox])
-    C([Feature A])
-    D([Feature B])
-    E([Feature C])
-    F([Artbox])
-
-    A --> B
-    B --> C
-    B --> D
-    B --> E
-    C --> F
-    D --> F
-```
----
-_Diagram 4: This diagram illustrates the flow from the GIMP Dev branch to the final Artbox branch. The 'convert-to-artbox' branch is created from GIMP Dev, and it supports the development of multiple feature branches. Each feature branch, originates from the common 'convert-to-artbox' base branch. Finally, the individual feature branches merge into the 'artbox' branch_
+The development process follows a structured branching model where the GIMP development branch serves as the foundation. The 'convert-to-artbox' branch is created from GIMP Dev and serves as the common base for all feature branches. These feature branches contribute to the final 'artbox' branch, which represents the integrated work from all features.
 
 ### Updating Artbox to GIMP Dev
 

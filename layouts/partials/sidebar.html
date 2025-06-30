@@ -8,6 +8,16 @@
 {{- $navRoot := cond (eq site.Home.Type "docs") site.Home $context.FirstSection -}}
 {{- $pageURL := $context.RelPermalink -}}
 
+{{/* For home page, we want to show hub's children directly */}}
+{{- if eq $context.Kind "home" -}}
+  {{- $hubSection := site.GetPage "/hub" -}}
+  {{- if $hubSection -}}
+    {{- $navRoot = $hubSection -}}
+  {{- else -}}
+    {{- $navRoot = site.Home -}}
+  {{- end -}}
+{{- end -}}
+
 {{/* EXPERIMENTAL */}}
 {{- if .context.Params.sidebar.hide -}}
   {{- $disableSidebar = true -}}
@@ -49,10 +59,31 @@
       {{ .context.Scratch.Set "enableFooterSwitches" true }}
     {{- else -}}
       <ul class="hx:flex hx:flex-col hx:gap-1 hx:max-md:hidden">
-        {{- if $navRoot -}}
+        {{- $hubSection := site.GetPage "/hub" -}}
+        {{- if and (eq site.Home.Type "docs") $hubSection (or (eq $context.RelPermalink site.Home.RelPermalink) (eq $context.FirstSection $hubSection) ($hubSection.IsAncestor $context)) -}}
+          {{/* Landing page or hub section pages: Show hub's children directly at top level */}}
+          {{- with $items := union $hubSection.RegularPages $hubSection.Sections -}}
+            {{- $items = where $items "Params.sidebar.exclude" "!=" true -}}
+            {{- range $items.ByWeight }}
+              {{- if .Params.sidebar.separator -}}
+                <li class="[word-break:break-word] hx:mt-5 hx:mb-2 hx:px-2 hx:py-1.5 hx:text-sm hx:font-semibold hx:text-gray-900 hx:first:mt-0 hx:dark:text-gray-100">
+                  <span class="hx:cursor-default">{{ partial "utils/title" . }}</span>
+                </li>
+              {{- else -}}
+                {{- $active := eq $pageURL .RelPermalink -}}
+                {{- $shouldOpen := or (.Params.sidebar.open) (.IsAncestor $context) $active | default true }}
+                <li class="{{ if $shouldOpen }}open{{ end }}">
+                  {{- $linkTitle := partial "utils/title" . -}}
+                  {{- template "sidebar-item-link" dict "context" . "active" $active "title" $linkTitle "link" .RelPermalink -}}
+                  {{- template "sidebar-tree" dict "context" . "page" $context "pageURL" $pageURL "level" 1 "toc" false -}}
+                </li>
+              {{- end -}}
+            {{- end -}}
+          {{- end -}}
+        {{- else if $navRoot -}}
           {{ template "sidebar-main" (dict "context" $navRoot "page" $context  "pageURL" $pageURL) }}
         {{- else -}}
-          {{/* Home page fallback - show main menu items */}}
+          {{/* Fallback - show main menu items */}}
           {{- range site.Menus.main -}}
             {{- if and (ne .Params.type "search") (ne .Name "sweeneyworks") -}}
               {{- $link := .URL -}}

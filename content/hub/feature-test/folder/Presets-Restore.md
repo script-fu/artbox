@@ -3,22 +3,36 @@ type: docs
 url: "hub/feature-test/folder/Presets-Restore"
 ---
 
-# Objective
+# Presets Restore
 
 Improve the usability of Tool Presets in Artbox.
 
 ## Design Revisions
 
-| **Revision**  | **Current Design**  | **Issues**  | **Changes** |
-|--------------------------------------------|---------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------|-----------------------------------------------------------|
-| **1. Double click active preset to restore** | Clicking an active preset has no affect | User has to select another preset then reselect to restore options to the save preset | Double clicking restores the preset. |
+{{< cards >}}
+  {{< card link="#double-click-active-preset-to-restore" title="Double Click Active Preset to Restore" subtitle="Quick restoration of active preset settings with double-click." icon="refresh" >}}
+{{< /cards >}}
 
-### Changes
+---
 
-1. **Double-Click to Restore Active Preset**:
-     - Previously, clicking on an already active preset had no effect, requiring the user to select a different preset before selecting the desired one to restore its settings.
-     - The `gimp_container_icon_view_item_activated` function was updated to call `gimp_context_tool_preset_changed` when a preset is double-clicked, restoring the preset's tool options immediately.
+<div class="feature-section" id="double-click-active-preset-to-restore">
 
-### **Benefits**
+## Double Click Active Preset to Restore
 
-- This change simplifies the process of restoring Tool Preset options, providing a more efficient workflow by eliminating unnecessary clicks. Now, double-clicking an active preset will quickly restore its saved settings, improving the overall user experience.
+**Current Design**: Clicking an active preset has no affect
+
+**Issues**: User has to select another preset then reselect to restore options to the save preset
+
+**Current Design**: Clicking on an already active preset has no effect.
+
+**Issues**: Users must select a different preset before reselecting the desired one to restore its settings, creating unnecessary steps.
+
+**Changes**: Double clicking restores the preset immediately.
+
+**Implementation**: The `gimp_container_icon_view_item_activated` function was updated to call `gimp_context_tool_preset_changed` when a preset is double-clicked, restoring the preset's tool options instantly and eliminating the need for multi-step workflows.
+
+**Benefits**: Simplifies the process of restoring Tool Preset options, providing a more efficient workflow and improved user experience through direct preset restoration.
+
+</div>
+
+---

@@ -26,7 +26,7 @@ When Artbox is installed via AppImage or compiled from source, the default theme
 
 These CSS rules are independent of Artbox. Artbox minimally alters the system theme, ensuring continuity with the OS look. Artbox themes, included in the AppImage and compiled versions, are custom CSS styles designed for better usability in Artbox. For a GIMP manual install:
 
-1. [Download](/artbox/downloads/themes.zip)
+1. [Download](../../../downloads/themes.zip)
 2. Once the themes.zip has downloaded, extract the themes directory.
 3. Select that folder by adding it here: **Edit->Preferences->Folders->Themes**
 4. Restart and find the new themes in **Edit->Preferences->Interface->Theme**

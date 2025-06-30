@@ -3,32 +3,64 @@ type: docs
 url: "hub/feature-test/folder/Selection"
 ---
 
-# Objective
+# Selection
 
 Improve the quality of the painting experience in Artbox
 
-## Design Revisions
+{{< cards >}}
+  {{< card link="#auto-commit" title="Auto Commit" subtitle="Automatically commit selections" icon="check-circle" >}}
+  {{< card link="#fill-selection" title="Fill Selection" subtitle="Auto-fill selections when made" icon="color-swatch" >}}
+  {{< card link="#auto-deselect" title="Auto Deselect" subtitle="Deselect after auto-fill" icon="x-circle" >}}
+{{< /cards >}}
 
-| **Revision**  | **Current Design**  | **Issues**  | **Changes** |
-|--------------------------------------------|---------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------|-----------------------------------------------------------|
-| **1. Auto commit** | The selection has to be committed before another selection can be made. | It makes drawing multiple areas snaggy. | An option to `Auto commit` when a selection is made |
-| **2. Fill Selection**   | New Feature | Workflow is faster and more like painting when a selection is auto filled | An option to `Fill selection` when a selection is made |
-| **3. Auto Deselect**   | New Feature  | Workflow is faster, select -> fill -> see -> select -> fill | An option to `Auto deselect` when a selection is made, used after an auto fill has been done |
+---
 
-### Changes
+<div class="feature-section" id="auto-commit" tabindex="-1">
 
-- **Auto Commit**:
-   - Added a new option to automatically commit a selection once it is made, eliminating the need to manually commit before creating another selection.
-   - This enhancement removes interruptions, making the process of drawing multiple areas smoother.
+## Auto Commit
 
-- **Fill Selection**:
-   - Introduced an option to automatically fill a selection once it is made.
-   - This feature streamlines the workflow by simulating a painting-like experience, reducing the steps required to complete a filled selection.
+**Current Design**: The selection has to be committed before another selection can be made.
 
-- **Auto Deselect**:
-   - Added an option to automatically deselect a selection after it has been auto-filled.
-   - This update enables a continuous workflow where users can effortlessly transition from selecting to filling and back to selecting again.
+**Issues**: It makes drawing multiple areas snaggy.
 
-### **Benefits**
+**Changes**: An option to `Auto commit` when a selection is made
 
-- These updates significantly enhance the usability and efficiency of the painting workflow. The `Auto Commit` feature ensures seamless transitions between selections, `Fill Selection` makes the workflow faster and more intuitive, and `Auto Deselect` reduces repetitive actions, allowing users to focus on creative tasks rather than manual steps.
+**Implementation**: Added an automatic selection commit option that eliminates the need for manual commitment when creating new selections, enabling seamless multi-area selection workflows.
+
+**Benefits**: Removes workflow interruptions by automatically committing selections, making the process of drawing multiple areas smoother and more intuitive for rapid selection tasks.
+
+</div>
+
+<div class="feature-section" id="fill-selection" tabindex="-1">
+
+## Fill Selection
+
+**Current Design**: New Feature
+
+**Issues**: Workflow is faster and more like painting when a selection is auto filled
+
+**Changes**: An option to `Fill selection` when a selection is made
+
+**Implementation**: Introduced an automatic selection filling option that immediately fills selections upon creation, creating a painting-like workflow experience.
+
+**Benefits**: Streamlines the workflow by simulating a natural painting experience, reducing manual steps and enabling faster completion of filled selections for rapid artistic iteration.
+
+</div>
+
+<div class="feature-section" id="auto-deselect" tabindex="-1">
+
+## Auto Deselect
+
+**Current Design**: New Feature
+
+**Issues**: Workflow is faster, select -> fill -> see -> select -> fill
+
+**Changes**: An option to `Auto deselect` when a selection is made, used after an auto fill has been done
+
+**Implementation**: Added an automatic deselection option that activates after auto-fill operations, enabling continuous select-fill-select workflows without manual deselection steps.
+
+**Benefits**: Enables a continuous workflow where users can effortlessly transition from selecting to filling and back to selecting again, focusing on creative tasks rather than repetitive manual deselection actions.
+
+</div>
+
+

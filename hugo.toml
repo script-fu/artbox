@@ -16,7 +16,7 @@ displayTitle = true
 displayLogo = true
 
 [params.navbar.logo]
-path = "images/favicon/artbox-logo.svg"
+path = "images/favicon/android-chrome-192x192.png"
 link = "/artbox/"
 width = 40
 height = 40
@@ -83,6 +83,12 @@ weight = 8
 name = "Installation"
 pageRef = "hub/docs/folder/Installation"
 weight = 3
+
+[[menu.main]]
+name = "Themes"
+pageRef = "hub/themes/folder/"
+weight = 3
+
 
 [[menu.main]]
 name = "Funky-Fu"

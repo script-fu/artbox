@@ -3,77 +3,177 @@ type: docs
 url: "hub/feature-test/folder/Resource-Control"
 ---
 
-# Objective
+# Resource Control
 
 Improve the usability and data saving of resources and Tool Presets in Artbox.
 
-## Revised Preferences
+{{< cards >}}
+  {{< card link="#deactivate-automatic-saving" title="Deactivate Automatic Saving" subtitle="Control when resources are saved" icon="cog" >}}
+  {{< card link="#immediate-saving" title="Immediate Saving" subtitle="Save specific changes immediately" icon="save" >}}
+  {{< card link="#save-as-functionality" title="Save As Functionality" subtitle="Custom naming for resources" icon="save-as" >}}
+  {{< card link="#save-all-changes" title="Save All Changes" subtitle="Batch save all active tool assets" icon="archive" >}}
+  {{< card link="#simpler-menus" title="Simpler Menus" subtitle="Hide rarely used menu items" icon="menu" >}}
+  {{< card link="#brush-editor-enhancements" title="Brush Editor Enhancements" subtitle="Improved brush type handling" icon="pencil" >}}
+  {{< card link="#locked-resource-notification" title="Locked Resource Notification" subtitle="Clear feedback for locked resources" icon="lock-closed" >}}
+  {{< card link="#copy-paste-new-brush" title="Copy and Paste as New Brush" subtitle="Create brushes from drawables" icon="duplicate" >}}
+  {{< card link="#tool-preset-name-display" title="Tool Preset Name Display" subtitle="Show active preset in title" icon="tag" >}}
+  {{< card link="#preferences-folder-options" title="Preferences Folder Options" subtitle="Manage resource folder paths" icon="folder" >}}
+  {{< card link="#resource-filtering" title="Resource Filtering" subtitle="Optional filtering and tagging" icon="filter" >}}
+  {{< card link="#icon-view-preview" title="Icon View Preview" subtitle="Simplified theme background" icon="photograph" >}}
+{{< /cards >}}
 
-- Preferences >
-  - Folders > Show the Copy Resource Location menu item
-  - Folders > Save resource changes on exit
-  - Interface > Resource Filtering > Enable Resource Filtering and Tagging
+---
 
-## Design Revisions
+<div class="feature-section" id="deactivate-automatic-saving" tabindex="-1">
 
-| **Revision**  | **Current Design**  | **Issues**  | **Changes** |
-|--------------------------------------------|---------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------|-----------------------------------------------------------|
-| **1. Deactivate automatic resource saving** | Saves are done when GIMP exits | Tweaks to resources in session can corrupt carefully set up tools with unwanted changes. | A Preference to 'Save resource changes on exit'
-| **2. Save specific resource changes immediately**   | Saves are done when GIMP exits | Changes to resources are lost if GIMP crashes or exits with a crash.  | Save immediately when clicked |
-| **3. Save As**   | Saves are done with default naming | The name of the saved resource is not the same as the filename, this is confusing.  | Save immediately with a naming option, Save As...|
-| **4. Save All** | If saves are done by the user on demand, as described in (2) or (3), a new issue arises| Changes to resources may be forgotten during the session. Saving one by one is error prone and time consuming | Add 'Save all the active tool assets' button and a 'Save all changes' button on the Preset Editor  |
-| **5. Simpler Menu** | Menu item 'Copy Resource Location' exists in several menus | Not used by most users, creates menu clutter |  A Preference to 'Show Copy Resource Location menu item'  |
-| **6. Button Bar and Menu Revised** | See menu items and Button Bar GUI in GIMP | Confusing item placement, Button Bar GUI out of step with updates from (1-5) |  Apply a consistent menu item position, and arrange Button Bars to support the changes  |
-| **7. Edit Brush deals with Parametric and Image types** | See Brushes Menu items | Confusion over brush types |  Double clicking an image type opens the image for editing, Double clicking a parametric type opens the Brush Editor |
-| **8. Inform the user about locked resources** | Folder locked resources can not be edited | User confusion | An informative message is displayed in the Brush Editor if the resource is locked |
-| **9. Copy and Paste as New Brush** | New Feature | Create a brush from the active drawable | Added to the Brushes Menu via a Script-Fu plug-in |
-| **10. Tool Preset Name in Tool Options Title** | New Feature | See the active Tool Preset name requires the Tool Preset Editor to be open or the Tool Preset selector to be in list mode | Added the active Tool Preset name after the Tool name in the Tool Options title. Tool Name | Tool Preset Name |
-| **11. Preferences Folder Options** | New Feature | Folders have to be manually added or removed per resource | Added a GUI to add, deactivate, or remove folder paths to a set of resources, allowing quick control over active resources |
-| **12. Resource Filtering** | New Feature | User never uses filtering and it takes up GUI space and adds complexity | Added Preference option, Interface > Resource Filtering > Enable Resource Filtering and Tagging |
-| **13. Icon View Preview** | Themes button appears in Icon view grid modes to toggle background colour of preview | Adds GUI clutter that also appears in the Tool Presets view, user sets once, button hangs around forever. | Hardcode the previews to use the theme background colour and hide the toggle button. |
+## Deactivate Automatic Saving
 
-### Changes
+**Current Design**: Saves are done when GIMP exits
 
-- **Resource Saving Preferences:**
-   - Introduced a new preference to toggle automatic resource saving on exit, preventing unwanted overwriting of user-set Tool Options during a session. This allows users to disable automatic saving and manually save specific changes when needed.
+**Issues**: Tweaks to resources in session can corrupt carefully set up tools with unwanted changes.
 
-- **Immediate Resource Saving:**
-   - Added functionality to save specific resource changes immediately upon request, ensuring that any modifications are persisted, even if the session ends unexpectedly. This avoids data loss in case of a crash.
+**Changes**: A Preference to 'Save resource changes on exit'
 
-- **Save As:**
-   - A 'Save As' feature was added, allowing users to name and save resources with custom filenames, enhancing clarity and preventing confusion between resource names and file names.
+**Implementation**: Added a user preference option to control when resource changes are saved, preventing automatic saving of temporary modifications that might compromise carefully configured tool setups.
 
-- **Save All:**
-   - Introduced a 'Save All' option to the Preset Editor, enabling users to save all active changes across tool presets, brushes, palettes, and other resources, reducing the need for manual per-resource saves.
+**Benefits**: Provides better control over resource preservation, allowing users to experiment with resource changes without fear of corrupting their carefully configured tools and presets.
 
-- **Simplified Menus and Button Bar:**
-   - Cleaned up the interface by providing an option to hide the 'Copy Resource Location' menu item, which was seldom used, thereby reducing menu clutter.
-   - Rearranged the Button Bar to reflect the new saving behaviors and align with the revised menus for consistency.
+</div>
 
-- **Brush Editor Enhancements:**
-   - Adjusted the behavior for brush types so that double-clicking on image-type brushes opens the image for editing, while double-clicking on parametric brushes opens the Brush Editor. This resolves the confusion around brush types.
+<div class="feature-section" id="immediate-saving" tabindex="-1">
 
-- **Locked Resource Notification:**
-   - When a resource is locked (due to folder permissions), the user will now receive an informative message in the Brush Editor, improving clarity on why the resource cannot be modified.
+## Immediate Saving
 
-- **Create New Brush from Drawable:**
-   - Added the ability to copy and paste a drawable as a new brush via a Script-Fu plug-in, accessible from the Brushes Menu.
+**Current Design**: Saves are done when GIMP exits
 
-- **Save Active Tool Assets:**
-   - Introduced a 'Save All Active Tool Assets' feature, allowing users to save all the active tool assets (brush, gradient, palette, dynamics) in a session for easier resource management.
+**Issues**: Changes to resources are lost if GIMP crashes or exits with a crash.
 
-- **Tool Preset Name in Tool Options Title:**
-   - Added the active Tool Preset name after the Tool name in the Tool Options title. Tool Name | Tool Preset Name.  We can see which Tool Preset is active from the Tool Options Title.
+**Changes**: Save immediately when clicked
 
-- **Preferences Folder Options:**
-   - Added a GUI to add, deactivate, or remove folder paths for a sets of resources, allowing quick control over in session resources.
+</div>
 
-- **Resource Filtering:**
-   - Added Preference option, Interface > Resource Filtering > Enable Resource Filtering and Tagging. This allows the user who does not use the filtering to have a simpler GUI.
+<div class="feature-section" id="save-as-functionality" tabindex="-1">
 
-- **Less clutter:**
-   - Hardcode the icon view previews to use the theme background colour and hide the Themes toggle button.
+## Save As Functionality
 
-### **Benefits**
+**Current Design**: Saves are done with default naming
 
-These changes aim to provide better control over resources and presets, allowing users to manage their assets more intuitively and prevent unintended modifications.
+**Issues**: The name of the saved resource is not the same as the filename, this is confusing.
+
+**Changes**: Save immediately with a naming option, Save As...
+
+</div>
+
+<div class="feature-section" id="save-all-changes" tabindex="-1">
+
+## Save All Changes
+
+**Current Design**: If saves are done by the user on demand, as described in (2) or (3), a new issue arises
+
+**Issues**: Changes to resources may be forgotten during the session. Saving one by one is error prone and time consuming
+
+**Changes**: Add 'Save all the active tool assets' button and a 'Save all changes' button on the Preset Editor
+
+</div>
+
+<div class="feature-section" id="simpler-menus" tabindex="-1">
+
+## Simpler Menus
+
+**Current Design**: Menu item 'Copy Resource Location' exists in several menus
+
+**Issues**: Not used by most users, creates menu clutter
+
+**Changes**: A Preference to 'Show Copy Resource Location menu item'
+
+</div>
+
+<div class="feature-section" id="brush-editor-enhancements" tabindex="-1">
+
+## Brush Editor Enhancements
+
+**Current Design**: See menu items and Button Bar GUI in GIMP / See Brushes Menu items
+
+**Issues**: Confusing item placement, Button Bar GUI out of step with updates / Confusion over brush types
+
+**Changes**: Apply a consistent menu item position, and arrange Button Bars to support the changes / Double clicking an image type opens the image for editing, Double clicking a parametric type opens the Brush Editor
+
+</div>
+
+<div class="feature-section" id="locked-resource-notification" tabindex="-1">
+
+## Locked Resource Notification
+
+**Current Design**: Folder locked resources can not be edited
+
+**Issues**: User confusion
+
+**Changes**: An informative message is displayed in the Brush Editor if the resource is locked
+
+</div>
+
+<div class="feature-section" id="copy-paste-new-brush" tabindex="-1">
+
+## Copy and Paste as New Brush
+
+**Current Design**: New Feature
+
+**Issues**: Create a brush from the active drawable
+
+**Changes**: Added to the Brushes Menu via a Script-Fu plug-in
+
+</div>
+
+<div class="feature-section" id="tool-preset-name-display" tabindex="-1">
+
+## Tool Preset Name Display
+
+**Current Design**: New Feature
+
+**Issues**: See the active Tool Preset name requires the Tool Preset Editor to be open or the Tool Preset selector to be in list mode
+
+**Changes**: Added the active Tool Preset name after the Tool name in the Tool Options title. Tool Name | Tool Preset Name
+
+</div>
+
+<div class="feature-section" id="preferences-folder-options" tabindex="-1">
+
+## Preferences Folder Options
+
+**Current Design**: New Feature
+
+**Issues**: Folders have to be manually added or removed per resource
+
+**Changes**: Added a GUI to add, deactivate, or remove folder paths to a set of resources, allowing quick control over active resources
+
+</div>
+
+<div class="feature-section" id="resource-filtering" tabindex="-1">
+
+## Resource Filtering
+
+**Current Design**: New Feature
+
+**Issues**: User never uses filtering and it takes up GUI space and adds complexity
+
+**Changes**: Added Preference option, Interface > Resource Filtering > Enable Resource Filtering and Tagging
+
+</div>
+
+<div class="feature-section" id="icon-view-preview" tabindex="-1">
+
+## Icon View Preview
+
+**Current Design**: Themes button appears in Icon view grid modes to toggle background colour of preview
+
+**Issues**: Adds GUI clutter that also appears in the Tool Presets view, user sets once, button hangs around forever.
+
+**Changes**: Hardcode the previews to use the theme background colour and hide the toggle button.
+
+**Implementation**: Automatically configured icon view previews to use theme background colors and removed the persistent toggle button, eliminating interface clutter while maintaining visual consistency.
+
+**Benefits**: Reduces GUI complexity by removing a rarely-used persistent button, while maintaining appropriate theme-based preview backgrounds for better visual integration.
+
+</div>
+
+
