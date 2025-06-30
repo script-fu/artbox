@@ -422,24 +422,57 @@ export GIMP_VERSION="3.1"
 
 ## Desktop Launcher (System Specific)
 
-Alternatively you can launch Artbox using a desktop launcher, save the following as a file to your desktop, and then right click it, properties, permissions, `Allow executing file as program`.
+You can launch Artbox using a desktop launcher. Save the following as a file to your desktop, then right click it, go to Properties, Permissions, and check "Allow executing file as program".
 
-```shell
+```ini
 [Desktop Entry]
 Exec=gnome-terminal -- /home/your-home/code/bash/artbox-run.sh
 Terminal=True
-Icon=cinnamon-panel-launcher
+Icon=/home/your-home/code/gnome/build/artbox/gimp-data/images/logo/artbox-logo.svg
 Type=Application
-Name[en_GB]=Artbox
+Name=Artbox
 ```
 
-You'll have to change `your-home` to get it to work, this is a Linux thing, on my system the line would be:
+Change `your-home` to your actual username or home directory. For example:
 
-```sh
-gnome-terminal -- /home/mark/code/bash/artbox-run.sh
+```ini
+Exec=gnome-terminal -- /home/mark/code/bash/artbox-run.sh
+Icon=/home/mark/code/gnome/build/artbox/gimp-data/images/logo/artbox-logo.svg
 ```
 
-It also assumes you are using a specific desktop environment (Cinnamon). My tip would be to look at how to create a desktop launcher for your particular system, or copy and edit an existing one you may have.
+### Using the Artbox Logo and Desktop Integration Files
+
+When you build and install Artbox, the build process provides files for desktop integration:
+
+- Logo: `${GIMP_PREFIX}/share/artbox/logos/artbox-logo.svg`
+- Desktop launcher template and instructions: `${GIMP_PREFIX}/share/artbox/desktop-integration/README.md` and `artbox.desktop`
+
+For development builds, you can use the logo directly from the source tree:
+```
+Icon=/home/your-home/code/gnome/build/artbox/gimp-data/images/logo/artbox-logo.svg
+```
+
+You can also use a generic system icon:
+```
+Icon=applications-graphics
+```
+
+To set up a launcher:
+1. Copy the template:
+   ```bash
+   cp ${GIMP_PREFIX}/share/artbox/desktop-integration/artbox.desktop ~/.local/share/applications/artbox.desktop
+   ```
+2. Edit the file to set the correct executable path and icon location.
+3. Save it to both your desktop (for quick access) and to `~/.local/share/applications/artbox.desktop` (so your Linux desktop environment can recognize and list Artbox in your application menu or search).
+4. Make the file executable:
+   - Terminal:
+     ```bash
+     chmod +x ~/Desktop/artbox.desktop
+     chmod +x ~/.local/share/applications/artbox.desktop
+     ```
+   - GUI: Right-click the file, Properties, Permissions, check "Allow executing file as program"
+
+For more details or troubleshooting, see the README.md file in the desktop-integration directory.
 
 ## Automatically Updating to the Latest Development Version
 
