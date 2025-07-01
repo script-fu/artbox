@@ -5,7 +5,7 @@ url: "hub/docs/folder/Installation"
 
 # Introduction
 
-Artbox has an [AppImage](https://script-fu.github.io/artbox/hub/docs/folder/AppImage/) made for a Debian based system, that is available to download. If you are interested in building your own version from the source code then read on. Artbox is a modified version of GIMP, if you can build GIMP, you can build Artbox. The program relies on many parts to function and many apps are used to construct it. You need to create a _build environment_ for it first, like an aquarium for a fish. The following is a guide, for a Debian system. It will be a unique process for your system, and may require further research. Good luck!
+Artbox has an [AppImage](../AppImage/) made for a Debian based system, that is available to download. If you are interested in building your own version from the source code then read on. Artbox is a modified version of GIMP, if you can build GIMP, you can build Artbox. The program relies on many parts to function and many apps are used to construct it. You need to create a _build environment_ for it first, like an aquarium for a fish. The following is a guide, for a Debian system. It will be a unique process for your system, and may require further research. Good luck!
 
 ## Content
 
@@ -24,7 +24,7 @@ Artbox has an [AppImage](https://script-fu.github.io/artbox/hub/docs/folder/AppI
 
 ## Git
 
-Before we dive into building Artbox, you'll need to install and learn the basics of Git, a version control system that helps you manage and share source code. Git is an essential tool for any developer, and understanding how to use it will make the rest of the build process much easier. If you're new to Git, take a few minutes to read through [Using Git on Linux](https://script-fu.github.io/artbox/hub/guides/folder/using-git-on-linux/) to get up to speed.
+Before we dive into building Artbox, you'll need to install and learn the basics of Git, a version control system that helps you manage and share source code. Git is an essential tool for any developer, and understanding how to use it will make the rest of the build process much easier. If you're new to Git, take a few minutes to read through [Using Git on Linux](../../../guides/folder/Using-Git-on-Linux/) to get up to speed.
 
 ## Dependencies
 
@@ -48,32 +48,34 @@ PACKAGES=(
   clang
   cmake
   lld
-  libomp-dev
+  valac
+  desktop-file-utils
+  gobject-introspection
+  libgtk-3-bin
+  xvfb
+  pkg-config
+  build-essential
+  xauth
+  xsltproc
   appstream
   at-spi2-core
-  desktop-file-utils
+  bison
   ffmpeg
+  flex
   gettext
-  ghostscript
-  gi-docgen
-  git
   gjs
   glib-networking
-  gobject-introspection
   graphviz
   graphviz-dev
-  hicolor-icon-theme
   iso-codes
   libaa1-dev
   libappstream-glib-dev
+  libarchive-dev
   libbz2-dev
   libcfitsio-dev
-  libdbus-glib-1-dev
-  libexif-dev
   libgexiv2-dev
   libgirepository1.0-dev
   libgs-dev
-  libgtk-3-bin
   libgtk-3-dev
   libgudev-1.0-dev
   libheif-dev
@@ -81,41 +83,47 @@ PACKAGES=(
   libjxl-dev
   liblcms2-dev
   liblzma-dev
+  libmaxflow-dev
   libmng-dev
   libmypaint-dev
+  libomp-dev
   libopenexr-dev
   libopenjp2-7-dev
   libpoppler-glib-dev
+  libqoi-dev
   libraw-dev
-  libraw20
   librsvg2-dev
   libspiro-dev
   libsuitesparse-dev
   libtiff-dev
-  libtiff5-dev
-  libtool
   libumfpack5
   libunwind-dev
   libwebp-dev
   libwmf-dev
   libxmu-dev
   libxpm-dev
-  luajit
-  meson
   mypaint-brushes
   poppler-data
   python3
   python3-gi
-  valac
-  xauth
-  xsltproc
-  xvfb
-  xz-utils
-  yelp-tools
-  # Graphics acceleration packages
+  python3-gi-cairo
+  hicolor-icon-theme
+  shared-mime-info
   libgl1-mesa-dev
   libgl1-mesa-dri
   libegl1-mesa-dev
+  git
+  meson
+  gi-docgen
+  ghostscript
+  libdbus-glib-1-dev
+  libexif-dev
+  libraw20
+  libtiff5-dev
+  libtool
+  luajit
+  xz-utils
+  yelp-tools
 )
 
 # Define a function to install a package and report failure

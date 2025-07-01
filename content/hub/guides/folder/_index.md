@@ -14,6 +14,7 @@ Welcome to this series of guides designed for those who are new to Linux and wan
   {{< card link="Installing-Debian" title="Installing Debian">}}
   {{< card link="System-Backup-Clonezilla" title="System Backup Using Clonezilla">}}
   {{< card link="Using-Git-on-Linux" title="Using Git on Linux">}}
+  {{< card link="GitLab-CI" title="GitLab CI">}}
 {{< /cards >}}
 
 ![duplicator](/images/gallery/duplicator.webp)
