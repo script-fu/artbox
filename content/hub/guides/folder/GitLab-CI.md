@@ -1,6 +1,6 @@
 ---
 type: docs
-url: "hub/docs/folder/CIPipeline"
+url: "hub/guides/folder/GitLab-CI"
 ---
 
 # GitLab CI/CD Overview

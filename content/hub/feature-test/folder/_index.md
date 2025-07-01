@@ -65,6 +65,7 @@ Artbox extends GIMP with numerous enhancements focused on digital art workflows,
 
 {{< cards >}}
   {{< card link="Curves-View" title="Curves View" subtitle="Enhanced curve editing with improved grid visibility">}}
+  {{< card link="Layer-Mode-Recents" title="Layer Mode Recents" subtitle="Dynamic recent modes list with session persistence">}}
   {{< card link="Layer-Picking" title="Layer Picking" subtitle="Improved layer selection workflow">}}
   {{< card link="Tool-Tips" title="Tool Tips" subtitle="Enhanced contextual help system">}}
 {{< /cards >}}

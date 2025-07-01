@@ -120,7 +120,7 @@ To debug issues with GIMP, it's often necessary to build debug versions of the u
 
 There is a switch to set when we build these libraries and GIMP that allow the
 debugging to take place. We build debug versions, using the same method as described
-[here](https://script-fu.github.io/artbox/hub/docs/folder/Installation/#build-artbox-babl-and-gegl), except that `build_type` is set to `build_type="debug"`. Build all three with the debug option set before continuing.
+[here](../../../docs/folder/Installation/#build-artbox-babl-and-gegl), except that `build_type` is set to `build_type="debug"`. Build all three with the debug option set before continuing.
 
 Also, keep in mind that you'll need to rebuild with the build_type set to "debugoptimized" when you're finished debugging, in order to get the best performance out of GIMP.
 
@@ -128,7 +128,7 @@ Also, keep in mind that you'll need to rebuild with the build_type set to "debug
 
 The following bash script helps automate the process of launching GIMP in debug mode using GDB. It checks for necessary files and environment variables before running the debugger. When prompted, if you choose 'y', the script will break at the main function to check if debug symbols are available. At the GDB prompt, use 'info sharedlibrary' to view the availability of symbols. Missing symbols will be indicated with an asterisk (*).
 
-Ensure you have a 'build_env.sh' [file](https://script-fu.github.io/artbox/hub/docs/folder/Installation/#environment-variables) in the same directory. This file should define environment variables, such as GIMP_PREFIX, required for the GIMP build.
+Ensure you have a 'build_env.sh' [file](../../../docs/folder/Installation/#environment-variables) in the same directory. This file should define environment variables, such as GIMP_PREFIX, required for the GIMP build.
 
 ```bash
 #!/usr/bin/env bash

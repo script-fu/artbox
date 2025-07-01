@@ -33,7 +33,7 @@ Improve the quality of the painting.
 
 ## Notes
 
-This feature is the wonderful work of [Ell] (https://gitlab.gnome.org/ell). Artbox simply enables the option by default. Performance was an issue several years ago, which led to it being deactivated.
+This feature is the wonderful work of [Ell](https://librearts.org/2020/05/interview-with-ell/). Artbox simply enables the option by default. Performance was an issue several years ago, which led to it being deactivated.
 
 </div>
 

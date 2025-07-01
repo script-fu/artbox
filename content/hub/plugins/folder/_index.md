@@ -48,6 +48,6 @@ Remove the `share/artbox/` path.
 
 ### Related Sites
 
-[Funky-Fu](https://script-fu.github.io/funky/)
-[GIMP documentation](https://docs.gimp.org/en/gimp-concepts-script-fu.html)
-[Scheme](https://www.scheme.org/)
+- [Funky-Fu](https://script-fu.github.io/funky/)  
+- [GIMP documentation](https://docs.gimp.org/en/gimp-concepts-script-fu.html)  
+- [Scheme](https://www.scheme.org/)
