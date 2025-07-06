@@ -176,4 +176,41 @@ Improve the usability and data saving of resources and Tool Presets in Artbox.
 
 </div>
 
+---
+
+## Development Challenges
+
+**Architectural Complexity**
+
+Resource Control represents one of the most comprehensive feature implementations in Artbox due to GIMP's unified resource architecture. The feature required modifications across 74 files with over 5,000 lines of changes, touching every layer of the application from core data management to user interface elements.
+
+**Interconnected Systems**
+
+GIMP's resource system (brushes, gradients, patterns, palettes, tool presets) shares unified factories, data models, action handlers, and UI widgets. Modifying saving behavior for one resource type necessitates coordinated updates across all resource types to maintain consistency. This architectural reality makes isolated changes impossible.
+
+**Cross-Cutting Implementation**
+
+The feature spans multiple subsystems simultaneously:
+- Core data factories and object models
+- Action system commands and handlers
+- Widget hierarchy and editor components
+- Menu system integration and sensitivity
+- Preferences storage and management
+- Build system configuration
+
+**Why Monolithic Approach Was Required**
+
+Alternative implementation strategies proved unworkable:
+- **Gradual Implementation**: Would leave the system in broken intermediate states
+- **Feature Flags**: Would require maintaining dual code paths permanently throughout the codebase
+- **Modular Separation**: Impossible due to circular dependencies and compilation requirements
+
+**API Breaking Changes**
+
+Core function signatures required modification to support custom naming functionality. These changes propagated through the entire codebase, forcing synchronized updates across all resource-handling components to maintain API consistency.
+
+**Build-Time Feature Control**
+
+To manage this complexity, Resource Control can be included or excluded at build time through construction scripts, providing deployment flexibility while maintaining code integrity.
+
 
