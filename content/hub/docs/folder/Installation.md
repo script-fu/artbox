@@ -329,7 +329,7 @@ if [ "$COMPILE_ONLY" == "true" ]; then
 
   # Update the git submodule for the chosen fork
   cd "${GIMP_PREFIX}/build/$BUILD_FORK"
-  git submodule update
+  git submodule update --init
 
   # Create and navigate to the build directory
   mkdir -p "${GIMP_PREFIX}/build/$BUILD_FORK/_build"
@@ -387,7 +387,7 @@ echo -e "\n*** Building $BUILD_FORK ***\n"
 
 # Update the git submodule for the chosen fork
 cd "${GIMP_PREFIX}/build/$BUILD_FORK"
-git submodule update
+git submodule update --init
 
 # Create and navigate to the build directory
 mkdir -p "${GIMP_PREFIX}/build/$BUILD_FORK/_build"

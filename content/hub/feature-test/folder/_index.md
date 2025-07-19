@@ -73,6 +73,7 @@ Artbox extends GIMP with numerous enhancements focused on digital art workflows,
 ## Scripting & Automation
 
 {{< cards >}}
+  {{< card link="Commands-Dockable" title="Commands Dockable" subtitle="Visual grid interface for custom commands and plugins, replacing keyboard shortcuts with clickable macro palette">}}
   {{< card link="Script-Fu" title="Script-Fu Extensions" subtitle="Additional automation functions for workflow enhancement">}}
 {{< /cards >}}
 

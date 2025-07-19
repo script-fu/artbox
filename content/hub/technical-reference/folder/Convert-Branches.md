@@ -19,13 +19,11 @@ Convert branches modify GIMP master to support Artbox features and provide found
   {{< card link="#convert-meson" title="convert-meson" subtitle="Build system modifications" >}}
   {{< card link="#convert-dynamics-editor" title="convert-dynamics-editor" subtitle="Dynamics editor interface improvements" >}}
   {{< card link="#convert-context-all-merged" title="convert-context-all-merged" subtitle="Context system enhancements" >}}
-  {{< card link="#convert-pref-all-merged" title="convert-pref-all-merged" subtitle="Preferences system modifications" >}}
   {{< card link="#convert-paintbrush-all-merged" title="convert-paintbrush-all-merged" subtitle="Comprehensive paintbrush system overhaul" >}}
   {{< card link="#convert-force-artbox-config" title="convert-force-artbox-config" subtitle="Artbox configuration enforcement" >}}
   {{< card link="#convert-name" title="convert-name" subtitle="Application name changes from GIMP to Artbox" >}}
   {{< card link="#convert-brush-aspect-ratio" title="convert-brush-aspect-ratio" subtitle="Brush aspect ratio enhancements" >}}
   {{< card link="#convert-boolean-options" title="convert-boolean-options" subtitle="Boolean option handling improvements" >}}
-  {{< card link="#convert-icon-picker" title="convert-icon-picker" subtitle="Icon picker interface enhancements" >}}
   {{< card link="#convert-tool-tips-option" title="convert-tool-tips-option" subtitle="Tool tips configuration system" >}}
   {{< card link="#convert-help-id" title="convert-help-id" subtitle="Help system identification" >}}
   {{< card link="#convert-curve-view" title="convert-curve-view" subtitle="Curve editing interface enhancements with 4K display support" >}}
@@ -39,6 +37,7 @@ Convert branches modify GIMP master to support Artbox features and provide found
   {{< card link="#convert-display-options" title="convert-display-options" subtitle="Display configuration options" >}}
   {{< card link="#convert-supress-timer-prints" title="convert-supress-timer-prints" subtitle="Timer print suppression" >}}
   {{< card link="#convert-brush-preview" title="convert-brush-preview" subtitle="Brush preview functionality" >}}
+  {{< card link="#convert-commands-dockable" title="convert-commands-dockable" subtitle="Visual grid interface for custom commands and plugins with dual-language execution support" >}}
   {{< card link="#convert-gitlab-ci" title="convert-gitlab-ci" subtitle="Complete CI/CD pipeline with AppImage infrastructure (2,993 lines)" >}}
 {{< /cards >}}
 
@@ -305,60 +304,6 @@ This enhancement enables tool switching behaviors, including the ability to rest
 
 </div>
 
-<div class="feature-section" id="convert-pref-all-merged">
-
-## convert-pref-all-merged
-
-**Purpose**: Preferences system overhaul introducing selection highlighting, path visualization, and configuration management for Artbox-specific features.
-
-**Role**: Configuration system expansion that provides the foundation for user customization and visual feedback systems throughout Artbox.
-
-**Files Modified** (10 files, 1343 insertions, 19 deletions):
-- `app/config/gimpcoreconfig.c` (93 insertions, 1 deletion): Core configuration with selection highlighting and path line properties
-- `app/config/gimpcoreconfig.h` (6 insertions): New configuration property declarations
-- `app/config/gimpdisplayconfig.c` (14 insertions): Display-specific configuration enhancements
-- `app/config/gimpdisplayconfig.h` (1 insertion): Display configuration property declarations
-- `app/config/gimpguiconfig.c` (566 insertions, 1 deletion): Major GUI configuration expansion with advanced user interface options
-- `app/config/gimpguiconfig.h` (38 insertions): Extensive GUI configuration property declarations
-- `app/config/gimprc-blurbs.h` (29 insertions): Configuration help text and descriptions
-- `app/dialogs/preferences-dialog-utils.c` (298 insertions): New preference dialog utility functions
-- `app/dialogs/preferences-dialog-utils.h` (8 insertions): Preference dialog utility declarations
-- `app/dialogs/preferences-dialog.c` (309 insertions, 1 deletion): Major preferences dialog expansion
-
-**Implementation**: This branch represents an enhancement to Artbox's configuration system with several improvements:
-
-1. **Selection Highlighting System**: Introduces selection visualization options:
-   - `PROP_SELECTION_HIGHLIGHTING`: Boolean toggle for selection highlighting feature
-   - `PROP_SELECTION_HIGHLIGHT_COLOR`: Customizable selection highlighting color (default: black with 0.5 alpha)
-   - `PROP_SELECTION_LINE_WIDTH`: Configurable selection line thickness
-   - `PROP_SELECTION_LINE_ALPHA`: Adjustable selection line transparency
-
-2. **Path Visualization**: Adds path rendering controls:
-   - `PROP_PATH_LINE_WIDTH`: Customizable path line thickness for better visibility
-   - `PROP_PATH_LINE_ALPHA`: Adjustable path line transparency for optimal contrast
-
-3. **GUI Configuration Expansion**: Enhancement to GUI configuration (566 lines added) including:
-   - User interface customization options
-   - Layout and behavior controls
-   - Accessibility features
-   - Workflow optimization settings
-
-4. **Preference Dialog System Overhaul**: Expansion of preference management:
-   - New utility functions (298 lines) for preference dialog construction
-   - Preference organization and categorization
-   - Improved user experience for configuration management
-   - Better validation and error handling
-
-5. **Configuration Architecture Enhancement**: Improved configuration system architecture with:
-   - Better property management and type safety
-   - Default value handling
-   - Improved configuration persistence
-   - Better integration with Artbox-specific features
-
-This overhaul provides users with customization capabilities while establishing a foundation for Artbox's visual feedback and user interface systems.
-
-</div>
-
 <div class="feature-section" id="convert-paintbrush-all-merged">
 
 ## convert-paintbrush-all-merged
@@ -519,27 +464,6 @@ This branch establishes Artbox as a distinct application while maintaining attri
    - **Flexibility**: Users can still disable this option to access non-destructive filter editing when needed
 
 These changes reflect Artbox's focus on streamlined workflows and user-friendly defaults, reducing the need for users to manually configure preferences while maintaining flexibility for users.
-
-</div>
-
-<div class="feature-section" id="convert-icon-picker">
-
-## convert-icon-picker
-
-**Purpose**: Icon picker interface enhancements.
-
-**Role**: Improved icon selection and management.
-
-**Files Modified**:
-- `app/widgets/gimpdynamicseditor.c`
-- `app/widgets/gimpiconpicker.c`
-- `app/widgets/gimpiconpicker.h`
-- `app/widgets/gimppropwidgets.c`
-- `app/widgets/gimppropwidgets.h`
-- `app/widgets/gimptemplateeditor.c`
-- `app/widgets/gimptoolpreseteditor.c`
-
-**Implementation**: Enhances the icon picker interface for better icon selection and visual feedback.
 
 </div>
 
@@ -908,6 +832,89 @@ This change supports Artbox's focus on providing a user experience by reducing d
    - Reduced need for manual configuration
 
 This enhancement aligns with Artbox's philosophy of providing sensible defaults that work well for most users while maintaining customization capabilities for workflows.
+
+</div>
+
+<div class="feature-section" id="convert-commands-dockable">
+
+## convert-commands-dockable
+
+**Purpose**: Commands Dockable implementation providing a visual grid interface for custom commands and plugins with dual-language execution support (Script-Fu and Python).
+
+**Role**: Core scripting and automation infrastructure that enables users to create, store, and execute custom commands through a visual macro palette interface.
+
+**Files Modified** (65 files, extensive additions):
+
+**Core Implementation**:
+- `app/core/gimpcommanditem.c` (new file): Complete GimpCommandItem data class with GimpConfig serialization
+- `app/core/gimpcommanditem.h` (new file): Command item class declarations and property definitions
+- `app/core/gimpcommanditem-load.c` (new file): .gcmd file loading implementation
+- `app/core/gimpcontext.c` (additions): Command item context integration with change notifications
+
+**Widget System**:
+- `app/widgets/gimpcommandeditor.c` (new file): Command editor widget with name entry, text view, description, and icon picker
+- `app/widgets/gimpcommandview.c` (new file): Individual command view with hover states and icon caching
+- `app/widgets/gimpcommandfactoryview.c` (new file): Factory view with grid layout and item-hovered signals
+- `app/widgets/gimpcommandcontainerview.c` (new file): Container view for command item management
+- `app/widgets/gimpcommandutils.c` (new file): Language-specific execution utilities with error handling
+
+**Action System**:
+- `app/actions/command-actions.c` (new file): Action group with new/duplicate/save/execute/delete operations
+- `app/actions/command-commands.c` (new file): Command operation callback implementations
+- `app/actions/command-editor-actions.c` (new file): Editor-specific action system
+- `app/actions/command-editor-commands.c` (new file): Editor command implementations
+
+**Configuration & Integration**:
+- `app/config/gimpcoreconfig.c` (additions): Command path configuration properties
+- `app/core/gimp-data-factories.c` (additions): Command factory initialization and cleanup
+- `app/dialogs/dialogs-constructors.c` (additions): Commands dialog constructor
+- `menus/commands-menu.ui` (new file): Commands dialog context menu
+- `menus/command-editor-menu.ui` (new file): Command editor context menu
+
+**Data Files**:
+- `data/commands/Hello-World.gcmd`: Script-Fu hello world example
+- `data/commands/Hello-Python-World.gcmd`: Python hello world example  
+- `data/commands/Guide-Fifths.gcmd`: Guide creation command
+- `data/commands/Python-Document-Info.gcmd`: Python document information command
+
+**Implementation**: This branch introduces a comprehensive command management system:
+
+1. **Dual-Language Execution**: Commands support both Script-Fu and Python through language-specific PDB eval procedures:
+   - Script-Fu commands use `plug-in-script-fu-eval`
+   - Python commands use `python-fu-eval`
+   - Language detection and routing with comprehensive error handling
+
+2. **Visual Grid Interface**: Factory view displays commands as clickable icons in a grid layout, providing a visual macro palette that replaces complex keyboard shortcuts with single-click access.
+
+3. **File Format Support**: .gcmd (GIMP Command) file format with GimpConfig serialization:
+   ```
+   # GIMP command item
+   (name "Command Name")
+   (command "script content")
+   (description "Description")
+   (language script-fu|python)
+   # end of GIMP command item
+   ```
+
+4. **Command Lifecycle Management**: Complete CRUD operations for command items:
+   - **Creation**: New empty commands with default properties
+   - **Duplication**: Clone existing commands for modification
+   - **Persistence**: Save commands to user and system directories
+   - **Execution**: Run commands through appropriate language interpreter
+   - **Deletion**: Remove commands with confirmation dialogs
+
+5. **UI Integration**: Full integration with GIMP's dialog and menu systems:
+   - Accessible through Windows > Dockable Dialogs > Commands
+   - Context menus for command operations
+   - Editor interface with metadata management
+   - Hover states and visual feedback
+
+6. **Resource Management**: Integration with GIMP's data factory system:
+   - Commands stored in `~/.config/GIMP/commands/` (user) and application data directory (system)
+   - Auto-loading on GIMP startup
+   - Resource container integration for standard GIMP workflows
+
+This implementation transforms the way users interact with GIMP automation, providing a visual alternative to complex scripting workflows and enabling rapid access to frequently used operations through an intuitive grid interface.
 
 </div>
 
