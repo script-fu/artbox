@@ -5,135 +5,168 @@ url: "hub/feature-test/folder/Commands-Dockable"
 
 # Commands Dockable
 
-Visual grid interface for custom commands and plugins, providing a clickable macro palette that replaces complex keyboard shortcuts.
+Command management and automation system for Artbox that supports manual execution and event-driven automation with signal coalescing and asynchronous execution.
 
 [YouTube demonstration video.](https://youtu.be/gzhXuNBbSFM)
 
-## Key Concepts and Definitions
+## Key Concepts
 
-- **Commands Dockable**: A dockable dialog for managing custom commands and plugins
-- **Command Editor**: Editor for creating and modifying command items
-- **Command Item**: A stored command with metadata including name, description, icon, and language
-- **Visual Grid**: Grid view mode displaying commands as clickable icons for easy access
+- **Commands Dockable**: A dockable dialog for managing custom commands with manual and event-driven execution
+- **Command Editor**: Interface for creating and editing commands with event trigger configuration and signal coalescing controls
+- **Command Item**: A stored command with name, description, icon, language, and optional event trigger with coalescing properties
+- **Event-Driven Automation**: Commands that automatically execute when Artbox events occur with signal storm protection
+- **Signal Monitoring**: System for connecting commands to 14 Artbox signals including layer changes, tool selection, and image modifications
+- **Signal Coalescing**: Per-command configurable thresholds (1-5000ms) prevent signal storms while maintaining responsiveness
 
 ## Core Features
 
 {{< cards >}}
-  {{< card link="#visual-grid-interface" title="Visual Grid Interface" subtitle="Clickable macro palette replacing keyboard shortcuts with visual command grid." icon="view-grid" >}}
-  {{< card link="#command-management" title="Command Management" subtitle="Create, duplicate, save, execute, and delete custom commands." icon="terminal" >}}
-  {{< card link="#visual-editor" title="Visual Editor" subtitle="Editor interface with text input and metadata management." icon="code" >}}
-  {{< card link="#file-format-support" title="File Format Support" subtitle="Standard .gcmd file format with serialization support." icon="save" >}}
+  {{< card link="#command-management" title="Command Management" subtitle="Create, edit, save, execute, and delete custom commands with full lifecycle management." icon="terminal" >}}
+  {{< card link="#event-automation" title="Event Automation" subtitle="Commands respond to Artbox signals automatically with signal coalescing protection." icon="lightning-bolt" >}}
+  {{< card link="#dual-language-support" title="Dual-Language Support" subtitle="Script-Fu and Python command execution with asynchronous processing." icon="code" >}}
+  {{< card link="#signal-monitoring" title="Signal Monitoring" subtitle="Monitor 14 Artbox signals with per-command configurable coalescing thresholds." icon="chart-square-bar" >}}
+  {{< card link="#command-editor" title="Command Editor" subtitle="Visual editor with event trigger configuration and coalescing controls." icon="pencil" >}}
+  {{< card link="#file-format" title="File Format" subtitle="Extended .gcmd file format with event and coalescing properties." icon="save" >}}
 {{< /cards >}}
 
 ---
 
-<div class="feature-section" id="visual-grid-interface">
-
-## Visual Grid Interface
-
-**Current Design**: **New Feature**
-
-**Implementation**: Grid view mode displaying commands as clickable icons, providing a visual macro palette for rapid access to frequently used operations.
-
-**Key Benefits**:
-
-- **Visual Access**: Commands displayed as labeled icons in grid layout
-- **Plugin Integration**: Can execute any GIMP plugin or procedure through PDB calls
-- **Macro Palette**: Replace complex keyboard shortcuts with single clicks
-- **Custom Workflows**: Build personalized toolsets for specific tasks
-- **Quick Execution**: One-click access to frequently used commands and plugins
-
-**Use Cases**: Create visual palettes for layer operations, filter sequences, export macros, custom brush setups, or any repetitive workflow that would normally require multiple menu navigations or keyboard shortcuts.
-
-</div>
-
----
-
-<div class="feature-section" id="command-management">
-
 ## Command Management
 
-**Current Design**: **New Feature**
-
-**Implementation**: Command lifecycle management through a dockable dialog. Commands are stored as `GimpCommandItem` objects with properties for name, command code, description, icon, and language.
-
-**Core Operations**:
+Commands are stored as objects with properties for manual execution and event automation. The dockable provides standard operations:
 
 - **New Command**: Create empty command items
 - **Duplicate Command**: Clone existing commands
-- **Save Command**: Persist commands to `.gcmd` files
-- **Execute Command**: Run commands through appropriate interpreter
+- **Save/Load**: Persist commands to `.gcmd` files
+- **Execute Command**: Run commands with appropriate interpreter
 - **Delete Command**: Remove commands with confirmation
 
-</div>
+The interface supports double-click execution, context menus, and standard Artbox selection behaviors.
 
 ---
 
-<div class="feature-section" id="visual-editor">
+## Event Automation
 
-## Visual Editor
+Commands can be configured to execute automatically when Artbox events occur. The system monitors events with signal coalescing to prevent performance issues:
 
-**Current Design**: **New Feature**
+**Available Signals** (14 total):
 
-**Implementation**: `GimpCommandEditor` widget for command creation and modification.
+- **Image Events** (3): dirty, image-changed, add
+- **Layer Events** (5): layer-added, opacity-changed, mode-changed, visibility-changed, layer-selected  
+- **Layer Mask Events** (4): edit-mask-changed, apply-mask-changed, show-mask-changed, layer-mask-selected
+- **Tool Events** (2): tool-changed, brush-changed
 
-**Editor Components**:
+**Signal Coalescing**:
 
-- **Name Entry**: Command identification and display name
-- **Command Text View**: Multi-line text input widget for script content
-- **Description Entry**: Documentation and usage notes
-- **Icon Picker**: Icon selection from available GIMP icon set with custom image assignment capability
-- **Language Property**: Language setting (script-fu or python)
+- **Per-command thresholds**: Configurable from 1-5000ms (default 100ms)
+- **Signal storm protection**: Rejects duplicate signals within threshold window
+- **Performance benefits**: Up to 84.6% signal reduction during stress testing
+- **Queue management**: Handles up to 107+ pending signals with depth tracking
 
-</div>
+**Execution Patterns**:
+
+- **Execute-Once**: Commands run once then disconnect automatically with race condition protection
+- **Continuous**: Commands remain connected for ongoing monitoring with coalescing
+- **Asynchronous Execution**: All commands use `g_idle_add_full()` for non-blocking execution
 
 ---
 
+## Dual-Language Support
+
+The system supports both Script-Fu and Python commands with asynchronous execution:
+
+- **Script-Fu**: Uses `plug-in-script-fu-eval` for execution with GLib idle mechanism
+- **Python**: Uses `python-fu-eval` for execution with GLib idle mechanism
+- **Language Detection**: Commands routed to appropriate interpreter based on language property
+- **Asynchronous Processing**: Commands execute in background without blocking UI or system
+- **Error Handling**: Comprehensive error reporting with language-specific context
+
 ---
 
-<div class="feature-section" id="file-format-support">
+## Signal Monitoring
 
-## File Format Support
+The system provides comprehensive signal monitoring with intelligent filtering and performance protection:
 
-**Current Design**: **New Feature**
+**Signal Categories**:
 
-**Implementation**: `.gcmd` (GIMP Command) file format with GimpConfig serialization.
+- **Image Category**: Image state and lifecycle events (3 signals)
+- **Layer Category**: Layer management and property changes (5 signals including granular layer selection)
+- **Layer Mask Category**: Layer mask management and editing (4 signals)
+- **Tool Category**: Tool selection and configuration changes (2 signals)
 
-**File Format Structure**:
+**Signal Intelligence**:
+
+- **Selection Filtering**: Layer-specific signals only emit for currently selected layers
+- **Centralized Logic**: Signal emission intelligence concentrated in Artboximage.c
+- **Manual Forwarding**: Core layer functions call notification functions which conditionally emit signals
+- **Minimal Core Changes**: Well-tested core code preserved with only essential notification additions
+
+**Performance Monitoring**:
+
+- **Real-time Statistics**: Signal processing metrics with coalescing effectiveness tracking
+- **Queue Depth Tracking**: Real-time monitoring of pending signal counts
+- **Sequence Numbering**: Global sequence tracking for signal traceability
+- **Debug Output**: Comprehensive logging for signal flow analysis
+
+---
+
+## Command Editor
+
+The editor provides controls for both manual and event-driven commands with advanced coalescing configuration:
+
+**Basic Properties**:
+
+- Name, command text, description, icon selection
+- Language setting (Script-Fu or Python)
+- Enabled state control for command activation
+
+**Event Configuration**:
+
+- Signal selection dropdown organized by category (Image, Layer, Layer Mask, Tool)
+- Execute-once checkbox for one-time automation with race condition protection
+- Real-time validation of signal assignments with feedback
+
+**Signal Coalescing Controls**:
+
+- "Execute every signal" checkbox with inverted logic (checked = no coalescing)
+- Threshold spinbox for coalescing threshold (1-5000ms) shown when coalescing enabled
+- Safety warning when coalescing disabled: "⚠️ Warning: Commands may trigger themselves, other commands, or be triggered by automation scripts. This creates complex interactions - use with caution."
+
+**File Creation**: Creates complete .gcmd files when signals are selected with all properties
+
+---
+
+## File Format
+
+Commands use the `.gcmd` format with optional event and coalescing properties:
 
 ```text
-# GIMP command item
-(name "Command Name")
-(command "script content")
-(description "Command description")
-(icon-name "icon-identifier")
-(language script-fu|python)
-# end of GIMP command item
+# Artbox command item
+(name "Auto-Save Monitor")
+(command "(Artbox-file-save ...)")
+(description "Automatically saves image when dirty")
+(icon-name "Artbox-marker")
+(language script-fu)
+(event-signal "dirty")
+(enabled yes)
+(execute-once no)
+(coalesce-signals yes)
+(coalesce-threshold-ms 100)
+# end of Artbox command item
 ```
+
+**Format Features**:
+
+- **Backward Compatibility**: Existing commands work without coalescing properties
+- **Event Properties**: Event-driven and coalescing properties optional with sensible defaults
+- **Language Specification**: Language declaration for Script-Fu or Python
+- **Execute-Once Control**: Boolean flag for one-time execution behavior
+- **Coalescing Control**: Boolean flag and threshold for signal storm protection
+- **Property Validation**: Signal validation during load with error reporting
 
 **Storage**:
 
-- **User Directory**: Commands stored in `~/.config/GIMP/commands/`
-- **System Commands**: Pre-installed examples in application data directory
-- **Auto-loading**: Commands loaded on GIMP startup
-
-</div>
-
----
-
-<div class="feature-section" id="factory-integration">
-
-## Factory Integration
-
-**Current Design**: **New Feature**
-
-**Implementation**: Integration with GIMP's data factory system through `GimpCommandFactory`.
-
-**Features**:
-
-- **Resource Loading**: Discovery and loading of `.gcmd` files
-- **Factory View**: Visual command browser with hover states
-- **Container Integration**: Commands appear in standard GIMP resource containers
-- **Menu Integration**: Accessible through Windows > Dockable Dialogs menu
-
-</div>
+- User commands: `~/.config/Artbox/commands/` with automatic directory creation
+- System commands: Application data directory with pre-installed examples
+- Auto-loading on Artbox startup with path resolution
+- Path configuration through Artbox preferences

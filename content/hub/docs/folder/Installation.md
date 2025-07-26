@@ -91,9 +91,7 @@ PACKAGES=(
   libopenjp2-7-dev
   libpoppler-glib-dev
   libqoi-dev
-  libraw-dev
   librsvg2-dev
-  libspiro-dev
   libsuitesparse-dev
   libtiff-dev
   libumfpack5

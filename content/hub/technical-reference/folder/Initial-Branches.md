@@ -11,6 +11,7 @@ Foundation branches that prepare GIMP source and provide essential utilities for
 
 {{< cards >}}
   {{< card link="#gimp-source" title="gimp-source" subtitle="GIMP master clone with CI and submodule adaptations" >}}
+  {{< card link="#convert-app-core-item" title="convert-app-core-item" subtitle="Item geometry and hierarchy utility functions" >}}
   {{< card link="#convert-tool-preset" title="convert-tool-preset" subtitle="Utility branch with data structures needed by other branches" >}}
   {{< card link="#convert-icon-picker" title="convert-icon-picker" subtitle="Icon picker interface enhancements" >}}
   {{< card link="#convert-pref-all-merged" title="convert-pref-all-merged" subtitle="Preferences system modifications" >}}
@@ -32,6 +33,32 @@ Foundation branches that prepare GIMP source and provide essential utilities for
 - `gimp-data` (submodule pointer updates)
 
 **Implementation**: Clones GIMP master and makes infrastructure changes. The GitLab CI configuration is backed up and modified for Artbox's build pipeline, git submodule references are updated to point to Artbox-compatible versions, and the gimp-data submodule is adjusted.
+
+</div>
+
+<div class="feature-section" id="convert-app-core-item">
+
+## convert-app-core-item
+
+**Purpose**: Adds utility functions for item geometry calculation, hierarchy analysis, and layer type detection.
+
+**Role**: Foundation layer providing core item management utilities needed by other branches for item operations.
+
+**Files Modified**:
+- `app/core/gimpitem.c` (62 lines added - 4 new utility functions)
+- `app/core/gimpitem.h` (7 lines added - function declarations)
+
+**Implementation**: Introduces four utility functions to the core item system:
+
+1. **`gimp_item_get_bounding_box()`**: Calculates the bounding rectangle of any item by combining its offset position with its dimensions, used for layout and positioning operations.
+
+2. **`gimp_item_get_depth()`**: Determines how deeply nested an item is in the layer hierarchy, with protection against circular references (max 1000 iterations). Returns -1 if circular reference detected.
+
+3. **`gimp_item_is_group_layer()`**: Type-safe detection of group layers, providing identification of layer groups vs. regular layers.
+
+4. **`gimp_item_is_basic_layer()`**: Identifies basic (non-group) layers by checking if an item is a layer but not a group layer.
+
+These utilities form the foundation for layer management, selection operations, and hierarchy-based features throughout Artbox. The bounding box calculation is particularly important for automation scripts and selection tools.
 
 </div>
 

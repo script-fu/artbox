@@ -11,7 +11,6 @@ Convert branches modify GIMP master to support Artbox features and provide found
 
 {{< cards >}}
   {{< card link="#convert-to-artbox" title="convert-to-artbox" subtitle="Main integration branch - merges all convert branches" >}}
-  {{< card link="#convert-app-core-item" title="convert-app-core-item" subtitle="Item geometry and hierarchy utility functions" >}}
   {{< card link="#convert-app-core-image" title="convert-app-core-image" subtitle="Single-selection convenience functions" >}}
   {{< card link="#convert-app-core-grouplayer" title="convert-app-core-grouplayer" subtitle="Hierarchical child retrieval with recursive traversal" >}}
   {{< card link="#convert-app-core-gimppickable-auto-shrink" title="convert-app-core-gimppickable-auto-shrink" subtitle="Auto-shrink pickable objects" >}}
@@ -54,32 +53,6 @@ Convert branches modify GIMP master to support Artbox features and provide found
 **Files Modified**: All files from merged convert branches
 
 **Implementation**: Serves as the integration point where all convert branches are merged together to create the common base that feature branches build upon.
-
-</div>
-
-<div class="feature-section" id="convert-app-core-item">
-
-## convert-app-core-item
-
-**Purpose**: Adds utility functions for item geometry calculation, hierarchy analysis, and layer type detection.
-
-**Role**: Foundation layer providing core item management utilities needed by other branches for item operations.
-
-**Files Modified**:
-- `app/core/gimpitem.c` (62 lines added - 4 new utility functions)
-- `app/core/gimpitem.h` (7 lines added - function declarations)
-
-**Implementation**: Introduces four utility functions to the core item system:
-
-1. **`gimp_item_get_bounding_box()`**: Calculates the bounding rectangle of any item by combining its offset position with its dimensions, used for layout and positioning operations.
-
-2. **`gimp_item_get_depth()`**: Determines how deeply nested an item is in the layer hierarchy, with protection against circular references (max 1000 iterations). Returns -1 if circular reference detected.
-
-3. **`gimp_item_is_group_layer()`**: Type-safe detection of group layers, providing identification of layer groups vs. regular layers.
-
-4. **`gimp_item_is_basic_layer()`**: Identifies basic (non-group) layers by checking if an item is a layer but not a group layer.
-
-These utilities form the foundation for layer management, selection operations, and hierarchy-based features throughout Artbox. The bounding box calculation is particularly important for automation scripts and selection tools.
 
 </div>
 
@@ -839,82 +812,50 @@ This enhancement aligns with Artbox's philosophy of providing sensible defaults 
 
 ## convert-commands-dockable
 
-**Purpose**: Commands Dockable implementation providing a visual grid interface for custom commands and plugins with dual-language execution support (Script-Fu and Python).
+**Purpose**: Command management and automation system with manual execution and event-driven automation.
 
-**Role**: Core scripting and automation infrastructure that enables users to create, store, and execute custom commands through a visual macro palette interface.
+**Role**: Scripting infrastructure that provides command storage, execution, and signal-based automation.
 
-**Files Modified** (65 files, extensive additions):
+**Files Modified** (73 files, 8,586 insertions):
 
-**Core Implementation**:
-- `app/core/gimpcommanditem.c` (new file): Complete GimpCommandItem data class with GimpConfig serialization
-- `app/core/gimpcommanditem.h` (new file): Command item class declarations and property definitions
-- `app/core/gimpcommanditem-load.c` (new file): .gcmd file loading implementation
-- `app/core/gimpcontext.c` (additions): Command item context integration with change notifications
+**Core Components**:
 
-**Widget System**:
-- `app/widgets/gimpcommandeditor.c` (new file): Command editor widget with name entry, text view, description, and icon picker
-- `app/widgets/gimpcommandview.c` (new file): Individual command view with hover states and icon caching
-- `app/widgets/gimpcommandfactoryview.c` (new file): Factory view with grid layout and item-hovered signals
-- `app/widgets/gimpcommandcontainerview.c` (new file): Container view for command item management
-- `app/widgets/gimpcommandutils.c` (new file): Language-specific execution utilities with error handling
+- `app/core/gimpcommanditem.c` (1,393 lines): Command data model with manual and event properties
+- `app/core/gimpcommandmanager.c` (1,200 lines): Signal coalescing and async execution engine
+- `app/core/gimpcommandsignalregistry.c` (391 lines): Registry of 14 available GIMP signals
+- `app/widgets/gimpcommandeditor.c` (1,575 lines): Editor with event configuration interface
+- `app/widgets/gimpcommandfactoryview.c` (589 lines): Factory view with command display
+- `app/actions/command-actions.c` (163 lines): Action system integration
 
-**Action System**:
-- `app/actions/command-actions.c` (new file): Action group with new/duplicate/save/execute/delete operations
-- `app/actions/command-commands.c` (new file): Command operation callback implementations
-- `app/actions/command-editor-actions.c` (new file): Editor-specific action system
-- `app/actions/command-editor-commands.c` (new file): Editor command implementations
+**Implementation**: Command system with manual execution and signal automation:
 
-**Configuration & Integration**:
-- `app/config/gimpcoreconfig.c` (additions): Command path configuration properties
-- `app/core/gimp-data-factories.c` (additions): Command factory initialization and cleanup
-- `app/dialogs/dialogs-constructors.c` (additions): Commands dialog constructor
-- `menus/commands-menu.ui` (new file): Commands dialog context menu
-- `menus/command-editor-menu.ui` (new file): Command editor context menu
+1. **Dual-Language Support**: Script-Fu and Python execution through appropriate interpreters with language detection and error handling.
 
-**Data Files**:
-- `data/commands/Hello-World.gcmd`: Script-Fu hello world example
-- `data/commands/Hello-Python-World.gcmd`: Python hello world example  
-- `data/commands/Guide-Fifths.gcmd`: Guide creation command
-- `data/commands/Python-Document-Info.gcmd`: Python document information command
+2. **Event-Driven Automation**: Commands connect to GIMP signals for automatic execution:
+   - **Image signals**: dirty, image-changed, add (3 total)
+   - **Layer signals**: layer-added, opacity-changed, mode-changed, visibility-changed, layer-selected (5 total)
+   - **Layer Mask signals**: edit-mask-changed, apply-mask-changed, show-mask-changed, layer-mask-selected (4 total)
+   - **Tool signals**: tool-changed, brush-changed (2 total)
 
-**Implementation**: This branch introduces a comprehensive command management system:
+3. **Signal Coalescing**: Per-command configurable thresholds (default 100ms, range 1-5000ms) prevent rapid signal execution storms while maintaining responsiveness.
 
-1. **Dual-Language Execution**: Commands support both Script-Fu and Python through language-specific PDB eval procedures:
-   - Script-Fu commands use `plug-in-script-fu-eval`
-   - Python commands use `python-fu-eval`
-   - Language detection and routing with comprehensive error handling
+4. **Async Execution**: All commands use `g_idle_add_full()` for non-blocking execution during idle cycles.
 
-2. **Visual Grid Interface**: Factory view displays commands as clickable icons in a grid layout, providing a visual macro palette that replaces complex keyboard shortcuts with single-click access.
+5. **File Format**: `.gcmd` format with event properties:
 
-3. **File Format Support**: .gcmd (GIMP Command) file format with GimpConfig serialization:
-   ```
-   # GIMP command item
+   ```text
    (name "Command Name")
-   (command "script content")
-   (description "Description")
-   (language script-fu|python)
-   # end of GIMP command item
+   (command "script content") 
+   (language script-fu)
+   (event-signal "dirty")
+   (execute-once FALSE)
+   (coalesce-signals TRUE)
+   (coalesce-threshold-ms 100)
    ```
 
-4. **Command Lifecycle Management**: Complete CRUD operations for command items:
-   - **Creation**: New empty commands with default properties
-   - **Duplication**: Clone existing commands for modification
-   - **Persistence**: Save commands to user and system directories
-   - **Execution**: Run commands through appropriate language interpreter
-   - **Deletion**: Remove commands with confirmation dialogs
+6. **Execute-Once Pattern**: Commands can run once then automatically disconnect to prevent repeated execution.
 
-5. **UI Integration**: Full integration with GIMP's dialog and menu systems:
-   - Accessible through Windows > Dockable Dialogs > Commands
-   - Context menus for command operations
-   - Editor interface with metadata management
-   - Hover states and visual feedback
-
-6. **Resource Management**: Integration with GIMP's data factory system:
-   - Commands stored in `~/.config/GIMP/commands/` (user) and application data directory (system)
-   - Auto-loading on GIMP startup
-   - Resource container integration for standard GIMP workflows
-
-This implementation transforms the way users interact with GIMP automation, providing a visual alternative to complex scripting workflows and enabling rapid access to frequently used operations through an intuitive grid interface.
+7. **UI Integration**: Accessible through Windows > Dockable Dialogs > Commands with editor interface for both manual and event configuration.
 
 </div>
 
