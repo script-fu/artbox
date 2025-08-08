@@ -10,66 +10,85 @@ This guide describes the structured branching model used to integrate GIMP devel
 ## Contents
 
 - [Updating Artbox to GIMP Dev](#updating-artbox-to-gimp-dev)
-   - [Step 1: Construct the Common Base](#step-1-construct-the-common-base)
-   - [Step 2: Construct Feature Branches from the Common Base](#step-2-construct-feature-branches-from-the-common-base)
-   - [Step 3: Construct Artbox from the Common Base and Feature Branches](#step-3-construct-artbox-from-the-common-base-and-feature-branches)
-- [Convert Branches](#convert-branches)
-   - [Example of a Compound Convert Branch: convert-paintbrush-all-merged](#example-of-a-compound-convert-branch-convert-paintbrush-all-merged)
-- [Feature Branches](#feature-branches)
-   - [Example of a Compound Feature Branch: feature-paintbrush-options](#example-of-a-compound-feature-branch-feature-paintbrush-options)
+   - [Staged Construction Process](#staged-construction-process)
+   - [Key Benefits](#key-benefits)
+   - [Build Control](#build-control)
+- [Staged Branch Organization](#staged-branch-organization)
+   - [Stage Management](#stage-management)
+   - [Conflict Resolution](#conflict-resolution)
 - [Notes](#notes)
 
 ## Branch Development Flow for GIMP to Artbox
 
-The development process follows a structured branching model where the GIMP development branch serves as the foundation. The 'convert-to-artbox' branch is created from GIMP Dev and serves as the common base for all feature branches. These feature branches contribute to the final 'artbox' branch, which represents the integrated work from all features.
+The development process follows a staged pipeline architecture where the GIMP development branch serves as the foundation. Branches are organized into numbered stages that build upon each other, with each stage creating a checkpoint branch (`common-XX`) that serves as the foundation for the next stage. The final `artbox` branch represents the integrated work from all stages.
 
 ### Updating Artbox to GIMP Dev
 
-To keep Artbox up-to-date with the GIMP development branch, we follow a structured process divided into three main steps
+Artbox uses a staged build pipeline to integrate GIMP development updates and branches. The process creates numbered checkpoint branches (`common-00`, `common-01`, etc.) that build upon each other to produce the final `artbox` branch.
 
-#### Step 1: Construct the Common Base
+#### Staged Construction Process
 
-- **Reset the Common Base:** Reset the 'convert-to-artbox' branch to the latest commit from the GIMP master branch.
-- **Rebase the Convert Branches:** Rebase the convert branches to the GIMP master branch.
-- **Merge Convert Branches:** Merge all relevant convert branches into the 'convert-to-artbox' branch.
-- **Squash Commit History:** Squash the commit history of these merges into a single commit to simplify history.
+The build pipeline follows this flow:
+```
+GIMP Source → common-00 → common-01 → common-02 → ... → common-06 → artbox
+```
 
-#### Step 2: Construct Feature Branches from the Common Base
+Each stage processes a specific group of branches:
 
-- **Update the Common Base:** Ensure that the 'convert-to-artbox' branch is up to date with the latest changes.
-- **Clone and Layer Commits:**
-  - Clone the 'convert-to-artbox' branch.
-  - Pick and apply commits from each existing feature branch onto this clone.
-- **Replace Old Feature Branches:**
-  - Delete the old feature branches.
-  - Rename the cloned branches to replace the old feature branches.
-- **Repeat for All Feature Branches:** Perform the above steps for each feature branch that needs updating.
+1. **Stage Setup:** Clone the previous stage's output branch
+2. **Branch Integration:** Cherry-pick commits from assigned branches
+3. **Checkpoint Creation:** Merge processed branches and create a single squashed commit
+4. **Pipeline Progression:** Each stage builds on the previous stage's output
 
-#### Step 3: Construct Artbox from the Common Base and Feature Branches
+#### Key Benefits
 
-- **Reset Artbox Branch:** Reset the 'artbox' branch to the 'convert-to-artbox' branch to incorporate the latest changes.
-- **Merge Updated Feature Branches:** Merge all updated feature branches into the 'artbox' branch to consolidate the changes.
-- **Squash Commit History:** Squash the commit history of these merges into a single commit to simplify history.
+- **Modular Updates:** Individual stages can be rebuilt without affecting the entire pipeline
+- **Conflict Isolation:** Issues are contained within specific stages for easier resolution
+- **Reproducible Builds:** Each stage creates a clean checkpoint for consistent results
+- **Flexible Rebuilds:** Partial pipeline reconstruction allows targeted updates
 
-### Convert Branches
+#### Build Control
 
-A convert branch is used to adjust the latest GIMP master branch to support the Artbox feature branches or to make specific changes to the default GIMP application. These branches are merged into a single 'convert-to-artbox' branch, which serves as the common base layer.
+The construction process can be controlled at multiple levels:
 
-The current strategy is to place any heavily modified file that supports multiple feature branches—through the addition of new data structures—into a convert branch. This approach helps consolidate overlapping changes in one place, while maintaining the core code that performs the main functions in separate feature branches.
+- **Full Rebuild:** Process all stages from GIMP source to final artbox branch
+- **Partial Rebuild:** Update only specific stages and downstream dependencies
+- **Stage-by-Stage:** Enable or disable individual stages as needed
 
-#### Identifying Conflicts
+### Staged Branch Organization
 
-Updating Artbox to the GIMP development branch involves identifying any conflicts or changes introduced by GIMP that overlap with Artbox changes.
+All branches are organized into numbered stages to ensure conflict-free construction. The system focuses on ordering branches so that dependencies are resolved correctly and conflicts are minimized.
 
-- First Stage Conflict: Rebasing the convert branches to GIMP master branch.
-- Second Stage Conflict: Cherry-picking the merges from feature branches onto the new common branch.
+#### Stage Management
 
-These conflicts can be resolved fairly easily due to the automated construction process and granularity of the changes.
+Stages provide flexible organization of branches:
 
-### Feature Branches
+- **Conflict Prevention:** Branches within the same stage are designed to work together without conflicts
+- **Dependency Ordering:** Earlier stages prepare the foundation for later stages
+- **Flexible Assignment:** Branches can be moved between stages as requirements change
+- **Dynamic Expansion:** New stages can be inserted or appended as the project grows
 
-Feature branches are concerned with the core code implementation of a new feature. They may rely upon a convert branch to have paved the way with additional GUI options, preferences or other global variables.
+#### Conflict Resolution
+
+The staged approach simplifies conflict management:
+
+- **Stage-Level Isolation:** Issues are contained within specific stages
+- **Clear Dependencies:** Each stage builds on well-defined checkpoint branches
+- **Selective Rebuilds:** Problem stages can be reconstructed without affecting the entire pipeline
+- **Branch Reorganization:** Conflicting branches can be moved to different stages to resolve issues
+
+When conflicts occur during pipeline construction, they can be resolved by:
+- Moving problematic branches to later stages
+- Inserting new intermediate stages to separate conflicting changes
+- Reordering branches within stages to optimize integration
 
 ### Notes
 
-The key difference between a feature branch and a convert branch is that feature branches build on top of the convert-to-artbox branch. In contrast, a convert branch is an adjustment made directly to the GIMP development master branch.
+The staged pipeline architecture provides flexible stage organization:
+
+- **Unified Branch Management:** All branches are treated equally and organized purely by integration requirements
+- **Dynamic Reorganization:** Branches can be moved between stages to optimize the build process
+- **Scalable Architecture:** New stages can be easily inserted or appended to accommodate project growth
+- **Conflict-Driven Organization:** Stage assignments are based on preventing conflicts rather than branch functionality
+
+This approach provides maximum flexibility for managing complex integrations while maintaining a clean, reproducible build process.

@@ -25,7 +25,7 @@ Improve the quality of the brush spacing with respect to velocity.
 
 **Solution**: Spacing respects the slider values.
 
-**Background**: This feature branch was a proposed solution to https://gitlab.gnome.org/GNOME/gimp/-/issues/1863
+**Background**: This branch was a proposed solution to https://gitlab.gnome.org/GNOME/gimp/-/issues/1863
 
 **Visual Comparison**:
 

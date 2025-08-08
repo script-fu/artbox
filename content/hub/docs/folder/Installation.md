@@ -70,6 +70,7 @@ PACKAGES=(
   iso-codes
   libaa1-dev
   libappstream-glib-dev
+  libappstream-dev 
   libarchive-dev
   libbz2-dev
   libcfitsio-dev
