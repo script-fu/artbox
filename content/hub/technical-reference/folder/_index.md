@@ -19,9 +19,7 @@ This compares the latest commit (HEAD) to the one before it (HEAD~1), excluding 
 ## Branch Categories
 
 {{< cards >}}
-  {{< card link="Initial-Branches" title="Initial Branches" subtitle="Foundation branches for GIMP source preparation and core utilities" >}}
-  {{< card link="Convert-Branches" title="Convert Branches" subtitle="GIMP master modifications to support Artbox features" >}}
-  {{< card link="Feature-Branches" title="Feature Branches" subtitle="Artbox feature implementations built on the convert base" >}}
+  {{< card link="Construction-Branches" title="Construction Branches" subtitle="All branches used in the Artbox staged construction pipeline" >}}
 {{< /cards >}}
 
 ![technical](/images/gallery/at_the_seaside_tlined_final.webp)
