@@ -1,6 +1,6 @@
 ---
 type: docs
-url: "hub/technical-reference/folder/Construction-Branches"
+url: "hub/docs/folder/Construction-Branches"
 ---
 
 # Construction Branches
@@ -85,57 +85,63 @@ All branches used in the Artbox staged construction pipeline, organized alphabet
 
 ## additional-script-fu-pdb
 
-**Stage**: 05
-**Description**: Extends the Script-Fu Procedure Database with additional procedures for Artbox workflows</div>
+Adds eraser toggle functionality and previous tool tracking to the context system for enhanced Script-Fu automation capabilities
+
+</div>
 
 <div class="feature-section" id="alt-layer-picking">
 
 ## alt-layer-picking
 
-**Stage**: 04
-**Description**: Enables Alt+click to select layers directly from the canvas</div>
+Implements Alt+key layer selection with visual feedback and hover-based picking functionality, removes wacom painting glitches
+
+</div>
 
 <div class="feature-section" id="artbox-name-branding">
 
 ## artbox-name-branding
 
-**Stage**: 04
-**Description**: Updates application strings, titles, and branding elements throughout the interface to reflect Artbox identity</div>
+Replaces GIMP branding with Artbox throughout the application including titles, copyright, about dialog, and website references
+
+</div>
 
 <div class="feature-section" id="brush-aspect-ratio">
 
 ## brush-aspect-ratio
 
-**Stage**: 04
-**Description**: Adds brush aspect ratio adjustment capabilities to the paint system</div>
+Modifies brush aspect ratio calculation from range 1.0-20.0 to -1.0-1.0 with improved scaling algorithms for more intuitive control
+
+</div>
 
 <div class="feature-section" id="brush-motion-processing">
 
 ## brush-motion-processing
 
-**Stage**: 06
-**Description**: Implements motion processing buffer for smoother brush stroke rendering</div>
+Integrates motion stabilization with paint core coordinates and brush direction settings for enhanced stroke quality
+
+</div>
 
 <div class="feature-section" id="brush-preview-false">
 
 ## brush-preview-false
 
-**Stage**: 03
-**Description**: Sets brush preview to false by default to improve painting performance</div>
+Disables brush factory view theme toggle by default and enables theme following behavior to streamline brush preview interface
+
+</div>
 
 <div class="feature-section" id="colour-picker-sample-merged-alt">
 
 ## colour-picker-sample-merged-alt
 
-**Stage**: 05
-**Description**: Enhanced color picker with Alt-key sample merged behavior</div>
+Adds Alt key toggle functionality for sample merged mode in color picker with updated label indication
+
+</div>
 
 <div class="feature-section" id="commands-dockable-signals">
 
 ## commands-dockable-signals
 
-**Stage**: 03
-**Description**: Implements signal handling for the commands dockable interface
+Implements comprehensive signal management system for commands with event-driven execution and signal registry
 
 </div>
 
@@ -143,8 +149,7 @@ All branches used in the Artbox staged construction pipeline, organized alphabet
 
 ## curve-view-enhanced
 
-**Stage**: 04
-**Description**: Improvements to the curve editing interface for better usability
+Enhances curve editor with adaptive grid visibility based on background luminance, improved line weights, and axis label functionality
 
 </div>
 
@@ -152,8 +157,7 @@ All branches used in the Artbox staged construction pipeline, organized alphabet
 
 ## dialogs-editor-icons
 
-**Stage**: 04
-**Description**: Updates and enhances icons used in dialog editors
+Updates dialog factory entries to use dedicated editor icons for brush and dynamics editors instead of generic resource icons
 
 </div>
 
@@ -161,8 +165,7 @@ All branches used in the Artbox staged construction pipeline, organized alphabet
 
 ## display-options-extended
 
-**Stage**: 04
-**Description**: Adds additional display configuration options for Artbox
+New selection highlight display option with toggle actions and display shell integration for enhanced selection visualization
 
 </div>
 
@@ -170,32 +173,23 @@ All branches used in the Artbox staged construction pipeline, organized alphabet
 
 ## duplicate-layer-and-clear
 
-**Stage**: 03
-**Description**: Enhanced layer operations for duplicating and clearing layer content</div>
+Adds new layer action to duplicate selected layers and automatically clear their content for template workflows
+
+</div>
 
 <div class="feature-section" id="dynamic-brush-spacing">
 
 ## dynamic-brush-spacing
 
-**Stage**: 03
-**Description**: Implements dynamic spacing adjustments for brush strokes that respond to input pressure, velocity, and other dynamics parameters
+Implements dynamic spacing adjustments for brush strokes that respond to input pressure, velocity, and other dynamics parameters
 
-**Files Modified** (6 files, 148 insertions, 22 deletions):
-- `app/core/gimpdynamics.c` (64 lines modified): Core dynamics system changes
-- `app/paint/gimpbrushcore.c` (60 lines modified): Brush core spacing implementation
-- `app/paint/gimpbrushcore.h` (15 lines modified): Header definitions
-- `app/paint/gimppaintcore.c` (18 lines modified): Paint core integration
-- `app/paint/gimppaintcore.h` (8 lines modified): Paint core headers
-- `app/tools/gimppaintoptions-gui.c` (5 lines modified): GUI option controls
-
-**Implementation**: This branch was a proposed solution to https://gitlab.gnome.org/GNOME/gimp/-/issues/1863, implementing dynamic brush spacing that responds to input pressure, velocity, and other dynamics parameters for more natural brush behavior.</div>
+</div>
 
 <div class="feature-section" id="dynamics-editor-enhanced">
 
 ## dynamics-editor-enhanced
 
-**Stage**: 04
-**Description**: Improvements to the dynamics editor for better workflow and usability
+Enhanced dynamics editor with scrollable interface, improved widget visibility handling, and reorganized input label layout
 
 </div>
 
@@ -203,8 +197,7 @@ All branches used in the Artbox staged construction pipeline, organized alphabet
 
 ## eraser-on-masks
 
-**Stage**: 05
-**Description**: Improves eraser tool behavior when working with layer masks
+Modifies eraser tool to use black color when working on layer masks and switches color picker target to foreground
 
 </div>
 
@@ -212,8 +205,7 @@ All branches used in the Artbox staged construction pipeline, organized alphabet
 
 ## filter-restores-previous-tool
 
-**Stage**: 05
-**Description**: Automatically restores the previously selected tool after running filters
+Automatically restores the previously active tool after filter operations complete or are cancelled
 
 </div>
 
@@ -221,8 +213,7 @@ All branches used in the Artbox staged construction pipeline, organized alphabet
 
 ## force-artbox-config
 
-**Stage**: 04
-**Description**: Ensures Artbox-specific configuration is properly applied and maintained
+Forces Artbox to use separate configuration directory at .config/Artbox/3.0/default instead of GIMP directory
 
 </div>
 
@@ -230,8 +221,7 @@ All branches used in the Artbox staged construction pipeline, organized alphabet
 
 ## free-selection-fill
 
-**Stage**: 05
-**Description**: Enhanced fill operations for free selection tools
+Adds auto-commit, fill, and auto-deselect functionality to free selection tool for streamlined workflow
 
 </div>
 
@@ -239,15 +229,15 @@ All branches used in the Artbox staged construction pipeline, organized alphabet
 
 ## fullscreen-is-fullscreen
 
-**Stage**: 05
-**Description**: Ensures fullscreen mode properly hides all interface elements for distraction-free work</div>
+Automatically hides docks when entering fullscreen mode for true distraction-free workspace
+
+</div>
 
 <div class="feature-section" id="gfig-tweak">
 
 ## gfig-tweak
 
-**Stage**: 05
-**Description**: Enhancements and fixes to the GFig geometric figure plugin
+Increases GFig plugin preview size from 400 to 1024 pixels for better geometric figure editing visibility
 
 </div>
 
@@ -255,8 +245,7 @@ All branches used in the Artbox staged construction pipeline, organized alphabet
 
 ## gimpconfig-path-extend
 
-**Stage**: 04
-**Description**: Extends configuration system path handling capabilities
+Extends plugin path configuration to include data directory alongside existing user and system plugin directories for enhanced plugin discovery
 
 </div>
 
@@ -264,8 +253,7 @@ All branches used in the Artbox staged construction pipeline, organized alphabet
 
 ## gimpcontext-changes
 
-**Stage**: 04
-**Description**: Modifications to GIMP's context management system for Artbox
+Context management with previous tool tracking, eraser toggle functionality, and proper object disposal handling
 
 </div>
 
@@ -273,8 +261,7 @@ All branches used in the Artbox staged construction pipeline, organized alphabet
 
 ## gimpdynamicsoutput
 
-**Stage**: 05
-**Description**: Improvements to dynamics output processing and behavior
+Enhanced dynamics output system with angular value computation, pressure multiplication modes, fade safety checks, and shortest-path angle interpolation for sophisticated brush control
 
 </div>
 
@@ -282,8 +269,7 @@ All branches used in the Artbox staged construction pipeline, organized alphabet
 
 ## gimpgrouplayer-functions
 
-**Stage**: 04
-**Description**: Enhanced functionality for group layer operations
+New function to retrieve all child items from group layers with optional recursive nested group traversal
 
 </div>
 
@@ -291,8 +277,7 @@ All branches used in the Artbox staged construction pipeline, organized alphabet
 
 ## gimpicons-extended
 
-**Stage**: 04
-**Description**: Adds additional icons and icon resources for Artbox interface
+Extended icon definitions including chain data-loss indicator, document save variants, and editor-specific brush/dynamics icons
 
 </div>
 
@@ -300,8 +285,7 @@ All branches used in the Artbox staged construction pipeline, organized alphabet
 
 ## gimpimage-functions
 
-**Stage**: 04
-**Description**: Additional and enhanced image manipulation functions
+New image selection functions including single drawable retrieval and single layer selection convenience methods
 
 </div>
 
@@ -309,8 +293,7 @@ All branches used in the Artbox staged construction pipeline, organized alphabet
 
 ## gimpitem-functions
 
-**Stage**: 02
-**Description**: Core functionality extensions for GIMP item operations
+New item utility functions including bounding box computation, hierarchy depth calculation, and layer type detection helpers
 
 </div>
 
@@ -318,15 +301,15 @@ All branches used in the Artbox staged construction pipeline, organized alphabet
 
 ## gimppickable-auto-shrink-bg-color
 
-**Stage**: 04
-**Description**: Automatic background color handling for pickable objects</div>
+Enhanced auto-shrink with black background detection, uniform color handling, and optimized boundary shrinking algorithms
+
+</div>
 
 <div class="feature-section" id="gitlab-ci-artbox-scripts">
 
 ## gitlab-ci-artbox-scripts
 
-**Stage**: 04
-**Description**: Continuous integration scripts specific to Artbox development and deployment
+Complete GitLab CI/CD pipeline with multi-stage Docker builds, dependency management, AppImage generation, and comprehensive build documentation system
 
 </div>
 
@@ -334,8 +317,7 @@ All branches used in the Artbox staged construction pipeline, organized alphabet
 
 ## gui-size-tweaks
 
-**Stage**: 05
-**Description**: Fine-tuning of interface element sizes for improved user experience
+Increases curve view interaction distances and circle radius for better usability - point distance from 16 to 24 pixels, circle radius from 3 to 9 pixels
 
 </div>
 
@@ -343,8 +325,7 @@ All branches used in the Artbox staged construction pipeline, organized alphabet
 
 ## gui-style-settings
 
-**Stage**: 05
-**Description**: Custom styling and theming options for the Artbox interface
+Configurable line width and alpha transparency for selections, layers, and paths with selection background color change from gray to black
 
 </div>
 
@@ -352,8 +333,7 @@ All branches used in the Artbox staged construction pipeline, organized alphabet
 
 ## help-id-path-edit
 
-**Stage**: 04
-**Description**: Modifications to help system path handling and ID management
+New help ID definition for path end-edit functionality, extending the path tool help system
 
 </div>
 
@@ -361,8 +341,7 @@ All branches used in the Artbox staged construction pipeline, organized alphabet
 
 ## icon-picker-enhanced
 
-**Stage**: 01
-**Description**: Improved icon selection and management interface
+Enhanced icon picker with tool preset mode support and configurable view sizes - extra large for tool presets, small for standard icons
 
 </div>
 
@@ -370,8 +349,7 @@ All branches used in the Artbox staged construction pipeline, organized alphabet
 
 ## initial-commands-dockable
 
-**Stage**: 015
-**Description**: Foundation implementation for the commands dockable interface
+Complete commands dockable system with action groups, command management, editor interface, and comprehensive UI integration for Script-Fu automation
 
 </div>
 
@@ -379,8 +357,7 @@ All branches used in the Artbox staged construction pipeline, organized alphabet
 
 ## issue-templates-artbox
 
-**Stage**: 04
-**Description**: Custom issue templates for Artbox development and bug reporting
+Simplified GitLab issue templates tailored for Artbox with streamlined bug reporting and feature request forms removing GIMP-specific instructions
 
 </div>
 
@@ -388,8 +365,7 @@ All branches used in the Artbox staged construction pipeline, organized alphabet
 
 ## jitter-distribution-option
 
-**Stage**: 05
-**Description**: Enhanced jitter distribution controls for more natural brush behavior
+Adds uniform jitter distribution option using sqrt sampling for more even brush stroke variation patterns
 
 </div>
 
@@ -397,8 +373,7 @@ All branches used in the Artbox staged construction pipeline, organized alphabet
 
 ## layer-pop-up-menu
 
-**Stage**: 01
-**Description**: Improved right-click context menu for layer operations
+Simplifies layer context menu by updating action labels and removing blend space, composite space, and resize submenus for cleaner interface
 
 </div>
 
@@ -406,8 +381,7 @@ All branches used in the Artbox staged construction pipeline, organized alphabet
 
 ## max-brush-size
 
-**Stage**: 05
-**Description**: Increases maximum allowable brush size for large canvas work
+Increases maximum brush and pattern size from 1024 to 8192 pixels on 64-bit architectures
 
 </div>
 
@@ -415,28 +389,23 @@ All branches used in the Artbox staged construction pipeline, organized alphabet
 
 ## meson-for-artbox-resources
 
-**Stage**: 01
-**Description**: Build system configuration for Artbox-specific resources and assets</div>
+Modifies Meson build system to use 'artbox' directory instead of project/API version path for data directory configuration
+
+</div>
 
 <div class="feature-section" id="paintbrush-high-quality-force">
 
 ## paintbrush-high-quality-force
 
-**Stage**: 05
-**Description**: Memory safety improvements and high-quality paintbrush rendering with enhanced buffer allocation and integer overflow protection
+Memory safety improvements and high-quality paintbrush rendering with enhanced buffer allocation and integer overflow protection
 
-**Files Modified** (2 files, 78 insertions, 50 deletions):
-- `app/core/gimptempbuf.c` (97 lines modified): Enhanced buffer allocation with overflow protection
-- `app/paint/gimpbrushcore-loops.cc` (31 lines modified): Updated brush rendering loops for high-quality force operations
-
-**Implementation**: Implements safety and quality improvements including integer overflow protection, memory safety, improved buffer creation, and high-quality force activation for better paintbrush stability and quality.</div>
+</div>
 
 <div class="feature-section" id="paintbrush-options-artbox">
 
 ## paintbrush-options-artbox
 
-**Stage**: 02
-**Description**: Custom paintbrush configuration and options tailored for Artbox workflows
+Configurable paintbrush interface with optional reset and update buttons for brush-to-tool-options synchronization, integrated with preferences dialog
 
 </div>
 
@@ -444,8 +413,7 @@ All branches used in the Artbox staged construction pipeline, organized alphabet
 
 ## painttool-cursor
 
-**Stage**: 05
-**Description**: Improved cursor display and behavior for paint tools
+Enhances paint tool cursor display with dynamic brush sizing, eraser mode tracking, and improved circle drawing for better visual feedback
 
 </div>
 
@@ -453,8 +421,7 @@ All branches used in the Artbox staged construction pipeline, organized alphabet
 
 ## path-editing
 
-**Stage**: 05
-**Description**: Enhanced path creation, editing, and manipulation tools
+Enhanced path editing with automatic move mode switching after duplication, larger handle sizes (13 to 26 pixels), and extended tool path properties for visibility and locking
 
 </div>
 
@@ -462,8 +429,7 @@ All branches used in the Artbox staged construction pipeline, organized alphabet
 
 ## path-snapping
 
-**Stage**: 05
-**Description**: Improved snapping behavior for path tools and operations
+Enhanced path snapping with separate path-specific snap distance parameters and automatic snap disabling when path tool is active to prevent interference
 
 </div>
 
@@ -471,27 +437,23 @@ All branches used in the Artbox staged construction pipeline, organized alphabet
 
 ## preferences-dialog
 
-**Stage**: 01
-**Description**: Improvements and additions to the preferences interface</div>
+Adds extensive selection and path configuration options including highlighting, line width, transparency, and color controls to core configuration
+
+</div>
 
 <div class="feature-section" id="presets-doubleclick-restore">
 
 ## presets-doubleclick-restore
 
-**Stage**: 05
-**Description**: Double-click functionality to restore preset settings without requiring preset switching
+Double-click functionality to restore preset settings without requiring preset switching
 
-**Files Modified** (1 file, 3 insertions):
-- `app/widgets/gimpcontainericonview.c` (3 lines added): Double-click restoration functionality
-
-**Implementation**: Adds workflow enhancement where double-clicking an already active preset restores the tool options to the preset's saved state, eliminating the need to switch presets to restore settings.</div>
+</div>
 
 <div class="feature-section" id="recent-layer-mode-group">
 
 ## recent-layer-mode-group
 
-**Stage**: 05
-**Description**: Groups recently used layer blend modes for easier access
+Implements recent layer mode tracking with persistent storage and default mode initialization for improved workflow efficiency
 
 </div>
 
@@ -499,8 +461,7 @@ All branches used in the Artbox staged construction pipeline, organized alphabet
 
 ## resource-control
 
-**Stage**: 05
-**Description**: Enhanced resource management including save-as operations for brushes, patterns, and other resources
+Adds comprehensive save and save-as functionality for brushes, patterns, and other resources with proper file management and UI actions
 
 </div>
 
@@ -508,8 +469,7 @@ All branches used in the Artbox staged construction pipeline, organized alphabet
 
 ## resource-filtering-option
 
-**Stage**: 05
-**Description**: Advanced filtering capabilities for resource browsers and selectors
+Configurable resource filtering interface with GUI option to show/hide tag entry widgets for query and assignment based on user preferences
 
 </div>
 
@@ -517,28 +477,29 @@ All branches used in the Artbox staged construction pipeline, organized alphabet
 
 ## script-fu-autostart
 
-**Stage**: 04
-**Description**: Automatic startup of Script-Fu scripts for Artbox workflows</div>
+Implements automatic execution of Script-Fu scripts on startup by scanning configured paths for scripts containing autostart functions
+
+</div>
 
 <div class="feature-section" id="script-fu-plugins-for-artbox">
 
 ## script-fu-plugins-for-artbox
 
-**Stage**: 05
-**Description**: Collection of 20 custom plugins with workflow automation (9,008 lines of code)
+Collection of custom plugins with workflow automation
 
 ### Plugin Categories:
 - **Paint Tool Utilities**: Brush and painting workflow enhancements
 - **Layer Management**: Advanced layer operations and organization
 - **File Management**: File handling and batch operations
-- **Effects & Utilities**: Various utility functions and effects</div>
+- **Effects & Utilities**: Various utility functions and effects
+
+</div>
 
 <div class="feature-section" id="selection-highlight">
 
 ## selection-highlight
 
-**Stage**: 03
-**Description**: Improved visual feedback for selections with enhanced highlighting
+Adds visual selection highlighting with display flush updates and area-based highlight rendering for improved selection feedback
 
 </div>
 
@@ -546,8 +507,7 @@ All branches used in the Artbox staged construction pipeline, organized alphabet
 
 ## simple-sliders
 
-**Stage**: 05
-**Description**: Streamlined slider controls for better user experience
+Simplifies spin scale interaction by removing text region click detection and adjusting text positioning for cleaner interface
 
 </div>
 
@@ -555,8 +515,7 @@ All branches used in the Artbox staged construction pipeline, organized alphabet
 
 ## smooth-stroke
 
-**Stage**: 05
-**Description**: Stroke stabilization and smoothing for cleaner brush strokes
+Implements comprehensive stroke smoothing algorithms with velocity-based weighting and testing framework for natural brush movement
 
 </div>
 
@@ -564,8 +523,7 @@ All branches used in the Artbox staged construction pipeline, organized alphabet
 
 ## stability-bug-fixes
 
-**Stage**: 02
-**Description**: Various stability enhancements and bug fixes for improved reliability
+Critical memory safety fixes including drawable filter cleanup, proper mask handling, and container disposal to prevent crashes
 
 </div>
 
@@ -573,15 +531,15 @@ All branches used in the Artbox staged construction pipeline, organized alphabet
 
 ## status-bar-for-artbox
 
-**Stage**: 05
-**Description**: Custom status bar information and display for Artbox workflows</div>
+Enhances status bar with autosave reminders, invisible selection indicators, and custom styling while hiding default cursor and unit elements
+
+</div>
 
 <div class="feature-section" id="supress-broken-pipe-warnings">
 
 ## supress-broken-pipe-warnings
 
-**Stage**: 04
-**Description**: Reduces console noise by suppressing broken pipe warnings
+Comments out broken pipe error warnings in plugin communication flush operations to reduce console noise
 
 </div>
 
@@ -589,8 +547,7 @@ All branches used in the Artbox staged construction pipeline, organized alphabet
 
 ## supress-localization-warnings
 
-**Stage**: 01
-**Description**: Reduces console output by suppressing localization-related warnings
+Comments out localization catalog directory warnings and error messages to reduce plugin startup console output
 
 </div>
 
@@ -598,8 +555,7 @@ All branches used in the Artbox staged construction pipeline, organized alphabet
 
 ## supress-mnemonics-warnings
 
-**Stage**: 01
-**Description**: Reduces console noise by suppressing mnemonic-related warnings
+Comments out duplicate and missing mnemonic warnings in procedure dialog system to reduce development console noise
 
 </div>
 
@@ -607,8 +563,7 @@ All branches used in the Artbox staged construction pipeline, organized alphabet
 
 ## supress-paintbrush-slider-tool-tips
 
-**Stage**: 05
-**Description**: Removes tooltips from paintbrush sliders for cleaner interface
+Conditionally removes tooltips from paint option scale widgets based on GUI configuration settings
 
 </div>
 
@@ -616,8 +571,7 @@ All branches used in the Artbox staged construction pipeline, organized alphabet
 
 ## supress-timer-printout
 
-**Stage**: 04
-**Description**: Reduces console output by suppressing timing debug messages
+Comments out timer printout messages in GIMP_TIMER_END macro to reduce timing debug output to console
 
 </div>
 
@@ -625,18 +579,15 @@ All branches used in the Artbox staged construction pipeline, organized alphabet
 
 ## supress-warning-messages
 
-**Stage**: 01
-**Description**: Reduces console noise by suppressing various warning messages</div>
+Removes font loading warnings and error console visual elements to reduce console noise and interface clutter
+
+</div>
 
 <div class="feature-section" id="tool-preset-structure">
 
 ## tool-preset-structure
 
-**Stage**: 02
-**Description**: Foundation data structures and handling for tool presets that other branches depend on
-
-**Files Modified**: Core tool preset system files
-**Implementation**: Provides data structures and handling for tool presets that other branches depend on. Expands tool preset functionality with new code for preset management, device integration, and preset editor enhancements.
+Provides data structures and handling for tool presets that other branches depend on. Expands tool preset functionality with new code for preset management, device integration, and preset editor enhancements
 
 </div>
 
@@ -644,8 +595,7 @@ All branches used in the Artbox staged construction pipeline, organized alphabet
 
 ## tool-tips-hacked-out
 
-**Stage**: 04
-**Description**: Removes tooltips from various interface elements to reduce visual clutter
+Conditionally disables tooltips based on GUI configuration for dockbook tabs and tool buttons to reduce interface clutter
 
 </div>
 
@@ -653,8 +603,7 @@ All branches used in the Artbox staged construction pipeline, organized alphabet
 
 ## toolbox-flexible-refactor
 
-**Stage**: 05
-**Description**: Major toolbox interface restructuring for improved flexibility and usability
+Refactors toolbox layout with flexible flow box organization and modular area creation functions for improved customization
 
 </div>
 
@@ -662,8 +611,7 @@ All branches used in the Artbox staged construction pipeline, organized alphabet
 
 ## transform-tool-use-selection
 
-**Stage**: 05
-**Description**: Improved transform tool behavior when working with selections
+Adds "Use Selection" option to transform tools allowing users to choose between transforming selected area or entire layer
 
 </div>
 
@@ -671,7 +619,6 @@ All branches used in the Artbox staged construction pipeline, organized alphabet
 
 ## warp-tool-for-artbox
 
-**Stage**: 05
-**Description**: Custom warp tool modifications and improvements for Artbox use cases
+Enhances warp tool with group mask options, minimum effect size of 12 pixels, and additional controls for group warping and margins
 
 </div>

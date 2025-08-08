@@ -13,7 +13,6 @@ url: ""
   {{< card link="hub/docs/folder" title="Documentation" icon="cog" >}}
   {{< card link="hub/about/Patreon" title="Patreon" icon="heart" >}}
   {{< card link="hub/plugins/folder" title="Plugins" icon="puzzle" >}}
-  {{< card link="https://gitlab.gnome.org/pixelmixer/artbox" title="Artbox Source Code" icon="gitlab" >}}
   {{< card link="hub/about/" title="About" icon="information-circle" >}}
   {{< card link="https://www.gimp.org/" title="GIMP" icon="home" >}}
 {{< /cards >}}

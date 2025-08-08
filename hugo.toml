@@ -89,7 +89,6 @@ name = "Themes"
 pageRef = "hub/themes/folder/"
 weight = 3
 
-
 [[menu.main]]
 name = "Funky-Fu"
 url = "https://script-fu.github.io/funky/"
