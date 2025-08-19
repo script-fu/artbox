@@ -603,7 +603,7 @@ Conditionally disables tooltips based on GUI configuration for dockbook tabs and
 
 ## toolbox-flexible-refactor
 
-Refactors toolbox layout with flexible flow box organization and modular area creation functions for improved customization
+Refactors toolbox layout with flexible flow box organization and modular area creation functions for improved customization. Wacom pad events filtered out to fix glitching
 
 </div>
 
