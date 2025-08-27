@@ -3,7 +3,7 @@ type: docs
 url: "hub/feature-test/folder/Path-Tool"
 ---
 
-# Objective
+# Path Tool
 
 Enhance path editing, snapping, and visibility features while refining path commitment behavior to prevent unintentional selections.
 

@@ -5,7 +5,9 @@ url: "hub/docs/folder/AppImage"
 
 # Introduction
 
-The GIMP development team now support AppImages. An AppImage is a version of the application that can be downloaded as one file, it is then started by double clicking that file. If it fails to launch with an error "Unknown file type", set permissions on the file to be run as an executable. Right click the file, properties -> permissions -> allow executing file as program. Then try double clicking it again.
+An AppImage is a version of the application that can be downloaded as one file, it is then started by double clicking that file. If it fails to launch with an error "Unknown file type", set permissions on the file to be run as an executable. Right click the file, properties -> permissions -> allow executing file as program. Then try double clicking it again.
+
+**NOTE: The Appimage will also fail to start if GIMP or Artbox is already open!**
 
 This AppImage for Artbox has been built for nearly all Linux distros. The following link is a manually updated release:
 [download](https://gitlab.gnome.org/pixelmixer/artbox/-/raw/feature-appimage/AppImage/Artbox.AppImage?ref_type=heads&inline=false)

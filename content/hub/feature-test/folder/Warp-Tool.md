@@ -3,7 +3,7 @@ type: docs
 url: "hub/feature-test/folder/Warp-Tool"
 ---
 
-# Objective
+# Warp Tool
 
 Enable warping functionality for Layer Groups in Artbox to support a flexible design process, allowing artists to dynamically adjust work within highly structured files containing hundreds of layers.
 
