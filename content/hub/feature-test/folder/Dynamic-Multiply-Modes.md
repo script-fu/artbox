@@ -3,7 +3,7 @@ type: docs
 url: "hub/feature-test/folder/Dynamic-Multiply-Modes"
 ---
 
-# Objective
+# Dynamic Multiply Modes
 
 Make a beautiful brush stroke.
 

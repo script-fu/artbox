@@ -3,7 +3,7 @@ type: docs
 url: "hub/feature-test/folder/Layer-Mode-Recents"
 ---
 
-# Objective
+# Layer Mode Recents
 
 Provide quick access to recently used layer blend modes for faster workflow.
 

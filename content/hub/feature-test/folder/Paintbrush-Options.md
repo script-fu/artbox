@@ -3,7 +3,7 @@ type: docs
 url: "hub/feature-test/folder/Paintbrush-Options"
 ---
 
-# Objective
+# Paintbrush Options
 
 Improve the usability of the Paintbrush GUI and create new stroke possibilities.
 

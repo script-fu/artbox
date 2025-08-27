@@ -13,6 +13,7 @@ Simplify the slider interaction and provide a less distracting slider cursor.
   {{< card link="#grab-icons-changed" title="Grab Icons Changed" icon="cursor-click" >}}
   {{< card link="#ctrl-clicking" title="Ctrl Clicking" icon="terminal" >}}
   {{< card link="#optional-reset-and-link-buttons" title="Optional Reset and Link Buttons" icon="cog" >}}
+  {{< card link="#optional-increment-and-decrement-buttons" title="Optional Increment and Decrement Buttons" icon="cog" >}}
 {{< /cards >}}
 
 ---
@@ -97,4 +98,18 @@ Simplify the slider interaction and provide a less distracting slider cursor.
 
 </div>
 
+<div class="feature-section" id="optional-increment-and-decrement-buttons" tabindex="-1">
 
+## Optional Increment and Decrement Buttons
+
+**Current Design:** Sliders display small increment and decrement buttons beside numeric fields by default.
+
+**Issues:** These buttons add visual clutter for users who prefer a minimal UI, especially when using precision input or keyboard shortcuts.
+
+**Changes:** Preferences > Tool Options > Paintbrush Tool > Show Slider Increment/Decrement Buttons.
+
+**Implementation:** Added a preference that toggles the visibility of slider increment and decrement buttons in paint tool options. When disabled, sliders keep full functionality via dragging and keyboard shortcuts without showing the step buttons.
+
+**Benefits:** Users can reduce UI clutter by hiding step buttons while retaining precise control via dragging, number entry, or shortcuts, producing a cleaner, less distracting workspace.
+
+</div>

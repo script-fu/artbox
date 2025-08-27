@@ -45,6 +45,7 @@ Remove the `share/artbox/` path.
   {{< card link="Edge-Bleed" title="Edge Bleed" subtitle="Extends edge pixels into transparent areas eliminating halos in compositing operations">}}
   {{< card link="Gaussian-Glow" title="Gaussian Glow" subtitle="Multi-layered glow effect with successive blurs and opacity control">}}
   {{< card link="Alpha-To-Show-Mask" title="Alpha To Show Mask" subtitle="Converts alpha channel information to visible mask display">}}
+  {{< card link="Crop-Layer-To-Mask" title="Crop Layer To Mask" subtitle="Crops the selected layers to the content of the layer mask with an optional margin">}}
 {{< /cards >}}
 
 ### Related Sites

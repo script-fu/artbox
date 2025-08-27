@@ -39,6 +39,7 @@ All branches used in the Artbox staged construction pipeline, organized alphabet
   {{< card link="#gimpitem-functions" title="gimpitem-functions" subtitle="Stage 02 - Item functions" >}}
   {{< card link="#gimppickable-auto-shrink-bg-color" title="gimppickable-auto-shrink-bg-color" subtitle="Stage 04 - Auto-shrink background color" >}}
   {{< card link="#gitlab-ci-artbox-scripts" title="gitlab-ci-artbox-scripts" subtitle="Stage 04 - GitLab CI scripts for Artbox" >}}
+  {{< card link="#gtk-supported-spinscale-button-visibility" title="gtk-supported-spinscale-button-visibility" subtitle="Stage 04 - Slider with buttons visibility" >}}
   {{< card link="#gui-size-tweaks" title="gui-size-tweaks" subtitle="Stage 05 - GUI size adjustments" >}}
   {{< card link="#gui-style-settings" title="gui-style-settings" subtitle="Stage 05 - Style and theme settings" >}}
   {{< card link="#help-id-path-edit" title="help-id-path-edit" subtitle="Stage 04 - Help ID path editing" >}}
@@ -72,6 +73,7 @@ All branches used in the Artbox staged construction pipeline, organized alphabet
   {{< card link="#supress-paintbrush-slider-tool-tips" title="supress-paintbrush-slider-tool-tips" subtitle="Stage 05 - Suppress paintbrush slider tooltips" >}}
   {{< card link="#supress-timer-printout" title="supress-timer-printout" subtitle="Stage 04 - Suppress timer printouts" >}}
   {{< card link="#supress-warning-messages" title="supress-warning-messages" subtitle="Stage 01 - Warning message suppression" >}}
+  {{< card link="#system-performance" title="system-performance" subtitle="Stage 015 - System performance improvements" >}}
   {{< card link="#tool-preset-structure" title="tool-preset-structure" subtitle="Stage 02 - Tool preset data structures" >}}
   {{< card link="#tool-tips-hacked-out" title="tool-tips-hacked-out" subtitle="Stage 04 - Tooltip removal" >}}
   {{< card link="#toolbox-flexible-refactor" title="toolbox-flexible-refactor" subtitle="Stage 05 - Flexible toolbox refactor" >}}
@@ -313,6 +315,14 @@ Complete GitLab CI/CD pipeline with multi-stage Docker builds, dependency manage
 
 </div>
 
+<div class="feature-section" id="gtk-supported-spinscale-button-visibility">
+
+## gtk-supported-spinscale-button-visibility
+
+Adds infrastructure to allow sliders to be shown without increment/decrement buttons
+
+</div>
+
 <div class="feature-section" id="gui-size-tweaks">
 
 ## gui-size-tweaks
@@ -523,7 +533,7 @@ Implements comprehensive stroke smoothing algorithms with velocity-based weighti
 
 ## stability-bug-fixes
 
-Critical memory safety fixes including drawable filter cleanup, proper mask handling, and container disposal to prevent crashes
+Memory-safety fixes (dispose/clear containers), duplicate/copy masks instead of sharing buffers, robust grab-retry logic with brush-cache invalidation; plus minor correctness fixes (width/height, includes, export grab-retry API).
 
 </div>
 
@@ -580,6 +590,15 @@ Comments out timer printout messages in GIMP_TIMER_END macro to reduce timing de
 ## supress-warning-messages
 
 Removes font loading warnings and error console visual elements to reduce console noise and interface clutter
+
+</div>
+
+<div class="feature-section" id="system-performance">
+
+## system-performance
+
+The System Resources preferences now provide configurable templates based on system capability. They enable larger tile sizes to speed up display refresh, file loading, and plug‑in performance, so the interface updates large blocks instead of small chunks. This branch wires up the preference options to the
+code implementations.
 
 </div>
 

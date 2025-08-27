@@ -3,7 +3,7 @@ type: docs
 url: "hub/feature-test/folder/Layer-Picking"
 ---
 
-# Objective
+# Layer Picking
 
 Improve the layer picking experience in a complex scene.
 

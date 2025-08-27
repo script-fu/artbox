@@ -3,7 +3,7 @@ type: docs
 url: "hub/feature-test/folder/Dynamic-Brush-Spacing"
 ---
 
-# Objective
+# Dynamic Brush Spacing
 
 Improve the quality of the brush spacing with respect to velocity.
 
