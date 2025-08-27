@@ -15,7 +15,7 @@ Artbox has an [AppImage](../AppImage/) made for a Debian based system, that is a
 * [Clone the Source Code Repositories](#clone-the-source-code-repositories)
 * [Environment Variables](#environment-variables)
 * [Build Environment Optimizations](#build-environment-optimizations)
-* [Build Artbox, BABL and GEGL](#build-artbox-babl-and-gegl)
+* [Build Artbox, BABL, GTK3 and GEGL](#build-artbox-babl-gtk3-and-gegl)
 * [Desktop Launcher (System Specific)](#desktop-launcher-system-specific)
 * [Automatically Updating](#automatically-updating-to-the-latest-development-version)
 * [Manual Updating](#steps-to-manually-update)
@@ -70,7 +70,7 @@ PACKAGES=(
   iso-codes
   libaa1-dev
   libappstream-glib-dev
-  libappstream-dev 
+  libappstream-dev
   libarchive-dev
   libbz2-dev
   libcfitsio-dev
@@ -187,9 +187,10 @@ In a terminal we can download the sources to our build directory using the `git 
 ```shell
 cd $HOME/code/gnome/build
 git clone https://gitlab.gnome.org/GNOME/babl
-git clone https://gitlab.gnome.org/GNOME/gegl
+git clone --branch gtk-modifications https://gitlab.gnome.org/pixelmixer/gtk3-artbox.git gtk3
+git clone --branch gegl-modifications https://gitlab.gnome.org/pixelmixer/gegl-artbox.git gegl
 git clone https://gitlab.gnome.org/GNOME/gimp
-git clone https://gitlab.gnome.org/pixelmixer/artbox.git
+git clone --branch artbox https://gitlab.gnome.org/pixelmixer/artbox.git
 ```
 
 The simple folder structure is now populated with thousands of files, and there's more to be made automatically by the build process.
@@ -200,6 +201,7 @@ The simple folder structure is now populated with thousands of files, and there'
     * gnome
       * build
         * babl
+        * gtk3
         * gegl
         * gimp
         * artbox
@@ -290,11 +292,11 @@ Artbox includes optional OpenCL acceleration for certain graphics operations, ac
 
 **Recommendation:** Leave OpenCL disabled unless you're specifically testing experimental features. The Mesa DRI hardware acceleration configured in the environment provides better stability and performance for most users.
 
-## Build Artbox, BABL and GEGL
+## Build Artbox, BABL, GTK3 and GEGL
 
 To build the software, we can use another shell script, that uses this file to build or compile the software. Copy the following and save it as `artbox.sh` in the bash folder. Then in your File Manager, right click the artbox.sh file, properties, permissions, `Allow executing file as program`.
 
-Notice that BABL and GEGL are also being built, these two additional packages don't have to be built every time. When
+Notice that BABL, GTK3 and GEGL are also being built, these additional packages don't have to be built every time. When
 COMPILE_ONLY is set to "true", after a full build perhaps, they are skipped.
 
 ```shell
@@ -307,6 +309,7 @@ COMPILE_ONLY is set to "true", after a full build perhaps, they are skipped.
 COMPILE_ONLY="false"    # Set to "true" to compile without a full build
 
 BUILD_BABL="true"       # Set to "false" to skip building BABL
+BUILD_GTK3="true"       # Set to "false" to skip building GTK3
 BUILD_GEGL="true"       # Set to "false" to skip building GEGL
 BUILD_FORK="artbox"     # Set to "gimp"  to build GIMP instead
 
@@ -356,7 +359,7 @@ if [ "$BUILD_BABL" == "true" ]; then
   cd babl/_build
 
   # Run Meson setup and build commands
-  meson setup .. -Dprefix="${GIMP_PREFIX}"  --buildtype="release"
+  meson setup .. -Dprefix="${GIMP_PREFIX}"  --buildtype="release" --wipe
   ninja
   ninja install
 
@@ -364,20 +367,83 @@ if [ "$BUILD_BABL" == "true" ]; then
   cd "${GIMP_PREFIX}/build/"
 fi
 
+# Build GTK3 if enabled
+if [ "$BUILD_GTK3" == "true" ]; then
+  echo -e "\n*** Building GTK3 ***\n"
+
+  # Ensure we're in the GTK3 repository directory
+  cd "${GIMP_PREFIX}/build/gtk3"
+
+  # Check if gtk-modifications branch exists, halt if not found
+  if ! git show-ref --verify --quiet refs/heads/gtk-modifications; then
+    echo "ERROR: gtk-modifications branch not found!"
+    echo ""
+    echo "You appear to have cloned the standard GTK3 repository, but Artbox requires"
+    echo "the modified GTK3 repository with custom Artbox functionality."
+    echo ""
+    echo "Please clone the correct repository:"
+    echo "  cd ${GIMP_PREFIX}/build/"
+    echo "  rm -rf gtk3"
+    echo "  git clone --branch gtk-modifications https://gitlab.gnome.org/pixelmixer/gtk3-artbox.git gtk3"
+    echo ""
+    echo "Then run this build script again."
+    echo ""
+    exit 1
+  fi
+
+  echo "Checking out gtk-modifications branch..."
+  git checkout gtk-modifications
+
+  # Create and navigate to the build directory for GTK3
+  mkdir -p _build
+  cd _build
+
+  # Run Meson setup and build commands
+  meson setup .. -Dprefix="${GIMP_PREFIX}" --buildtype="release" --wipe
+  ninja
+  ninja install
+
+  echo -e "\n*** Finished building Artbox GTK3 ***\n"
+  cd "${GIMP_PREFIX}/build/"
+fi
+
 # Build GEGL if enabled
 if [ "$BUILD_GEGL" == "true" ]; then
   echo -e "\n*** Building GEGL ***\n"
 
+  # Ensure we're in the GEGL repository directory
+  cd "${GIMP_PREFIX}/build/gegl"
+
+  # Check if gegl-modifications branch exists, halt if not found
+  if ! git show-ref --verify --quiet refs/heads/gegl-modifications; then
+    echo "ERROR: gegl-modifications branch not found!"
+    echo ""
+    echo "You appear to have cloned the standard GEGL repository, but Artbox requires"
+    echo "the modified GEGL repository with custom Artbox functionality."
+    echo ""
+    echo "Please clone the correct repository:"
+    echo "  cd ${GIMP_PREFIX}/build/"
+    echo "  rm -rf gegl"
+    echo "  git clone --branch gegl-modifications https://gitlab.gnome.org/pixelmixer/gegl-artbox.git gegl"
+    echo ""
+    echo "Then run this build script again."
+    echo ""
+    exit 1
+  fi
+
+  echo "Checking out gegl-modifications branch..."
+  git checkout gegl-modifications
+
   # Create and navigate to the build directory for GEGL
-  mkdir -p gegl/_build
-  cd gegl/_build
+  mkdir -p _build
+  cd _build
 
   # Run Meson setup and build commands
-  meson setup .. -Dprefix="${GIMP_PREFIX}" --buildtype="release"
+  meson setup .. -Dprefix="${GIMP_PREFIX}" --buildtype="release" --wipe
   ninja
   ninja install
 
-  echo -e "\n*** Finished building GEGL ***\n"
+  echo -e "\n*** Finished building Artbox GEGL ***\n"
   cd "${GIMP_PREFIX}/build/"
 fi
 
@@ -393,7 +459,7 @@ mkdir -p "${GIMP_PREFIX}/build/$BUILD_FORK/_build"
 cd "${GIMP_PREFIX}/build/$BUILD_FORK/_build"
 
 # Run Meson setup and build commands with modern options
-meson setup .. -Dprefix="${GIMP_PREFIX}" --buildtype="debugoptimized" -Dvector-icons=true -Dcheck-update=yes
+meson setup .. -Dprefix="${GIMP_PREFIX}" --buildtype="release" --wipe -Dvector-icons=true -Dcheck-update=yes
 ninja
 ninja install
 
@@ -485,11 +551,11 @@ For more details or troubleshooting, see the README.md file in the desktop-integ
 
 To update Artbox or GIMP to the latest development version, you can perform a 'hard' reset of the local repository to match the remote repository. **Warning:** This process will overwrite any local changes you have made to the code.
 
-Here is a script that will get the latest versions of GIMP, Artbox, BABL and GEGL. Copy the following and save it as `reset-all-repos.sh` in the bash folder. Then in your File Manager, right click the `reset-all-repos.sh` file, properties, permissions, `Allow executing file as program`.
+Here is a script that will get the latest versions of GIMP, Artbox, BABL, GTK3 and GEGL. Copy the following and save it as `reset-all-repos.sh` in the bash folder. Then in your File Manager, right click the `reset-all-repos.sh` file, properties, permissions, `Allow executing file as program`.
 
 ```bash
 #!/usr/bin/env bash
-# This script resets all the specified repositories (babl, gegl, artbox, and gimp)
+# This script resets all the specified repositories (babl, gtk3, gegl, artbox, and gimp)
 # to their original states using 'git reset --hard', 'git clean -df', and ensures
 # they are reset to the latest changes from their respective branches ('master' or 'artbox').
 # If it's the gimp or artbox repo, a submodule update will be performed.
@@ -497,6 +563,7 @@ Here is a script that will get the latest versions of GIMP, Artbox, BABL and GEG
 
 # Flags to control whether to reset each repository
 RESET_BABL="true"
+RESET_GTK3="true"
 RESET_GEGL="true"
 RESET_GIMP="true"
 RESET_ARTBOX="true"
@@ -514,7 +581,7 @@ source "$SCRIPT_DIR/build_env.sh"
 cd "${GIMP_PREFIX}/build/"
 
 # Positive warning message
-echo "This script will reset selected repositories (babl, gegl, artbox, gimp) to their latest versions."
+echo "This script will reset selected repositories (babl, gtk3, gegl, artbox, gimp) to their latest versions."
 echo "Programmers! All uncommitted changes and untracked files will be lost."
 echo -e "\nAre you sure you want to continue? (y)"
 
@@ -534,8 +601,11 @@ REPOS=()
 if [ "$RESET_BABL" == "true" ]; then
   REPOS+=("${GIMP_PREFIX}/build/babl master")
 fi
+if [ "$RESET_GTK3" == "true" ]; then
+  REPOS+=("${GIMP_PREFIX}/build/gtk3 gtk-modifications")
+fi
 if [ "$RESET_GEGL" == "true" ]; then
-  REPOS+=("${GIMP_PREFIX}/build/gegl master")
+  REPOS+=("${GIMP_PREFIX}/build/gegl gegl-modifications")
 fi
 if [ "$RESET_GIMP" == "true" ]; then
   REPOS+=("${GIMP_PREFIX}/build/gimp master")
@@ -587,11 +657,12 @@ After running this script the next thing to do would be run the `artbox.sh` scri
 ```plaintext
 COMPILE_ONLY="false"
 BUILD_BABL="true"
+BUILD_GTK3="true"
 BUILD_GEGL="true"
 BUILD_FORK="artbox"
 ```
 
-Then the version of Artbox will be the latest one to play with, and it'll be using the latest BABL and GEGL.
+Then the version of Artbox will be the latest one to play with, and it'll be using the latest BABL, GTK3 and GEGL.
 
 ## Steps to Manually Update
 
@@ -599,7 +670,7 @@ Then the version of Artbox will be the latest one to play with, and it'll be usi
 2. **Checkout the Desired Branch:** Switch to the branch you want to update. Make sure this is the branch you intend to reset.
 3. **Fetch the Latest Data:** Retrieve the latest changes from the remote repository (origin).
 4. **Reset to the Remote Branch:** Perform a hard reset to align your local branch with the remote branch. This will discard any local changes.
-5. **Rebuild:** Repeat the [building](#build-artbox-babl-and-gegl) process by running the 'artbox.sh' script.
+5. **Rebuild:** Repeat the [building](#build-artbox-babl-gtk3-and-gegl) process by running the 'artbox.sh' script.
 
 **Example commands to reset the artbox branch of the Artbox repo:**
 
@@ -666,7 +737,19 @@ If Artbox feels slow or unresponsive during canvas operations:
 **Common problems and solutions:**
 
 - **Missing dependencies**: Re-run the dependency installation script if meson setup fails
-- **ccache issues**: Clear ccache with `ccache -C` if you get strange compilation errors
+- **Build cache issues**: The build script automatically clears meson build cache with `--wipe` flag. If you still get strange compilation errors, try these steps:
+  1. **Manually delete all `_build` folders** (be __very__ careful with paths):
+     **DO NOT DELETE `build` folders, NOTE the _**
+     ```bash
+     cd ~/code/gnome/build
+     rm -rf babl/_build
+     rm -rf gtk3/_build
+     rm -rf gegl/_build
+     rm -rf artbox/_build
+     rm -rf gimp/_build
+     rm -rf _install-x86_64
+     ```
+  2. Then build the project again with `artbox.sh` and `COMPILE_ONLY="false"`
 - **Linker errors with clang**: Ensure `lld` package is installed: `sudo apt install lld`
 - **Submodule problems**: Run `git submodule update --init --recursive` in the artbox directory
 
@@ -674,10 +757,9 @@ If Artbox feels slow or unresponsive during canvas operations:
 
 For the best development experience:
 
-- Use an SSD for source code storage
+- Use an SSD for your primary drive
 - Allocate sufficient RAM (8GB+ recommended)
-- Consider using `--buildtype=release` for final testing builds
-- Monitor ccache hit rates with `ccache -s`
+- Change the System Resources in Preferences
 
 ## Conclusion
 

@@ -3,7 +3,7 @@ type: docs
 url: "hub/feature-test/folder/Paintbrush-Smooth-Stroke"
 ---
 
-# Objective
+# Paintbrush Smooth Stroke
 
 To provide a more intuitive and comprehensive `Smooth Stroke` GUI and extend its behavior to cover stroke direction and pressure. It should feel natural to use and be easily customizable.
 

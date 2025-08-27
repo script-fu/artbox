@@ -51,6 +51,7 @@ Artbox extends GIMP with numerous enhancements focused on digital art workflows,
   {{< card link="Simple-Sliders" title="Simple Sliders" subtitle="Click-to-slide behavior and simplified cursor icons">}}
   {{< card link="Selection-Display" title="Selection Display" subtitle="Enhanced selection highlighting">}}
   {{< card link="Selection" title="Selection Tools" subtitle="Enhanced selection manipulation">}}
+  {{< card link="System-Performance" title="System Performance" subtitle="Configurable performance profiles, tile sizing and threading" >}}
 {{< /cards >}}
 
 ## Resource & Preset Management

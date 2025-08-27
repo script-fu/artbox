@@ -18,7 +18,7 @@ Extend Script-Fu to include additional functions that help the user.
   {{< card link="#eraser-toggle-functions" title="Eraser Toggle Functions" subtitle="Toggle between eraser and other painting tools." icon="pencil" >}}
   {{< card link="#visibility-functions" title="Visibility Functions" subtitle="Manage visibility of multiple items in bulk." icon="eye" >}}
   {{< card link="#brush-control-functions" title="Brush Control Functions" subtitle="Control brush scale and jitter settings." icon="terminal" >}}
-  {{< card link="#layer-functions" title="Layer Functions" subtitle="Combine alpha channels between layers." icon="duplicate" >}}
+  {{< card link="#layer-functions" title="Layer Functions" subtitle="Combine alpha channels and transfer content between layers." icon="duplicate" >}}
 {{< /cards >}}
 
 ---
@@ -93,8 +93,12 @@ Extend Script-Fu to include additional functions that help the user.
 | **Command** | **Purpose** |
 | --- | --- |
 | `(gimp-layer-combine-alpha)` | Combine the alpha channels of two layers |
+| `(gimp-drawable-transfer)` | Transfer content between drawable objects |
 
-**Implementation**: This procedure combines the alpha channels of two layers and writes the result into the first layer's alpha channel using operations like ADD, SUBTRACT, INTERSECT, or REPLACE for advanced compositing workflows.
+**Implementation**:
+
+- **Alpha Combination**: The `gimp-layer-combine-alpha` procedure combines the alpha channels of two layers and writes the result into the first layer's alpha channel using operations like ADD, SUBTRACT, INTERSECT, or REPLACE for advanced compositing workflows.
+- **Drawable Transfer**: The `gimp-drawable-transfer` procedure enables transferring content between drawable objects (layers, channels, layer masks) for advanced layer management and compositing operations. Importantly, it avoids any floating layer anchoring issues and automatically handles offset calculations for seamless content transfer.
 
 </div>
 

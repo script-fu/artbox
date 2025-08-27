@@ -3,7 +3,7 @@ type: docs
 url: "hub/feature-test/folder/Transform-Tool"
 ---
 
-# Objective
+# Transform Tool
 
 Enhance transforming layers by avoiding GUI rejections and floating layers.
 

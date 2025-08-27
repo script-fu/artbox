@@ -3,7 +3,7 @@ type: docs
 url: "hub/feature-test/folder/Paint-Tool"
 ---
 
-# Objective
+# Paint Tool
 
 Improve the quality of the painting experience in Artbox
 

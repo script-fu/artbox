@@ -3,9 +3,9 @@ type: docs
 url: "hub/feature-test/folder/Warp-Tool"
 ---
 
-# Objective
+# Warp Tool
 
-Enable warping functionality for Layer Groups in Artbox to support a flexible design process, allowing artists to dynamically adjust work within highly structured files containing hundreds of layers.
+Enable warping functionality for Layer Groups in Artbox to support a flexible design process, allowing artists to dynamically adjust work within highly structured files containing hundreds of layers. Sweet!
 
 ## Related Links
 
@@ -15,7 +15,7 @@ Enable warping functionality for Layer Groups in Artbox to support a flexible de
 
 {{< cards >}}
   {{< card link="#warp-layer-groups" title="Warp Layer Groups" subtitle="Transform entire layer groups together" icon="collection" >}}
-  {{< card link="#group-masks-warping" title="Group Masks Warping" subtitle="Control mask transformation behavior" icon="eye" >}}
+  {{< card link="#group-masks-warping" title="Warp Masks" subtitle="Control mask transformation behavior" icon="eye" >}}
   {{< card link="#configurable-warp-margin" title="Configurable Warp Margin" subtitle="Prevent clipping during transformation" icon="arrows-expand" >}}
   {{< card link="#tool-restart-usable-state" title="Tool Restart in Usable State" subtitle="Always start in a functional mode" icon="refresh" >}}
   {{< card link="#last-undo-notification" title="Last Undo Notification" subtitle="Alert when reaching undo limit" icon="bell" >}}
@@ -42,15 +42,15 @@ Enable warping functionality for Layer Groups in Artbox to support a flexible de
 
 <div class="feature-section" id="group-masks-warping">
 
-## Group Masks Warping
+## Masks Warping
 
 **Current State**: New Feature.
 
-**Issue**: Masks don't always need to be warped, requiring flexibility.
+**Issue**: Synchronized mask warping! However masks don't always need to be warped...
 
-**Solution**: Added a Warp Transform option to enable or disable group mask warping.
+**Solution**: Added a Warp Transform option to enable or disable mask warping.
 
-**Implementation**: Added a toggle (`PROP_GROUP_WARP_GROUP_MASKS`) in `gimp_warp_options_gui` to control mask warping within groups. This boolean setting allows users to include group masks in the warp transformations, depending on artistic needs.
+**Implementation**: Added a toggle (`PROP_GROUP_WARP_GROUP_MASKS`) in `gimp_warp_options_gui` to control mask warping. This boolean setting allows users to include masks in the warp transformations, depending on artistic needs.
 
 </div>
 
@@ -140,5 +140,5 @@ Enable warping functionality for Layer Groups in Artbox to support a flexible de
 
 ## Known Issues
 
-- **Undo/Redo Limitations**: Undo then Redo may fail due to an unknown issue with Layer Group mask handling. It's advised to save before warping, and use autosave and incremental saving.
-- **Experimental Freeze Feature**: Freezing the Layer Stack container to improve update speed and restrict GUI interaction causes erratic behavior in the Layer Stack post-warp. This experimental feature can be enabled via a code flag. Layer Group warping requires further testing and code review due to the complexity of the operation.
+- **Undo/Redo Limitations**: Undo of a warp commit fails for layer group masks due to an issue with layer group mask handling. It's advised to save before warping.
+

@@ -3,7 +3,7 @@ type: docs
 url: "hub/feature-test/folder/Dynamic-Velocity-Compression"
 ---
 
-# Objective
+# Dynamic Velocity Compression
 
 Improve the quality of dynamics driven by velocity input.
 

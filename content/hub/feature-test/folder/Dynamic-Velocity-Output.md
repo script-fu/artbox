@@ -3,7 +3,7 @@ type: docs
 url: "hub/feature-test/folder/Dynamic-Velocity-Output"
 ---
 
-# Objective
+# Dynamic Velocity Output
 
 Remove the velocity inversion, so that the dynamic mapping graphs representation is accurate.
 

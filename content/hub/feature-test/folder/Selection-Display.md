@@ -3,7 +3,7 @@ type: docs
 url: "hub/feature-test/folder/Selection-Display"
 ---
 
-# Objective
+# Selection Display
 
 Improve the quality of the painting experience in Artbox by enhancing the active selection behavior.
 
