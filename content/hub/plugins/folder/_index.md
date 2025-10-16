@@ -37,6 +37,7 @@ Remove the `share/artbox/` path.
 {{< cards >}}
   {{< card link="Incremental-Save" title="Incremental Save" subtitle="Saves numbered versions to a subfolder without overwriting the original">}}
   {{< card link="Almost-Autosave" title="Almost Autosave" subtitle="Automated saving functionality for workflow protection">}}
+  {{< card link="Batch-Process" title="Batch Process" subtitle="Flexible batch processing framework with directory recursion and progress reporting">}}
 {{< /cards >}}
 
 ## Effects & Utilities
