@@ -47,6 +47,7 @@ Remove the `share/artbox/` path.
   {{< card link="Gaussian-Glow" title="Gaussian Glow" subtitle="Multi-layered glow effect with successive blurs and opacity control">}}
   {{< card link="Alpha-To-Show-Mask" title="Alpha To Show Mask" subtitle="Converts alpha channel information to visible mask display">}}
   {{< card link="Crop-Layer-To-Mask" title="Crop Layer To Mask" subtitle="Crops the selected layers to the content of the layer mask with an optional margin">}}
+  {{< card link="Manage-Parasites" title="Manage Parasites" subtitle="Comprehensive parasite management tool for inspecting, adding, and removing custom metadata">}}
 {{< /cards >}}
 
 ### Related Sites
