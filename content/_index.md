@@ -17,4 +17,4 @@ url: ""
   {{< card link="https://www.gimp.org/" title="GIMP" icon="home" >}}
 {{< /cards >}}
 
-![hungry_cat](/images/gallery/hungry_cat_final.webp)
+![hungryd_cat](/images/gallery/hungry_cat_final.webp)
